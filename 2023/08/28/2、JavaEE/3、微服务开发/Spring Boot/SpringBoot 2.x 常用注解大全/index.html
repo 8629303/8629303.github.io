@@ -1,0 +1,4646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringBoot 2.x 常用注解大全 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="SpringBoot 2.x 常用注解大全 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
+<meta property="og:url" content="http://example.com/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
+<meta property="article:modified_time" content="2024-10-18T10:28:56.825Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/8629303"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:8629303@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(172)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="_posts">
+            <i class="fold iconfont icon-right"></i>
+            _posts
+            <small>(14)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;开发工具">
+            
+            开发工具
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="微服务开发">
+            <i class="fold iconfont icon-right"></i>
+            微服务开发
+            <small>(61)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;Shiro">
+            
+            Shiro
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;Spring">
+            
+            Spring
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringBoot">
+            
+            SpringBoot
+            <small>(44)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringCloudAlibaba">
+            
+            SpringCloudAlibaba
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringDataJPA">
+            
+            SpringDataJPA
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringMVC">
+            
+            SpringMVC
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringSecurity">
+            
+            SpringSecurity
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringTransaction">
+            
+            SpringTransaction
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java基础篇">
+            <i class="fold iconfont icon-right"></i>
+            Java基础篇
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java常用类库">
+            
+            Java常用类库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java多线程">
+            
+            Java多线程
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java反射与注解">
+            
+            Java反射与注解
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java基础语法">
+            
+            Java基础语法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java集合类">
+            
+            Java集合类
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;JavaIO流">
+            
+            JavaIO流
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;JavaNIO流">
+            
+            JavaNIO流
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java进阶篇">
+            <i class="fold iconfont icon-right"></i>
+            Java进阶篇
+            <small>(4)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java进阶篇&lt;---&gt;Java设计模式">
+            
+            Java设计模式
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java进阶篇&lt;---&gt;JVM虚拟机">
+            
+            JVM虚拟机
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java新特性">
+            <i class="fold iconfont icon-right"></i>
+            Java新特性
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java10新特性">
+            
+            Java10新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java11新特性">
+            
+            Java11新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java12新特性">
+            
+            Java12新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java13新特性">
+            
+            Java13新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java14新特性">
+            
+            Java14新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java15新特性">
+            
+            Java15新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java16新特性">
+            
+            Java16新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java17新特性">
+            
+            Java17新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java18新特性">
+            
+            Java18新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java19新特性">
+            
+            Java19新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java20新特性">
+            
+            Java20新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java8新特性">
+            
+            Java8新特性
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java9新特性">
+            
+            Java9新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JavaSE">
+            <i class="fold iconfont icon-right"></i>
+            JavaSE
+            <small>(34)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java汇总篇">
+            
+            Java汇总篇
+            <small>(28)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java新特性">
+            
+            Java新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java性能测试与安全">
+            
+            Java性能测试与安全
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            <i class="fold iconfont icon-right"></i>
+            Linux
+            <small>(7)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;虚拟机工具">
+            
+            虚拟机工具
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Docker">
+            
+            Docker
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Kubernetes">
+            
+            Kubernetes
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Nginx">
+            
+            Nginx
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Redis">
+            <i class="fold iconfont icon-right"></i>
+            Redis
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Redis&lt;---&gt;backup">
+            
+            backup
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="SpringTransaction">
+            <i class="fold iconfont icon-right"></i>
+            SpringTransaction
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="SpringTransaction&lt;---&gt;多数据源事务处理">
+            
+            多数据源事务处理
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SpringTransaction&lt;---&gt;多线程下事务处理">
+            
+            多线程下事务处理
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="172">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类</span>
+            <span class="post-date" title="2024-10-08 16:44:19">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E7%B3%BB%E5%88%97-%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%98%E6%9B%B4%E5%8F%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot系列-全网最全的版本变更史">SpringBoot系列-全网最全的版本变更史</span>
+            <span class="post-date" title="2024-10-08 16:38:53">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/10/08/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 参考文献 &amp; 鸣谢">Maven 教程之 参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-10-08 15:50:47">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/10/07/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GitHub%20%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="GitHub 实战技巧">GitHub 实战技巧</span>
+            <span class="post-date" title="2024-10-07 15:55:34">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/07/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%20-%20%E9%9B%86%E6%88%90%20HirakiCP%20%E4%B8%8E%20Druid%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 数据库篇 - 集成 HirakiCP 与 Druid 数据库连接池">SpringBoot2.x 数据库篇 - 集成 HirakiCP 与 Druid 数据库连接池</span>
+            <span class="post-date" title="2024-10-07 14:19:43">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/09/30/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/MacOS%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MacOS 开发环境搭建及软件安装卸载">MacOS 开发环境搭建及软件安装卸载</span>
+            <span class="post-date" title="2024-09-30 23:56:52">2024/09/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/30/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20JDK%20%E7%89%88%E6%9C%AC%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%20/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 JDK 版本默认设置">Maven 教程之 JDK 版本默认设置</span>
+            <span class="post-date" title="2024-09-30 16:37:08">2024/09/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/26/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20profiles%20%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 profiles 多环境配置">Maven 教程之 profiles 多环境配置</span>
+            <span class="post-date" title="2024-09-26 17:40:34">2024/09/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/25/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20plugin%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 plugin 详解">Maven 教程之 plugin 详解</span>
+            <span class="post-date" title="2024-09-25 11:32:44">2024/09/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/21/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20pom.xml%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 pom.xml 详解">Maven 教程之 pom.xml 详解</span>
+            <span class="post-date" title="2024-09-21 16:14:13">2024/09/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/21/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20settings.xml%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 settings.xml 详解">Maven 教程之 settings.xml 详解</span>
+            <span class="post-date" title="2024-09-21 16:14:09">2024/09/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 面试篇 "
+           href="/2024/08/27/0%E3%80%81%E9%9D%A2%E8%AF%95%E7%AF%87/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试宝典汇总">面试宝典汇总</span>
+            <span class="post-date" title="2024-08-27 16:20:25">2024/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/08/26/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9B%86%E5%90%88%E5%B8%B8%E9%87%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 自定义集合常量">Java 自定义集合常量</span>
+            <span class="post-date" title="2024-08-26 12:11:54">2024/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringMVC "
+           href="/2024/08/26/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20MVC/SpringMVC%E4%B9%8B@InitBinder%E6%B3%A8%E8%A7%A3%EF%BC%88%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC之@InitBinder注解（日期转换）">SpringMVC之@InitBinder注解（日期转换）</span>
+            <span class="post-date" title="2024-08-26 11:10:28">2024/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多线程下事务处理 "
+           href="/2024/08/21/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E7%9A%84%E5%A4%84%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程事务提交的处理">Java 多线程事务提交的处理</span>
+            <span class="post-date" title="2024-08-21 16:32:52">2024/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/08/20/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%20Cache%20%E6%95%B4%E5%90%88%20Redis%20%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot Cache 整合 Redis 缓存框架">SpringBoot Cache 整合 Redis 缓存框架</span>
+            <span class="post-date" title="2024-08-20 16:11:47">2024/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2024/08/16/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20%E4%BA%8B%E5%8A%A1%E5%BA%94%E7%94%A8%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 事务应用及源码分析">Spring 事务应用及源码分析</span>
+            <span class="post-date" title="2024-08-16 10:33:57">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2024/08/16/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20JDBC%20-%20NamedParameterJdbcTemplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring JDBC - NamedParameterJdbcTemplate">Spring JDBC - NamedParameterJdbcTemplate</span>
+            <span class="post-date" title="2024-08-16 00:18:18">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/07/18/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git%20&%20GitHub/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git &amp; GitHub">Git &amp; GitHub</span>
+            <span class="post-date" title="2024-07-18 10:34:58">2024/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/06/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 实战">Maven 实战</span>
+            <span class="post-date" title="2024-06-28 16:50:35">2024/06/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2024/06/26/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95%E5%AE%98%EF%BC%9A%E4%B8%8D%E4%BC%9A%E7%9C%8B%20Explain%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%EF%BC%8C%E7%AE%80%E5%8E%86%E6%95%A2%E5%86%99%20SQL%20%E4%BC%98%E5%8C%96%EF%BC%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试官：不会看 Explain执行计划，简历敢写 SQL 优化？">面试官：不会看 Explain执行计划，简历敢写 SQL 优化？</span>
+            <span class="post-date" title="2024-06-26 19:33:03">2024/06/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行篇之 IDEA - VM Options、Program Arguments、Environment Variable 解析">Java 命令行篇之 IDEA - VM Options、Program Arguments、Environment Variable 解析</span>
+            <span class="post-date" title="2024-04-22 10:53:10">2024/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/04/19/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E9%85%8D%E7%BD%AE%E5%A4%96%E9%83%A8%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-配置外部化">SpringBoot 2.x 配置文件-配置外部化</span>
+            <span class="post-date" title="2024-04-19 09:18:55">2024/04/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/04/16/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%8E%9F%E7%90%86%E7%AF%87%E4%B9%8B%20SPI%20%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
+            <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/01/14/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20mirror%20&%20repository%20%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 mirror &amp; repository 配置详解">Maven 教程之 mirror &amp; repository 配置详解</span>
+            <span class="post-date" title="2024-01-14 22:51:03">2024/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/12/07/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E4%B8%BA%E4%BB%80%E4%B9%88SpringBoot%20jar%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 为什么SpringBoot jar 可以直接运行">SpringBoot 2.x 为什么SpringBoot jar 可以直接运行</span>
+            <span class="post-date" title="2023-12-07 15:13:56">2023/12/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java多线程 "
+           href="/2023/12/04/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/5%E3%80%81Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E9%98%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程进阶">Java 多线程进阶</span>
+            <span class="post-date" title="2023-12-04 16:37:09">2023/12/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据库建模工具汇总">数据库建模工具汇总</span>
+            <span class="post-date" title="2023-11-18 15:31:11">2023/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/10/08/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/Mybatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mybatis">Mybatis</span>
+            <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 压测工具汇总">Java 性能测试篇之 压测工具汇总</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20%E9%AB%98%E5%B9%B6%E5%8F%91%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9AQPS%E3%80%81TPS%E3%80%81RT%E3%80%81%E5%B9%B6%E5%8F%91%E6%95%B0%E3%80%81%E5%90%9E%E5%90%90%E9%87%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 高并发性能指标：QPS、TPS、RT、并发数、吞吐量">Java 性能测试篇之 高并发性能指标：QPS、TPS、RT、并发数、吞吐量</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20JMH%20%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 JMH 工具类">Java 性能测试篇之 JMH 工具类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E5%AE%89%E5%85%A8%E7%AF%87%E4%B9%8B%20API%20%E6%8E%A5%E5%8F%A3%E9%98%B2%E6%AD%A2%E5%8F%82%E6%95%B0%E7%AF%A1%E6%94%B9%E5%92%8C%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 安全篇之 API 接口防止参数篡改和重放攻击">Java 安全篇之 API 接口防止参数篡改和重放攻击</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%2048%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 48张图学会性能监控、压测和调优">Java 性能测试篇之 48张图学会性能监控、压测和调优</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 快捷键">IDEA 快捷键</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 基本使用">IDEA 基本使用</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 插件安装">IDEA 插件安装</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/PostMan%20%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostMan 工具的使用">PostMan 工具的使用</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%20%E6%A0%A1%E9%AA%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 自定义注解 校验数据库表中的数据不可重复">Java 优化篇之 自定义注解 校验数据库表中的数据不可重复</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%8E%A5%E5%8F%A3%E5%85%8D%E8%B4%B9%20JSONPlaceholder/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 API 接口免费 JSONPlaceholder">Java 工具篇之 API 接口免费 JSONPlaceholder</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%80%97%E6%97%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 如何优雅的统计代码耗时">Java 工具篇之 如何优雅的统计代码耗时</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B9%8B%20%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%207%20%E4%B8%AA%20JDK%20%E5%91%BD%E4%BB%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行之 不可不知的 7 个 JDK 命令">Java 命令行之 不可不知的 7 个 JDK 命令</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20Window%20%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8%20JAR%20%E7%A8%8B%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行篇之 Window 后台启动 JAR 程序">Java 命令行篇之 Window 后台启动 JAR 程序</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20%E6%8E%8C%E6%8F%A114%E7%A7%8DUML%E5%9B%BE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 掌握14种UML图">Java 工具篇之 掌握14种UML图</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8B%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具类之 自定义工具类">Java 工具类之 自定义工具类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20Bean%20%E4%B9%8B%20DTO%E3%80%81VO%E3%80%81PO%E3%80%81DO%E3%80%81BO%20%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java Bean 之 DTO、VO、PO、DO、BO 类的区别">Java Bean 之 DTO、VO、PO、DO、BO 类的区别</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20Jackson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 Jackson">Java JSON 篇之 Jackson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20Gson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 Gson">Java JSON 篇之 Gson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Curl%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Curl 的使用及命令参数说明">Curl 的使用及命令参数说明</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20FastJson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 FastJson">Java JSON 篇之 FastJson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Redis backup "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/backup/Redis6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis6">Redis6</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 Redis "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/Redis-%E6%9C%80%E5%85%A8%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis-最全实战">Redis-最全实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 Redis "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/Redis-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis-代码实战">Redis-代码实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.8.14/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.8.14">RabbitMQ-3.8.14</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.7.x/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.7.x">RabbitMQ-3.7.x</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.8.14-%E5%8D%9A%E5%AE%A2%E7%89%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.8.14-博客版">RabbitMQ-3.8.14-博客版</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 MongoDB "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/MongoDB/MongDB-4.4.2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MongDB-4.4.2">MongDB-4.4.2</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 MongoDB "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/MongoDB/MongDB-4.4.2-%E5%8D%9A%E5%AE%A2%E7%89%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MongDB-4.4.2-博客版">MongDB-4.4.2-博客版</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 ElasticSearch "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/ElasticSearch/ElasticSearch7.6.x%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch7.6.x实战">ElasticSearch7.6.x实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 虚拟机工具 "
+           href="/2023/08/28/4%E3%80%81Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7/Virtualbox%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE%E6%88%96%E9%85%8D%E7%BD%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Virtualbox网络设置或配置">Virtualbox网络设置或配置</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 虚拟机工具 "
+           href="/2023/08/28/4%E3%80%81Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7/Virtualbox%E5%AE%89%E8%A3%85Centos7%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Virtualbox安装Centos7实战">Virtualbox安装Centos7实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Kubernetes "
+           href="/2023/08/28/4%E3%80%81Linux/Kubernetes/Minikube-k8s/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Minikube-k8s">Minikube-k8s</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Kubernetes "
+           href="/2023/08/28/4%E3%80%81Linux/Kubernetes/k0s%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%9A%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%20Kubernetes%20%E9%9B%86%E7%BE%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="k0s 使用教程：如何快速搭建 Kubernetes 集群">k0s 使用教程：如何快速搭建 Kubernetes 集群</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Nginx "
+           href="/2023/08/28/4%E3%80%81Linux/Nginx/Nginx-1.8.0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Nginx-1.8.0">Nginx-1.8.0</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Docker "
+           href="/2023/08/28/4%E3%80%81Linux/Docker/Docker%E5%88%9D%E7%BA%A7%E5%88%B0%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker初级到实战">Docker初级到实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Docker "
+           href="/2023/08/28/4%E3%80%81Linux/Docker/Docker&Docker-Compose%E5%AE%9E%E6%88%98-%E5%93%88%E5%96%BD%E6%B2%83%E5%BE%B7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker&amp;Docker-Compose实战-哈喽沃德">Docker&amp;Docker-Compose实战-哈喽沃德</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E6%B3%A8%E5%85%A5%E7%9A%843%E7%A7%8D%E6%96%B9%E5%BC%8F,%20%E4%B8%BA%E4%BD%95%E5%AE%98%E6%96%B9%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 注入的3种方式, 为何官方建议使用构造器注入">Spring Bean 注入的3种方式, 为何官方建议使用构造器注入</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E6%BA%90%E3%80%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F%E3%80%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 实现动态数据源、多数据源切换方式、多数据事务管理">Spring 实现动态数据源、多数据源切换方式、多数据事务管理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86%E6%B7%B1%E5%85%A5%E4%B8%8E%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 事务原理深入与分析">Spring 事务原理深入与分析</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringSecurity "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Security/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/JDBC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JDBC">JDBC</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20JDBC%20-%20JdbcTemplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring JDBC - JdbcTemplate">Spring JDBC - JdbcTemplate</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多线程下事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/JDBC%E6%89%B9%E5%A4%84%E7%90%86%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%8A%A8%E4%BA%8B%E5%8A%A1%E6%8F%92%E5%85%A51000%E4%B8%87%E6%95%B0%E6%8D%AE%EF%BC%88%E5%8D%95%E7%BA%BF%E7%A8%8B%20&%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JDBC批处理实现手动事务插入1000万数据（单线程 &amp; 多线程）">JDBC批处理实现手动事务插入1000万数据（单线程 &amp; 多线程）</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/SpringData%20JPA%20%E7%B1%BB%E5%9B%BE%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringData JPA 类图及使用方法整理">SpringData JPA 类图及使用方法整理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/SpringData%20JPA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringData JPA">SpringData JPA</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/Spring%20Data%20JPA%20%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Data JPA 原理与实战">Spring Data JPA 原理与实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/Hibernata%20JPA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hibernata JPA">Hibernata JPA</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringCloudAlibaba "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Cloud%20Alibaba/SpringCloud%20Alibaba/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud Alibaba">SpringCloud Alibaba</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%20-%20%E6%95%B4%E5%90%88H2%E6%95%B0%E6%8D%AE%E5%BA%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 数据库篇 - 整合H2数据库">SpringBoot2.x 数据库篇 - 整合H2数据库</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E9%A1%B9%E7%9B%AE%E7%BB%9F%E4%B8%80%E6%9E%9A%E4%B8%BE%E8%BD%AC%E6%8D%A2%E5%AE%9E%E8%B7%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 项目统一枚举转换实践">SpringBoot2.x 项目统一枚举转换实践</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot从零开始学">SpringBoot从零开始学</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E4%B9%8BDataSource/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot配置属性之DataSource">SpringBoot配置属性之DataSource</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SprinigBoot%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%8F%8A%E8%BD%AC%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SprinigBoot文章摘要及转载">SprinigBoot文章摘要及转载</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码审查的必要性和最佳实践">代码审查的必要性和最佳实践</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取配置文件之@Value进阶">SpringBoot 2.x 配置文件-读取配置文件之@Value进阶</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取配置文件的N种方式">SpringBoot 2.x 配置文件-读取配置文件的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件的N种方式">SpringBoot 2.x 配置文件-读取 Resources 文件的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%E7%AF%87-%E6%8B%A6%E6%88%AA%E5%99%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E7%9B%91%E5%90%AC%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 切面编程篇-拦截器过滤器与监听器">SpringBoot 2.x 切面编程篇-拦截器过滤器与监听器</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%AE%89%E5%85%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B9%8B%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解大全">SpringBoot 2.x 常用注解大全</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%90%AF%E5%8A%A8%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 启动时加载初始化的N种方式">SpringBoot 2.x 启动时加载初始化的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%8F%8A%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E8%BF%87%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 启动流程及自动装配过程">SpringBoot 2.x 启动流程及自动装配过程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8A%A8%E6%80%81%E8%A3%85%E9%85%8DBean%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 动态装配Bean的三种方式">SpringBoot 2.x 动态装配Bean的三种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-1%20JUnit5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-1 JUnit5">SpringBoot 2.x 单元测试利器-1 JUnit5</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-3%20MockMvc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-3 MockMvc">SpringBoot 2.x 单元测试利器-3 MockMvc</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-2%20Mockito/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-2 Mockito">SpringBoot 2.x 单元测试利器-2 Mockito</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%E3%80%81%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0%E3%80%81%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E3%80%81%E7%A7%92%E4%BC%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 分片上传、断点续传、大文件上传、秒传">SpringBoot 2.x 分片上传、断点续传、大文件上传、秒传</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Validation%20%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%EF%BC%88TODO%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Validation 参数校验（TODO）">SpringBoot 2.x Validation 参数校验（TODO）</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20WebMvcConfigurer%20%E8%AF%A6%E8%A7%A3%E3%80%90SpringMVC%E3%80%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x WebMvcConfigurer 详解【SpringMVC】">SpringBoot 2.x WebMvcConfigurer 详解【SpringMVC】</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20YML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x YML配置文件详解">SpringBoot 2.x YML配置文件详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%86%E5%B8%83%E5%BC%8F%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 分布式全局唯一ID生成方案">SpringBoot 2.x 分布式全局唯一ID生成方案</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20JWT%20%E6%A6%82%E5%BF%B5%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x JWT 概念篇">SpringBoot 2.x JWT 概念篇</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Jar%20%E5%8C%85%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E3%80%81%E9%87%8D%E5%90%AF%E8%84%9A%E6%9C%AC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Jar 包启动、停止、重启脚本">SpringBoot 2.x Jar 包启动、停止、重启脚本</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Java 实现异步编程的8种方式">SpringBoot 2.x Java 实现异步编程的8种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ConfigurationProperties%E4%BB%A5%E5%8F%8A@NestedConfigurationProperty%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20HTTP%20Content-Type%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x HTTP Content-Type 详解">SpringBoot 2.x HTTP Content-Type 详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20HTTP%20Headers%20%E5%A4%B4%E4%BF%A1%E6%81%AF%E8%AF%BB%E5%8F%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x HTTP Headers 头信息读取">SpringBoot 2.x HTTP Headers 头信息读取</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20JWT%20%E5%AE%9E%E6%88%98%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x JWT 实战篇">SpringBoot 2.x JWT 实战篇</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%20%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x  接口幂等性实现">SpringBoot 2.x  接口幂等性实现</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/Spring%20IO%20Platform%EF%BC%9A%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring IO Platform：解决依赖版本冲突">Spring IO Platform：解决依赖版本冲突</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%E7%AF%87-AOP%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 切面编程篇-AOP 的使用及原理">SpringBoot 2.x 切面编程篇-AOP 的使用及原理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/SpringMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Shiro "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Shiro "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shiro权限实战">Shiro权限实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/Spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring">Spring</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/MybatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MybatisPlus">MybatisPlus</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE JavaWeb "
+           href="/2023/08/28/2%E3%80%81JavaEE/1%E3%80%81JavaWeb/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA%20HTTP%20%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="你还在为 HTTP 的这些概念头疼吗">你还在为 HTTP 的这些概念头疼吗</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE JavaWeb "
+           href="/2023/08/28/2%E3%80%81JavaEE/1%E3%80%81JavaWeb/Cookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E7%BB%88%E4%BA%8E%E8%AE%B2%E6%B8%85%E6%A5%9A%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cookie、Session、Token、JWT终于讲清楚了">Cookie、Session、Token、JWT终于讲清楚了</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-%E9%AB%98%E7%BA%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL-高级">MySQL-高级</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-%E5%88%9D%E7%BA%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL-初级">MySQL-初级</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/H2%20Database/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="H2 Database">H2 Database</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E9%9B%86%E5%90%88List%E7%9A%84%E4%BA%A4%E9%9B%86%E3%80%81%E8%A1%A5%E9%9B%86%E3%80%81%E5%B9%B6%E9%9B%86%E3%80%81%E5%B7%AE%E9%9B%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 集合篇之 获取两个集合List的交集、补集、并集、差集的几种方式">Java 集合篇之 获取两个集合List的交集、补集、并集、差集的几种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20if-else%20%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 if-else 代码优化方案">Java 优化篇之 if-else 代码优化方案</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 动态代理">Java 动态代理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E7%AF%87%E4%B9%8B%20for%E3%80%81for-each%E3%80%81forEach()%20%E7%9A%84%20break%E3%80%81continue%E3%80%81return/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 基本功篇之 for、for-each、forEach() 的 break、continue、return">Java 基本功篇之 for、for-each、forEach() 的 break、continue、return</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 日志框架详解">Java 日志框架详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%20%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%89%88%E6%9C%AC%E5%8F%91%E8%A1%8C%E5%8F%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 新特性概述及版本发行史">Java 新特性概述及版本发行史</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20Bean%20%E4%B9%8B%20Record%20%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java Bean 之 Record 类">Java Bean 之 Record 类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20GZIP%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 GZIP压缩字符串">Java 优化篇之 GZIP压缩字符串</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/Java%20GC%20%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java GC 总结">Java GC 总结</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java9新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%209%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%209%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 9 新特性">Java 9 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20Stream%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 Stream 流">Java 8 新特性之 Stream 流</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20Optional%20%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 Optional 类">Java 8 新特性之 Optional 类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性">Java 8 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20DateTime%20API/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 DateTime API">Java 8 新特性之 DateTime API</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java18新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2018%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2018%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 18 新特性">Java 18 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java20新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2020%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2020%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 20 新特性">Java 20 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java19新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2019%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2019%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 19 新特性">Java 19 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java17新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2017%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2017%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 17 新特性">Java 17 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java15新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java16新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java13新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2013%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2013%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 13 新特性">Java 13 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java14新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2014%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2014%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 14 新特性">Java 14 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java10新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2010%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2010%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 10 新特性">Java 10 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java11新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java12新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java基础语法 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/1%E3%80%81Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 面向对象编程">Java 面向对象编程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java集合类 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/3%E3%80%81Java%20%E9%9B%86%E5%90%88%E7%B1%BB/Java%20%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 类集框架">Java 类集框架</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java常用类库 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/2%E3%80%81Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 常用类库">Java 常用类库</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java多线程 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/5%E3%80%81Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程基础">Java 多线程基础</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java反射与注解 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/4%E3%80%81Java%20%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/Java%20%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 反射与注解">Java 反射与注解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 JavaNIO流 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/7%E3%80%81Java%20NIO%20%E6%B5%81/Java%20NIO%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java NIO 流">Java NIO 流</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 JavaIO流 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/6%E3%80%81Java%20IO%20%E6%B5%81/Java%20IO%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java IO 流">Java IO 流</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 Java设计模式 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 设计模式">Java 设计模式</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/7%20%E6%AE%B5%E5%B0%8F%E4%BB%A3%E7%A0%81%EF%BC%8C%E7%8E%A9%E8%BD%ACJava%E7%A8%8B%E5%BA%8F%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B4%A9%E6%BA%83%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="7 段小代码，玩转Java程序常见的崩溃场景">7 段小代码，玩转Java程序常见的崩溃场景</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM 虚拟机">JVM 虚拟机</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-2、JavaEE/3、微服务开发/Spring Boot/SpringBoot 2.x 常用注解大全" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">SpringBoot 2.x 常用注解大全</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="微服务开发">微服务开发</a> > 
+            
+            <a  data-rel="微服务开发&lt;---&gt;SpringBoot">SpringBoot</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-10-18 18:28:56'>2023-08-28 09:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93-1"><span class="toc-text">SpringBoot 常用注解总结-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%A6%82%E8%A7%88"><span class="toc-text">1、常用注解概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%BB%84%E4%BB%B6%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">2、组件相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller"><span class="toc-text">@Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service"><span class="toc-text">@Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Repository"><span class="toc-text">@Repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Component"><span class="toc-text">@Component</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%B3%A8%E8%A7%A3"><span class="toc-text">3、依赖注入注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Autowired"><span class="toc-text">@Autowired</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resource"><span class="toc-text">@Resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qualifier"><span class="toc-text">@Qualifier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AE%9E%E4%BE%8B%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">4、实例与生命周期相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean"><span class="toc-text">@Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope"><span class="toc-text">@Scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Primary"><span class="toc-text">@Primary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostConstruct%E3%80%81-PreDestroy"><span class="toc-text">@PostConstruct、@PreDestroy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81SpringMVC%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">5、SpringMVC相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestMapping"><span class="toc-text">@RequestMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestBody"><span class="toc-text">@RequestBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ResponseBody"><span class="toc-text">@ResponseBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestParam"><span class="toc-text">@RequestParam</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PathVariable"><span class="toc-text">@PathVariable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestPart"><span class="toc-text">@RequestPart</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringMVC-%E5%A6%82%E4%B8%8A%E6%B3%A8%E8%A7%A3%E7%A4%BA%E4%BE%8B"><span class="toc-text">SpringMVC 如上注解示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RestController"><span class="toc-text">@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GetMapping"><span class="toc-text">@GetMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostMapping"><span class="toc-text">@PostMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#REST-%E9%A3%8E%E6%A0%BC%E6%B3%A8%E8%A7%A3%E7%A4%BA%E4%BE%8B"><span class="toc-text">REST 风格注解示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">6、配置相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuration"><span class="toc-text">@Configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableAutoConfiguration"><span class="toc-text">@EnableAutoConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ComponentScan"><span class="toc-text">@ComponentScan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootApplication"><span class="toc-text">@SpringBootApplication</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableCaching"><span class="toc-text">@EnableCaching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Value"><span class="toc-text">@Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConfigurationProperties"><span class="toc-text">@ConfigurationProperties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conditional"><span class="toc-text">@Conditional</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">7、数据库事务相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableTransactionManagement"><span class="toc-text">@EnableTransactionManagement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Transactional"><span class="toc-text">@Transactional</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81SpringSecurity%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">8、SpringSecurity相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableWebSecurity"><span class="toc-text">@EnableWebSecurity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableGlobalMethodSecurity"><span class="toc-text">@EnableGlobalMethodSecurity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringSecurity-%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B"><span class="toc-text">SpringSecurity 配置示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%B3%A8%E8%A7%A3"><span class="toc-text">9、全局异常处理注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ControllerAdvice"><span class="toc-text">@ControllerAdvice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExceptionHandler"><span class="toc-text">@ExceptionHandler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%A4%BA%E4%BE%8B"><span class="toc-text">全局异常处理示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81AOP%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">10、AOP相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Aspect"><span class="toc-text">@Aspect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Before"><span class="toc-text">@Before</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#After"><span class="toc-text">@After</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AfterReturning"><span class="toc-text">@AfterReturning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AfterThrowing"><span class="toc-text">@AfterThrowing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Around"><span class="toc-text">@Around</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pointcut"><span class="toc-text">@Pointcut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Order"><span class="toc-text">@Order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP-%E7%9B%B8%E5%85%B3%E7%A4%BA%E4%BE%8B"><span class="toc-text">AOP 相关示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="toc-text">11、测试相关注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootTest"><span class="toc-text">@SpringBootTest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test"><span class="toc-text">@Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%A4%BA%E4%BE%8B"><span class="toc-text">测试示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93-2"><span class="toc-text">SpringBoot 常用注解总结-2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AE%B9%E5%99%A8%E6%A0%87%E8%AE%B0%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">1、容器标记类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller-1"><span class="toc-text">@Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service-1"><span class="toc-text">@Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Repository-1"><span class="toc-text">@Repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Component-1"><span class="toc-text">@Component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RestController-1"><span class="toc-text">@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean-1"><span class="toc-text">@Bean</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%B3%A8%E5%85%A5%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">2、注入类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Autowired-1"><span class="toc-text">@Autowired</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qualifier-1"><span class="toc-text">@Qualifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resource-1"><span class="toc-text">@Resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Primary-1"><span class="toc-text">@Primary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Import"><span class="toc-text">@Import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Class-%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">Class 数组的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3-ImportSelector"><span class="toc-text">实现接口 ImportSelector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3-ImportBeanDefinitionRegistrar"><span class="toc-text">实现接口 ImportBeanDefinitionRegistrar</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">3、配置文件类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuration-1"><span class="toc-text">@Configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Value-1"><span class="toc-text">@Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConfigurationProperties-1"><span class="toc-text">@ConfigurationProperties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Environment%E5%AF%B9%E8%B1%A1"><span class="toc-text">Environment对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PropertySource"><span class="toc-text">@PropertySource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootConfiguration"><span class="toc-text">@SpringBootConfiguration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81URL%E5%A4%84%E7%90%86%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">4、URL处理类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestMapping-1"><span class="toc-text">@RequestMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GetMapping-1"><span class="toc-text">@GetMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostMapping-1"><span class="toc-text">@PostMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestParam-1"><span class="toc-text">@RequestParam</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PathVariable-1"><span class="toc-text">@PathVariable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E7%B1%BB"><span class="toc-text">5、初始化类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InitBinder"><span class="toc-text">@InitBinder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostConstruct"><span class="toc-text">@PostConstruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelAttribute"><span class="toc-text">@ModelAttribute</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%93%8D%E5%BA%94%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">6、响应类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestBody-1"><span class="toc-text">@RequestBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ResponseBody-1"><span class="toc-text">@ResponseBody</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81Cookie%E5%92%8CSession"><span class="toc-text">7、Cookie和Session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Session"><span class="toc-text">Session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">1、注解的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81HttpServletRequest%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2、HttpServletRequest的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%96%B9%E5%BC%8F-1"><span class="toc-text">1、注解的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81HttpServletResponse%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2、HttpServletResponse对象的方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E4%BA%8B%E5%8A%A1%E6%B3%A8%E8%A7%A3"><span class="toc-text">8、事务注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableTransactionManagement-1"><span class="toc-text">@EnableTransactionManagement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Transactional-1"><span class="toc-text">@Transactional</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E6%89%AB%E6%8F%8F%E7%B1%BB%E6%B3%A8%E8%A7%A3"><span class="toc-text">9、扫描类注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ComponentScan-1"><span class="toc-text">@ComponentScan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapperScan"><span class="toc-text">@MapperScan</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E5%BC%82%E5%B8%B8%E6%B3%A8%E8%A7%A3"><span class="toc-text">10、异常注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ControllerAdvice-1"><span class="toc-text">@ControllerAdvice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExceptionHandler-1"><span class="toc-text">@ExceptionHandler</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81%E5%85%B6%E4%BB%96%E6%B3%A8%E8%A7%A3"><span class="toc-text">11、其他注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Order-1"><span class="toc-text">@Order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lazy"><span class="toc-text">@Lazy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-%E9%B8%A3%E8%B0%A2"><span class="toc-text">参考文献 &amp; 鸣谢</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot-常用注解总结-1"><a href="#SpringBoot-常用注解总结-1" class="headerlink" title="SpringBoot 常用注解总结-1"></a>SpringBoot 常用注解总结-1</h1><h2 id="1、常用注解概览"><a href="#1、常用注解概览" class="headerlink" title="1、常用注解概览"></a>1、常用注解概览</h2><p>这里整理了一张SpringBoot常用注解的思维导图，本文主要讲解这些注解的用法。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8f87c238887368852558ebdd868a2cd5.webp?x-oss-process=image/format,png"></p>
+<h2 id="2、组件相关注解"><a href="#2、组件相关注解" class="headerlink" title="2、组件相关注解"></a>2、组件相关注解</h2><h3 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h3><p>用于修饰MVC中<code>controller</code>层的组件，SpringBoot中的组件扫描功能会识别到该注解，并为修饰的类实例化对象，通常与<code>@RequestMapping</code>联用，当SpringMVC获取到请求时会转发到指定路径的方法进行处理。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+    
+&#125;
+</code></pre>
+<h3 id="Service"><a href="#Service" class="headerlink" title="@Service"></a>@Service</h3><p>用于修饰<code>service</code>层的组件，<code>service</code>层组件专注于系统业务逻辑的处理，同样会被组件扫描并生成实例化对象。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Service实现类
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Service
+public class UmsAdminServiceImpl implements UmsAdminService &#123;
+    
+&#125;
+</code></pre>
+<h3 id="Repository"><a href="#Repository" class="headerlink" title="@Repository"></a>@Repository</h3><p>用于修饰<code>dao</code>层的组件，<code>dao</code>层组件专注于系统数据的处理，例如数据库中的数据，同样会被组件扫描并生成实例化对象。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户与角色关系管理自定义Dao
+ * @date 2018/10/8
+ * @github https://github.com/macrozheng
+ */
+@Repository
+public interface UmsAdminRoleRelationDao &#123;
+    
+&#125;
+</code></pre>
+<h3 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h3><p>用于修饰SpringBoot中的组件，会被组件扫描并生成实例化对象。<code>@Controller</code>、<code>@Service</code>、<code>@Repository</code>都是特殊的组件注解。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 取消订单消息的生产者组件
+ * @date 2018/9/14
+ * @github https://github.com/macrozheng
+ */
+@Component
+public class CancelOrderSender &#123;
+    
+&#125;
+</code></pre>
+<h2 id="3、依赖注入注解"><a href="#3、依赖注入注解" class="headerlink" title="3、依赖注入注解"></a>3、依赖注入注解</h2><h3 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h3><p>会根据对象的<code>类型</code>自动注入依赖对象，默认要求注入对象实例必须存在，可以配置<code>required=false</code>来注入不一定存在的对象。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+    @Autowired
+    private UmsAdminService adminService;
+&#125;
+</code></pre>
+<h3 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h3><p>默认会根据对象的<code>名称</code>自动注入依赖对象，如果想要根据类型进行注入，可以设置属性为<code>type = UmsAdminService.class</code>。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+    @Autowired
+    @Resource(name = &quot;umsAdminServiceImpl&quot;)
+    private UmsAdminService adminService;
+&#125;
+</code></pre>
+<h3 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h3><p>当同一个对象有多个实例可以注入时，使用<code>@Autowired</code>注解无法进行注入，这时可以使用<code>@Qualifier</code>注解指定实例的名称进行精确注入。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+    @Autowired
+    @Qualifier(&quot;umsAdminServiceImpl&quot;)
+    private UmsAdminService adminService;
+&#125;
+</code></pre>
+<h2 id="4、实例与生命周期相关注解"><a href="#4、实例与生命周期相关注解" class="headerlink" title="4、实例与生命周期相关注解"></a>4、实例与生命周期相关注解</h2><h3 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h3><p>用于修饰方法，标识该方法会创建一个Bean实例，并交给Spring容器来管理。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description RestTemplate相关配置
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+public class RestTemplateConfig &#123;
+    @Bean
+    public RestTemplate restTemplate()&#123;
+        return new RestTemplate();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h3><p>用于声明一个Spring<code>Bean</code>实例的作用域，作用域的范围有以下几种：</p>
+<ul>
+<li>singleton：单例模式，在Spring容器中该实例唯一，Spring默认的实例模式。</li>
+<li>prototype：原型模式，每次使用实例都将重新创建。</li>
+<li>request：在同一请求中使用相同的实例，不同请求重新创建。</li>
+<li>session：在同一会话中使用相同的实例，不同会话重新创建。</li>
+</ul>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description RestTemplate相关配置
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+public class RestTemplateConfig &#123;
+    @Bean
+    @Scope(&quot;singleton&quot;)
+    public RestTemplate restTemplate()&#123;
+        return new RestTemplate();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Primary"><a href="#Primary" class="headerlink" title="@Primary"></a>@Primary</h3><p>当同一个对象有多个实例时，优先选择该实例。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description Jackson相关配置，配置json不返回null的字段
+ * @date 2018/8/2
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+public class JacksonConfig &#123;
+    @Bean
+    @Primary
+    @ConditionalOnMissingBean(ObjectMapper.class)
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) &#123;
+        ObjectMapper objectMapper = builder.createXmlMapper(false).build();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return objectMapper;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="PostConstruct、-PreDestroy"><a href="#PostConstruct、-PreDestroy" class="headerlink" title="@PostConstruct、@PreDestroy"></a>@PostConstruct、@PreDestroy</h3><ol>
+<li><p>PostConstruct：用于修饰方法，当对象实例被创建并且依赖注入完成后执行，可用于对象实例的初始化操作。</p>
+</li>
+<li><p>@PreDestroy：用于修饰方法，当对象实例将被Spring容器移除时执行，可用于对象实例持有资源的释放。</p>
+</li>
+</ol>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 动态权限数据源，用于获取动态权限规则
+ * @date 2020/2/7
+ * @github https://github.com/macrozheng
+ */
+public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMetadataSource &#123;
+
+    private static Map&lt;String, ConfigAttribute&gt; configAttributeMap = null;
+    @Autowired
+    private DynamicSecurityService dynamicSecurityService;
+
+    @PostConstruct
+    public void loadDataSource() &#123;
+        configAttributeMap = dynamicSecurityService.loadDataSource();
+    &#125;
+
+    @PostConstruct
+    public void loadDataSource() &#123;
+        configAttributeMap = dynamicSecurityService.loadDataSource();
+    &#125;
+
+    @PreDestroy
+    public void clearDataSource() &#123;
+        configAttributeMap.clear();
+        configAttributeMap = null;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="5、SpringMVC相关注解"><a href="#5、SpringMVC相关注解" class="headerlink" title="5、SpringMVC相关注解"></a>5、SpringMVC相关注解</h2><h3 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h3><p>可用于将Web请求路径映射到处理类的方法上，当作用于类上时，可以统一类中所有方法的路由路径，当作用于方法上时，可单独指定方法的路由路径。</p>
+<p><code>method</code>属性可以指定请求的方式，如GET、POST、PUT、DELETE等。</p>
+<h3 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h3><p>表示方法的请求参数为JSON格式，从Body中传入，将自动绑定到方法参数对象中。</p>
+<h3 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h3><p>表示方法将返回JSON格式的数据，会自动将返回的对象转化为JSON数据。</p>
+<h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><p>用于接收请求参数，可以是如下三种形式：</p>
+<ul>
+<li>query param：GET请求拼接在地址里的参数。</li>
+<li>form data：POST表单提交的参数。</li>
+<li>multipart：文件上传请求的部分参数。</li>
+</ul>
+<h3 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h3><p>用于接收请求路径中的参数，常用于REST风格的API。</p>
+<h3 id="RequestPart"><a href="#RequestPart" class="headerlink" title="@RequestPart"></a>@RequestPart</h3><p>用于接收文件上传中的文件参数，通常是<code>multipart/form-data</code>形式传入的参数。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description MinIO对象存储管理Controller
+ * @date 2019/12/25
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/minio&quot;)
+public class MinioController &#123;
+
+    @RequestMapping(value = &quot;/upload&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult upload(@RequestPart(&quot;file&quot;) MultipartFile file) &#123;
+            //省略文件上传操作...
+            return CommonResult.success(minioUploadDto);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="SpringMVC-如上注解示例"><a href="#SpringMVC-如上注解示例" class="headerlink" title="SpringMVC 如上注解示例"></a>SpringMVC 如上注解示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Controller
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+
+    @RequestMapping(value = &quot;/register&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult&lt;UmsAdmin&gt; register(@RequestBody UmsAdminParam umsAdminParam) &#123;
+        UmsAdmin umsAdmin = adminService.register(umsAdminParam);
+        if (umsAdmin == null) &#123;
+            return CommonResult.failed();
+        &#125;
+        return CommonResult.success(umsAdmin);
+    &#125;
+
+    @RequestMapping(value = &quot;/list&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult&lt;CommonPage&lt;UmsAdmin&gt;&gt; list(
+            @RequestParam(value = &quot;keyword&quot;, required = false) String keyword,
+            @RequestParam(value = &quot;pageSize&quot;, defaultValue = &quot;5&quot;) Integer pageSize,
+            @RequestParam(value = &quot;pageNum&quot;, defaultValue = &quot;1&quot;) Integer pageNum) &#123;
+        List&lt;UmsAdmin&gt; adminList = adminService.list(keyword, pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(adminList));
+    &#125;
+
+    @RequestMapping(value = &quot;/&#123;id&#125;&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult&lt;UmsAdmin&gt; getItem(@PathVariable Long id) &#123;
+        UmsAdmin admin = adminService.getItem(id);
+        return CommonResult.success(admin);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>用于表示<code>controller</code>层的组件，与<code>@Controller</code>注解的不同在于，相当于在每个请求处理方法上都添加了<code>@ResponseBody</code>注解，这些方法都将返回JSON格式数据。</p>
+<h3 id="GetMapping"><a href="#GetMapping" class="headerlink" title="@GetMapping"></a>@GetMapping</h3><p>用于表示GET请求方法，等价于<code>@RequestMapping(method = RequestMethod.GET)</code>。</p>
+<h3 id="PostMapping"><a href="#PostMapping" class="headerlink" title="@PostMapping"></a>@PostMapping</h3><p>用于表示POST请求方法，等价于<code>@RequestMapping(method = RequestMethod.POST)</code>。</p>
+<h3 id="REST-风格注解示例"><a href="#REST-风格注解示例" class="headerlink" title="REST 风格注解示例"></a>REST 风格注解示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description 后台用户管理Controller
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@RestController
+@RequestMapping(&quot;/admin&quot;)
+public class UmsAdminController &#123;
+
+    @PostMapping(&quot;/register&quot;)
+    public CommonResult&lt;UmsAdmin&gt; register(@RequestBody UmsAdminParam umsAdminParam) &#123;
+        UmsAdmin umsAdmin = adminService.register(umsAdminParam);
+        if (umsAdmin == null) &#123;
+            return CommonResult.failed();
+        &#125;
+        return CommonResult.success(umsAdmin);
+    &#125;
+
+    @GetMapping(&quot;/list&quot;)
+    public CommonResult&lt;CommonPage&lt;UmsAdmin&gt;&gt; list(
+            @RequestParam(value = &quot;keyword&quot;, required = false) String keyword,
+            @RequestParam(value = &quot;pageSize&quot;, defaultValue = &quot;5&quot;) Integer pageSize,
+            @RequestParam(value = &quot;pageNum&quot;, defaultValue = &quot;1&quot;) Integer pageNum) &#123;
+        List&lt;UmsAdmin&gt; adminList = adminService.list(keyword, pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(adminList));
+    &#125;
+&#125;
+</code></pre>
+<h2 id="6、配置相关注解"><a href="#6、配置相关注解" class="headerlink" title="6、配置相关注解"></a>6、配置相关注解</h2><h3 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h3><p>用于声明一个Java形式的配置类，SpringBoot推荐使用Java配置，在该类中声明的Bean等配置将被SpringBoot的组件扫描功能扫描到。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description MyBatis相关配置
+ * @date 2019/4/8
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+@MapperScan(&#123;&quot;com.macro.mall.mapper&quot;,&quot;com.macro.mall.dao&quot;&#125;)
+public class MyBatisConfig &#123;
+&#125;
+</code></pre>
+<h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><p>启用SpringBoot的自动化配置，会根据你在<code>pom.xml</code>添加的依赖和<code>application-dev.yml</code>中的配置自动创建你需要的配置。</p>
+<pre><code class="java">@Configuration
+@EnableAutoConfiguration
+public class AppConfig &#123;
+&#125;
+</code></pre>
+<h3 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h3><p>启用SpringBoot的组件扫描功能，将自动装配和注入指定包下的Bean实例。</p>
+<pre><code class="java">@Configuration
+@ComponentScan(&#123;&quot;xyz.erupt&quot;,&quot;com.macro.mall.tiny&quot;&#125;)
+public class EruptConfig &#123;
+&#125;
+</code></pre>
+<h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p>用于表示SpringBoot应用中的启动类，相当于<code>@EnableAutoConfiguration</code>、<code>@EnableAutoConfiguration</code>和<code>@ComponentScan</code>三个注解的结合体。</p>
+<pre><code class="java">@SpringBootApplication
+public class MallTinyApplication &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication.run(MallTinyApplication.class, args);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="EnableCaching"><a href="#EnableCaching" class="headerlink" title="@EnableCaching"></a>@EnableCaching</h3><p>当添加Spring Data Redis依赖之后，可用该注解开启Spring基于注解的缓存管理功能。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description Redis配置类
+ * @date 2020/3/2
+ * @github https://github.com/macrozheng
+ */
+@EnableCaching
+@Configuration
+public class RedisConfig extends BaseRedisConfig &#123;
+
+&#125;
+</code></pre>
+<h3 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h3><p>用于注入在配置文件中配置好的属性，例如我们可以在<code>application.yml</code>配置如下属性：</p>
+<pre><code class="yaml">jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: &#39;Bearer &#39;  #JWT负载中拿到开头
+</code></pre>
+<p>然后在Java类中就可以使用<code>@Value</code>注入并进行使用了。</p>
+<pre><code class="java">public class JwtTokenUtil &#123;
+    @Value(&quot;$&#123;jwt.secret&#125;&quot;)
+    private String secret;
+    @Value(&quot;$&#123;jwt.expiration&#125;&quot;)
+    private Long expiration;
+    @Value(&quot;$&#123;jwt.tokenHead&#125;&quot;)
+    private String tokenHead;
+&#125;
+</code></pre>
+<h3 id="ConfigurationProperties"><a href="#ConfigurationProperties" class="headerlink" title="@ConfigurationProperties"></a>@ConfigurationProperties</h3><p>用于批量注入外部配置，以对象的形式来导入指定前缀的配置，比如这里我们在<code>application.yml</code>中指定了<code>secure.ignored</code>为前缀的属性：</p>
+<pre><code class="yaml">secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui/
+      - /swagger-resources/**
+      - /**/v2/api-docs
+      - /**/*.html
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /actuator/**
+      - /druid/**
+</code></pre>
+<p>然后在Java类中定义一个<code>urls</code>属性就可以导入配置文件中的属性了。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description SpringSecurity白名单资源路径配置
+ * @date 2018/11/5
+ * @github https://github.com/macrozheng
+ */
+@Getter
+@Setter
+@Configuration
+@ConfigurationProperties(prefix = &quot;secure.ignored&quot;)
+public class IgnoreUrlsConfig &#123;
+    private List&lt;String&gt; urls = new ArrayList&lt;&gt;();
+&#125;
+</code></pre>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>用于表示当某个条件满足时，该组件或Bean将被Spring容器创建，下面是几个常用的条件注解。</p>
+<ul>
+<li>@ConditionalOnBean：当某个Bean存在时，配置生效。</li>
+<li>@ConditionalOnMissingBean：当某个Bean不存在时，配置生效。</li>
+<li>@ConditionalOnClass：当某个类在Classpath存在时，配置生效。</li>
+<li>@ConditionalOnMissingClass：当某个类在Classpath不存在时，配置生效。</li>
+</ul>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description Jackson相关配置，配置json不返回null的字段
+ * @date 2018/8/2
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+public class JacksonConfig &#123;
+    @Bean
+    @Primary
+    @ConditionalOnMissingBean(ObjectMapper.class)
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) &#123;
+        ObjectMapper objectMapper = builder.createXmlMapper(false).build();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return objectMapper;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="7、数据库事务相关注解"><a href="#7、数据库事务相关注解" class="headerlink" title="7、数据库事务相关注解"></a>7、数据库事务相关注解</h2><h3 id="EnableTransactionManagement"><a href="#EnableTransactionManagement" class="headerlink" title="@EnableTransactionManagement"></a>@EnableTransactionManagement</h3><p>启用Spring基于注解的事务管理功能，需要和<code>@Configuration</code>注解一起使用。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description MyBatis相关配置
+ * @date 2019/4/8
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+@EnableTransactionManagement
+@MapperScan(&#123;&quot;com.macro.mall.mapper&quot;,&quot;com.macro.mall.dao&quot;&#125;)
+public class MyBatisConfig &#123;
+&#125;
+</code></pre>
+<h3 id="Transactional"><a href="#Transactional" class="headerlink" title="@Transactional"></a>@Transactional</h3><p>表示方法和类需要开启事务，当作用与类上时，类中所有方法均会开启事务，当作用于方法上时，方法开启事务，方法上的注解无法被子类所继承。</p>
+<pre><code class="java">/**
+ * @auther macrozheng
+ * @description 前台订单管理Service
+ * @date 2018/8/30
+ * @github https://github.com/macrozheng
+ */
+public interface OmsPortalOrderService &#123;
+    /**
+     * 根据提交信息生成订单
+     */
+    @Transactional
+    Map&lt;String, Object&gt; generateOrder(OrderParam orderParam);
+&#125;
+</code></pre>
+<h2 id="8、SpringSecurity相关注解"><a href="#8、SpringSecurity相关注解" class="headerlink" title="8、SpringSecurity相关注解"></a>8、SpringSecurity相关注解</h2><h3 id="EnableWebSecurity"><a href="#EnableWebSecurity" class="headerlink" title="@EnableWebSecurity"></a>@EnableWebSecurity</h3><p>启用SpringSecurity的Web功能。</p>
+<h3 id="EnableGlobalMethodSecurity"><a href="#EnableGlobalMethodSecurity" class="headerlink" title="@EnableGlobalMethodSecurity"></a>@EnableGlobalMethodSecurity</h3><p>启用SpringSecurity基于方法的安全功能，当我们使用<code>@PreAuthorize</code>修饰接口方法时，需要有对应权限的用户才能访问。</p>
+<h3 id="SpringSecurity-配置示例"><a href="#SpringSecurity-配置示例" class="headerlink" title="SpringSecurity 配置示例"></a>SpringSecurity 配置示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description SpringSecurity配置
+ * @date 2019/10/8
+ * @github https://github.com/macrozheng
+ */
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig&#123;
+    
+&#125;
+</code></pre>
+<h2 id="9、全局异常处理注解"><a href="#9、全局异常处理注解" class="headerlink" title="9、全局异常处理注解"></a>9、全局异常处理注解</h2><h3 id="ControllerAdvice"><a href="#ControllerAdvice" class="headerlink" title="@ControllerAdvice"></a>@ControllerAdvice</h3><p>常与<code>@ExceptionHandler</code>注解一起使用，用于捕获全局异常，能作用于所有controller中。</p>
+<h3 id="ExceptionHandler"><a href="#ExceptionHandler" class="headerlink" title="@ExceptionHandler"></a>@ExceptionHandler</h3><p>修饰方法时，表示该方法为处理全局异常的方法。</p>
+<h3 id="全局异常处理示例"><a href="#全局异常处理示例" class="headerlink" title="全局异常处理示例"></a>全局异常处理示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description 全局异常处理
+ * @date 2020/2/27
+ * @github https://github.com/macrozheng
+ */
+@ControllerAdvice
+public class GlobalExceptionHandler &#123;
+    @ResponseBody
+    @ExceptionHandler(value = ApiException.class)
+    public CommonResult handle(ApiException e) &#123;
+        if (e.getErrorCode() != null) &#123;
+            return CommonResult.failed(e.getErrorCode());
+        &#125;
+        return CommonResult.failed(e.getMessage());
+    &#125;
+&#125;
+</code></pre>
+<h2 id="10、AOP相关注解"><a href="#10、AOP相关注解" class="headerlink" title="10、AOP相关注解"></a>10、AOP相关注解</h2><h3 id="Aspect"><a href="#Aspect" class="headerlink" title="@Aspect"></a>@Aspect</h3><p>用于定义切面，切面是通知和切点的结合，定义了何时、何地应用通知功能。</p>
+<h3 id="Before"><a href="#Before" class="headerlink" title="@Before"></a>@Before</h3><p>表示前置通知（Before），通知方法会在目标方法调用之前执行，通知描述了切面要完成的工作以及何时执行。</p>
+<h3 id="After"><a href="#After" class="headerlink" title="@After"></a>@After</h3><p>表示后置通知（After），通知方法会在目标方法返回或抛出异常后执行。</p>
+<h3 id="AfterReturning"><a href="#AfterReturning" class="headerlink" title="@AfterReturning"></a>@AfterReturning</h3><p>表示返回通知（AfterReturning），通知方法会在目标方法返回后执行。</p>
+<h3 id="AfterThrowing"><a href="#AfterThrowing" class="headerlink" title="@AfterThrowing"></a>@AfterThrowing</h3><p>表示异常通知（AfterThrowing），通知方法会在目标方法返回后执行。</p>
+<h3 id="Around"><a href="#Around" class="headerlink" title="@Around"></a>@Around</h3><p>表示环绕通知（Around），通知方法会将目标方法封装起来，在目标方法调用之前和之后执行自定义的行为。</p>
+<h3 id="Pointcut"><a href="#Pointcut" class="headerlink" title="@Pointcut"></a>@Pointcut</h3><p>定义切点表达式，定义了通知功能被应用的范围。</p>
+<h3 id="Order"><a href="#Order" class="headerlink" title="@Order"></a>@Order</h3><p>用于定义组件的执行顺序，在AOP中指的是切面的执行顺序，value属性越低优先级越高。</p>
+<h3 id="AOP-相关示例"><a href="#AOP-相关示例" class="headerlink" title="AOP 相关示例"></a>AOP 相关示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description 统一日志处理切面
+ * @date 2018/4/26
+ * @github https://github.com/macrozheng
+ */
+@Aspect
+@Component
+@Order(1)
+public class WebLogAspect &#123;
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
+
+    @Pointcut(&quot;execution(public * com.macro.mall.tiny.controller.*.*(..))&quot;)
+    public void webLog() &#123;
+    &#125;
+
+    @Before(&quot;webLog()&quot;)
+    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;
+    &#125;
+
+    @AfterReturning(value = &quot;webLog()&quot;, returning = &quot;ret&quot;)
+    public void doAfterReturning(Object ret) throws Throwable &#123;
+    &#125;
+
+    @Around(&quot;webLog()&quot;)
+    public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable &#123;
+        WebLog webLog = new WebLog();
+        //省略日志处理操作...
+        Object result = joinPoint.proceed();
+        LOGGER.info(&quot;&#123;&#125;&quot;, JSONUtil.parse(webLog));
+        return result;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="11、测试相关注解"><a href="#11、测试相关注解" class="headerlink" title="11、测试相关注解"></a>11、测试相关注解</h2><h3 id="SpringBootTest"><a href="#SpringBootTest" class="headerlink" title="@SpringBootTest"></a>@SpringBootTest</h3><p>用于指定测试类启用Spring Boot Test功能，默认会提供Mock环境。</p>
+<h3 id="Test"><a href="#Test" class="headerlink" title="@Test"></a>@Test</h3><p>指定方法为测试方法。</p>
+<h3 id="测试示例"><a href="#测试示例" class="headerlink" title="测试示例"></a>测试示例</h3><pre><code class="java">/**
+ * @auther macrozheng
+ * @description JUnit基本测试
+ * @date 2022/10/11
+ * @github https://github.com/macrozheng
+ */
+@SpringBootTest
+public class FirstTest &#123;
+    @Test
+    public void test() &#123;
+        int a=1;
+        Assertions.assertEquals(1,a);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="SpringBoot-常用注解总结-2"><a href="#SpringBoot-常用注解总结-2" class="headerlink" title="SpringBoot 常用注解总结-2"></a>SpringBoot 常用注解总结-2</h1><h2 id="1、容器标记类注解"><a href="#1、容器标记类注解" class="headerlink" title="1、容器标记类注解"></a>1、容器标记类注解</h2><h3 id="Controller-1"><a href="#Controller-1" class="headerlink" title="@Controller"></a>@Controller</h3><p>用来创建对象存放到Spring容器中，一般用在Controller层</p>
+<pre><code class="java">import org.springframework.stereotype.Controller;
+
+@Controller
+public class GoodsController &#123;
+    // ...
+&#125;
+</code></pre>
+<h3 id="Service-1"><a href="#Service-1" class="headerlink" title="@Service"></a>@Service</h3><p>用来创建对象存放到Spring容器中,一般用在Service层</p>
+<pre><code class="java">import org.springframework.stereotype.Service;
+
+@Service(&quot;serviceName&quot;)  // 给Bean取一个别名
+public class GoodsService &#123;
+    // ...
+&#125;
+</code></pre>
+<h3 id="Repository-1"><a href="#Repository-1" class="headerlink" title="@Repository"></a>@Repository</h3><p>用来创建对象存放到Spring容器中,一般用在Dao层</p>
+<pre><code class="java">import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GoodsMapper &#123;
+    
+    // ...
+&#125;
+</code></pre>
+<h3 id="Component-1"><a href="#Component-1" class="headerlink" title="@Component"></a>@Component</h3><blockquote>
+<p>用来创建对象存放到Spring容器中,一般用在工具类上</p>
+</blockquote>
+<pre><code class="java">@Component
+public class IpUtil &#123;
+    
+     // ...
+&#125;
+</code></pre>
+<h3 id="RestController-1"><a href="#RestController-1" class="headerlink" title="@RestController"></a>@RestController</h3><p>相当于<code>@ResponseBody</code>和<code>@Controller</code>注解结合在一起使用</p>
+<p>被修饰的类的所有方法都可以用流的方式把数据返回给前端</p>
+<pre><code class="java">@RestController /* @Controller + @ResponseBody*/
+public class HospitalController &#123;
+
+    // 注入Service服务对象
+    @Autowired
+    private HospitalService hospitalService;
+
+    @RequestMapping(value = &quot;findAllHospital&quot;,method = RequestMethod.GET)
+    public  List&lt;Hospital&gt; findAllHospital()&#123;
+        List&lt;Hospital&gt; hospitalList= hospitalService.findAllHospital();
+        // 由于@RestController注解中包含了@ResponseBody注解,因此可以把数据直接返回给前端
+        return hospitalList;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Bean-1"><a href="#Bean-1" class="headerlink" title="@Bean"></a>@Bean</h3><p>@Bean是一个方法级别上的注解,用来将方法返回的对象添加到容器中</p>
+<pre><code class="java">@Bean(&quot;queryRunner&quot;)  // 为要添加到容器中的对象取别名
+public QueryRunner createQueryRunner(DataSource dataSource)&#123;
+    QueryRunner queryRunner = new QueryRunner(dataSource);
+    return queryRunner;
+&#125;
+</code></pre>
+<h2 id="2、注入类注解"><a href="#2、注入类注解" class="headerlink" title="2、注入类注解"></a>2、注入类注解</h2><h3 id="Autowired-1"><a href="#Autowired-1" class="headerlink" title="@Autowired"></a>@Autowired</h3><p>将Spring容器中的对象注入.默认按照类型注入,如果类型有多个,则按照名称注入</p>
+<pre><code class="java">@Controller
+public class CSPLoginController extends BaseController &#123;
+
+    // 自动注入
+    @Autowired
+    private SystemComService commonService;
+&#125;
+</code></pre>
+<h3 id="Qualifier-1"><a href="#Qualifier-1" class="headerlink" title="@Qualifier"></a>@Qualifier</h3><p>必须与@Autowired结合使用,如果自动注入按照类型注入失败，则按照指定的名称注入</p>
+<p>1、接口</p>
+<pre><code class="java">public interface UserDao &#123;
+    void print();
+&#125;
+</code></pre>
+<p>2、实现类实现接口，一个接口被两个实现类实现</p>
+<pre><code class="java">// 因为没有给要放入容器中的对象取别名,所以使用默认别名(第一个字母小写 =&gt; userDaoImpl)
+@Repository
+public class UserDaoImpl implements UserDao &#123;
+
+    @Override
+    public void print() &#123;
+        System.out.println(&quot;UserDaoImpl的打印被执行了&quot;);
+    &#125;
+&#125;
+
+@Repository
+public class UserDaoImpl2 implements UserDao &#123;
+
+    @Override
+    public void print() &#123;
+        System.out.println(&quot;UserDaoImpl2的打印被执行了&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>3、注入</p>
+<pre><code class="java">import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+@Service
+public class UserServiceImpl implements UserService &#123;
+
+    // 因为UserDao这个接口被两个实现类给实现了,我们用@Qualifier来明确到底用哪个实现类
+    // userDaoImpl为UserDaoImpl默认的容器名称,默认为第一个字母小写
+    @Qualifier(&quot;userDaoImpl&quot;)
+    // 因为@Autowired默认按照类型注入,而实现了UserDao接口的Bean有多个
+    // 如果不配合@Qualifier使用的话,会报错
+    @Autowired  
+    private UserDao userDao;
+
+    @Override
+    public void print() &#123;
+        userDao.print();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Resource-1"><a href="#Resource-1" class="headerlink" title="@Resource"></a>@Resource</h3><p>默认按照名称注入,没有名称没有找到,按照类型注入.其作用相当于@Qualifier和@Autowired的结合。此注解是由JDK提供的</p>
+<pre><code class="java">import javax.annotation.Resource;
+
+@Service
+public class UserServiceImpl implements UserService &#123;
+
+    // 参考@Qualifier的例子
+    // 虽然UserDao接口被多个类实现,但是由于@Resource指定了Bean的名称,因此会注入成功
+    @Resource(name = &quot;userDaoImpl&quot;)
+    private UserDao userDao;
+
+    @Override
+    public void print() &#123;
+        userDao.print();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Primary-1"><a href="#Primary-1" class="headerlink" title="@Primary"></a>@Primary</h3><ul>
+<li><p>当一个接口被多个类给实现的情况下,给实现类添加此注解,默认就注入此实现类</p>
+</li>
+<li><p>此类作用于方法上</p>
+</li>
+</ul>
+<p>1、接口</p>
+<pre><code class="java">public interface Singer &#123;
+    String sing(String lyrics);
+&#125;
+</code></pre>
+<p>2、实现类</p>
+<pre><code class="java">import org.springframework.context.annotation.Primary;
+
+@Component
+public class MetalSinger implements Singer&#123;
+
+    @Override
+    public String sing(String lyrics) &#123;
+        return &quot;I am singing with DIO voice: &quot; + lyrics;
+    &#125;
+&#125;
+
+@Primary
+@Component
+public class OperaSinger implements Singer &#123;
+    @Override
+    public String sing(String lyrics) &#123;
+        return &quot;I am singing in Bocelli voice: &quot; + lyrics;
+    &#125;
+&#125;
+</code></pre>
+<p>3、注入</p>
+<pre><code class="java">@Component
+public class SingerService &#123;
+
+    // 虽然Singer接口被多个实现类所实现,但是因为其中OperaSinger实现类添加了@Primary注解
+    // 因此此实现类对象会被优先注入
+    @Autowired
+    private Singer singer;
+
+    @Qualifier(&quot;opreaSinger&quot;)
+    public String sing()&#123;
+        return singer.sing(&quot;song lyrics&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h3><blockquote>
+<p>参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yichunguo/p/12122598.html">spring注解之@Import注解的三种使用方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/panchao888888/article/details/82882279">Spring中@Import注解的作用和使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://liayun.blog.csdn.net/article/details/110345608">Spring注解驱动开发第8讲——使用@Import注解给容器中快速导入一个组件</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mamamalululu00000000/article/details/86711079">@Import注解的作用</a></li>
+</ol>
+</blockquote>
+<p>只能作用在类上,常用于将第三方包的对象放入Spring容器中</p>
+<h4 id="Class-数组的方式"><a href="#Class-数组的方式" class="headerlink" title="Class 数组的方式"></a>Class 数组的方式</h4><p>1、新建一个普通的类</p>
+<pre><code class="java">public class TestA &#123;
+
+    public void fun(String str) &#123;
+        System.out.println(str);
+    &#125;
+
+    public void printName() &#123;
+        System.out.println(&quot;类名 ：&quot; + Thread.currentThread().getStackTrace()[1].getClassName());
+    &#125;
+&#125;
+</code></pre>
+<p>2、使用@Import注解将普通类导入到配置类中</p>
+<pre><code class="java">@Import(&#123;TestA.class&#125;)
+@Configuration  // 为了让Spring扫描到这个类
+public class ImportConfig &#123;
+    
+&#125;
+</code></pre>
+<p>3、测试</p>
+<pre><code class="java">@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = ApplicationMain.class)
+public class ImportAnnotionTest &#123;
+
+    // 虽然TestA原本只是一个普通类,但是通过@Import注解导入到配置类中,所在可以在此处注入
+    @Autowired  
+    private TestA testA;
+
+    @Test
+    public void TestA() &#123;
+        testA.printName();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="实现接口-ImportSelector"><a href="#实现接口-ImportSelector" class="headerlink" title="实现接口 ImportSelector"></a>实现接口 ImportSelector</h4><p>1、新建普通类</p>
+<pre><code class="java">public class TestC &#123;
+    public void fun(String str) &#123;
+        System.out.println(str);
+    &#125;
+
+    public void printName() &#123;
+        System.out.println(&quot;类名 ：&quot; + Thread.currentThread().getStackTrace()[1].getClassName());
+    &#125;
+&#125;
+</code></pre>
+<p>2、新建一个类实现ImportSelector接口</p>
+<pre><code class="java">public class SelfImportSelector implements ImportSelector &#123;
+    
+    @Override
+    public String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;
+        // 返回值是一个数组,数组内的元素是普通类的全限定类名
+        // 不能返回null,否则会报空指针异常
+        return new String[]&#123;&quot;com.test.importdemo.TestC&quot;&#125;;
+    &#125;
+&#125;
+</code></pre>
+<p>3、配置文件类中导入接口的实现类</p>
+<pre><code class="java">@Import(&#123;SelfImportSelector.class&#125;)
+@Configuration
+public class ImportConfig &#123;
+    
+&#125;
+</code></pre>
+<p>4、测试</p>
+<pre><code class="java">@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = ApplicationMain.class)
+public class ImportAnnotionTest &#123;
+
+    @Autowired
+    private TestC testC;
+
+    @Test
+    public void TestC() &#123;
+        testC.printName();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="实现接口-ImportBeanDefinitionRegistrar"><a href="#实现接口-ImportBeanDefinitionRegistrar" class="headerlink" title="实现接口 ImportBeanDefinitionRegistrar"></a>实现接口 ImportBeanDefinitionRegistrar</h4><p>1、新建普通类</p>
+<pre><code class="java">public class TestD &#123;
+    public void fun(String str) &#123;
+        System.out.println(str);
+    &#125;
+
+    public void printName() &#123;
+        System.out.println(&quot;类名 ：&quot; + Thread.currentThread().getStackTrace()[1].getClassName());
+    &#125;
+&#125;
+</code></pre>
+<p>2、实现I mportBeanDefinitionRegistrar 接口</p>
+<pre><code class="java">public class SelfImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar &#123;
+    @Override
+    public void registerBeanDefinitions(
+        AnnotationMetadata importingClassMetadata, 
+        BeanDefinitionRegistry registry)
+    &#123;
+        RootBeanDefinition root = new RootBeanDefinition(TestD.class);
+        registry.registerBeanDefinition(&quot;testD&quot;, root);
+    &#125;
+&#125;
+</code></pre>
+<p>3、配置文件类中导入接口的实现类</p>
+<pre><code class="java">@Import(&#123;SelfImportBeanDefinitionRegistrar.class&#125;)
+@Configuration
+public class ImportConfig &#123;
+    
+&#125;
+</code></pre>
+<p>4、测试</p>
+<pre><code class="java">@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = ApplicationMain.class)
+public class ImportAnnotionTest &#123;
+
+    @Autowired
+    private TestC testD;
+
+    @Test
+    public void TestC() &#123;
+        testD.printName();
+    &#125;
+&#125;
+</code></pre>
+<h2 id="3、配置文件类注解"><a href="#3、配置文件类注解" class="headerlink" title="3、配置文件类注解"></a>3、配置文件类注解</h2><h3 id="Configuration-1"><a href="#Configuration-1" class="headerlink" title="@Configuration"></a>@Configuration</h3><p>声明当前类为配置类,此注解内部组合了@Component注解,可以将配置类注入到容器中</p>
+<pre><code class="java">import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class DbSourceConfig &#123;
+    
+    @Value(&quot;$&#123;spring.test.url&#125;&quot;)
+    private String url;
+&#125;
+</code></pre>
+<h3 id="Value-1"><a href="#Value-1" class="headerlink" title="@Value"></a>@Value</h3><ul>
+<li>用在全局变量上,把外部的配置文件的配置信息注入到类的属性上</li>
+<li>配合EL表达式,对配置文件读取到的数据进行处理</li>
+<li><code>$&#123;&#125;</code>用于加载配置文件中的信息</li>
+<li><code>#&#123;&#125;</code>用于把内容赋值给属性</li>
+<li><code>$&#123;&#125;</code>和<code>#&#123;&#125;</code>可以混合使用</li>
+</ul>
+<p>1、配置文件 application.properties</p>
+<pre><code class="properties">spring.test.url=www.baidu.com
+test.array1=aaa,bbb,ccc
+</code></pre>
+<p>2、一个Bean</p>
+<pre><code class="java">import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+// 将Item放入容器,并取别名
+@Component(&quot;itemBean&quot;)
+public class Item &#123;
+
+    @Value(&quot;99&quot;)
+    private int qtyOnHand;
+    
+    public int getQtyOnHand() &#123;
+        return qtyOnHand;
+    &#125;
+
+    public void setQtyOnHand(int qtyOnHand) &#123;
+        this.qtyOnHand = qtyOnHand;
+    &#125;
+&#125;
+</code></pre>
+<p>3、注入</p>
+<pre><code class="java">import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+
+@Configuration
+public class DbSourceConfig &#123;
+    
+    // 最常见的使用方法,使用$&#123;&#125;的方式从配置文件中读取配置信息注入到属性中
+    @Value(&quot;$&#123;spring.test.url&#125;&quot;)
+    private String url;
+    
+    // 可以配合EL表达式使用,对从配置文件获取到的数据进行处理
+    @Value(&quot;#&#123;&#39;$&#123;test.array1:&#125;&#39;.empty ? null : &#39;$&#123;test.array1:&#125;&#39;.split(&#39;,&#39;)&#125;&quot;)
+    private List&lt;String&gt; testList1;
+    
+    // 调用random方法获取返回值
+    @Value(&quot;#&#123;T(java.lang.Math).random()&#125;&quot;)
+    private double ramdom;
+    
+    // 注入简单值,输出num为5
+    @Value(&quot;#&#123;5&#125;&quot;)
+    private Integer num;
+    
+    // 支持基本运算
+    @Value(&quot;#&#123;1 + 1&#125;&quot;) 
+    private double testAdd;  // 2
+    
+    // 支持比较运算符
+    @Value(&quot;#&#123;1 &gt;= 1&#125;&quot;)
+    private boolean testGreaterThanOrEqual;  // true
+    
+    // 将容器中的Bean属性获取到,并进行处理
+    @Value(&quot;#&#123;itemBean.qtyOnHand &lt; 100 ? true : false&#125;&quot;)
+    private boolean warning;  // true
+&#125;
+</code></pre>
+<h3 id="ConfigurationProperties-1"><a href="#ConfigurationProperties-1" class="headerlink" title="@ConfigurationProperties"></a>@ConfigurationProperties</h3><blockquote>
+<p><strong>参考资料</strong></p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yusimiao/article/details/97622666">@ConfigurationProperties 注解使用姿势，这一篇就够了</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tian874540961/p/12146467.html">注解@ConfigurationProperties使用方法</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43054210/article/details/101126585">@ConfigurationProperties不生效,对比@Value</a></p>
+</li>
+</ol>
+</blockquote>
+<p>通过指定一个前缀来将配置文件中的数据注入到配置类中的属性上</p>
+<p>1、注意</p>
+<ul>
+<li>需要有配置类的属性需要有set方法,否则无法绑定</li>
+<li>如果没有使用@Component等容器注解将配置类注入到容器中,需要在使用配置类的地方使用<code>@EnableConfigurationProperties</code>注解来手动开启配置</li>
+</ul>
+<p>2、配置文件</p>
+<pre><code class="properties">spring.datasource.url=jdbc:mysql://127.0.0.1:8888/test
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+</code></pre>
+<p>3、配置方法1</p>
+<pre><code class="java">import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+@Component  // 将配置类注入到Spring容器中
+public class DatasourcePro &#123;
+
+    private String url;
+    private String username;
+    private String password;
+    // 配置文件中是driver-class-name,我们可以直接使用驼峰的形式
+    private String driverClassName;
+    private String type;
+
+    // 此处省略了Get和Set方法,必须要有Set方法否则无法将配置文件中的数据绑定到配置类的属性中
+&#125;
+</code></pre>
+<p>2、配置方式2</p>
+<pre><code class="java">import org.springframework.boot.context.properties.ConfigurationProperties;
+
+// 此处只有这一个注解,并没有@Component等容器注解
+@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+public class DatasourcePro &#123;
+
+    private String url;
+    private String username;
+    private String password;
+    // 配置文件中是driver-class-name,我们可以直接使用驼峰的形式
+    private String driverClassName;
+    private String type;
+
+    // 此处省略了Get和Set方法,必须要有Set方法否则无法将配置文件中的数据绑定到配置类的属性中
+&#125;
+</code></pre>
+<pre><code class="java">import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+@Component
+// 通过此注解对DatasourcePro配置类实例化
+@EnableConfigurationProperties(DatasourcePro.class)  
+public class GetConfigMessage &#123;
+
+    @Autowired
+    private DatasourcePro configInfo;
+    
+    // 使用configInfo对象来获取配置文件的信息
+&#125;
+</code></pre>
+<h3 id="Environment对象"><a href="#Environment对象" class="headerlink" title="Environment对象"></a>Environment对象</h3><p>1、配置文件</p>
+<pre><code class="properties"># 图片的后缀列表
+spring.suffixList=jpeg,jpg,png,gif,bmp
+</code></pre>
+<p>2、使用Environment对象获取配置文件信息</p>
+<pre><code class="java">@Service
+public class UploadService &#123;
+
+    // 注意,不能添加无参数的构造方法,否则无法从配置文件中读取配置
+
+    // 注入配置文件对象类
+    @Autowired
+    private Environment env;
+
+    private Boolean fileCheck() &#123;
+        
+        // 通过Environment对象获取配置文件的信息
+        String prop = env.getProperty(&quot;spring.suffixList&quot;);
+        String[] split = prop.split(&quot;,&quot;);
+        List&lt;String&gt; suffixList = Arrays.asList(split);
+        
+        // ...
+    &#125;
+&#125;
+</code></pre>
+<h3 id="PropertySource"><a href="#PropertySource" class="headerlink" title="@PropertySource"></a>@PropertySource</h3><ul>
+<li><p>如果将所有的配置信息都写在一个配置文件中会让配置文件臃肿难以维护.</p>
+</li>
+<li><p>可以将一个文件拆分为多个,使用 @PropertySource 注解加载指定的配置文件.</p>
+</li>
+</ul>
+<p>1、存放在resources文件夹根目录下的jdbc.properties配置文件</p>
+<pre><code class="properties">jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/spring_test
+jdbc.user=root
+jdbc.password=mysql
+</code></pre>
+<p>2、配置文件信息注入</p>
+<pre><code class="java">import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+// 将配置类放入Spring容器中
+@Configuration 
+@PropertySource(&quot;jdbc.properties&quot;)  // 引入外部的配置文件
+public class JDBCConfiguration &#123;
+
+    // 把外部的配置文件的值给导入到对象中去
+    @Value(&quot;$&#123;jdbc.url&#125;&quot;)
+    private String url;
+    @Value(&quot;$&#123;jdbc.driver&#125;&quot;)
+    private String driverClass;
+    @Value(&quot;$&#123;jdbc.user&#125;&quot;)
+    private String username;
+    @Value(&quot;$&#123;jdbc.password&#125;&quot;)
+    private String password;
+&#125;
+</code></pre>
+<h3 id="SpringBootConfiguration"><a href="#SpringBootConfiguration" class="headerlink" title="@SpringBootConfiguration"></a>@SpringBootConfiguration</h3><h2 id="4、URL处理类注解"><a href="#4、URL处理类注解" class="headerlink" title="4、URL处理类注解"></a>4、URL处理类注解</h2><h3 id="RequestMapping-1"><a href="#RequestMapping-1" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h3><pre><code class="java">@Controller
+@RequestMapping(&quot;/test&quot;)  // 可以放在类上,也可以放在方法上,放在类上用来窄化路径
+public class TestController &#123;
+    
+    // 如果不指定方法的话,默认是Get方法
+    @RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.POST)
+    public String hello()&#123;
+        return &quot;show&quot;;
+    &#125;
+    
+    @RequestMapping(
+        value = &quot;/test&quot;, 
+        method = RequestMethod.POST,
+        // 要求URL中必须有name和age&gt;20这两个名称(*age&gt;20只是一个名称,并不能真的约束age的值)
+        // 要求URL中不能包含a这个名称
+        params = &#123;&quot;name&quot;,&quot;age&gt;20&quot;,&quot;!a&quot;&#125;
+    )
+    
+    public String hello()&#123;
+        return &quot;show&quot;;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="GetMapping-1"><a href="#GetMapping-1" class="headerlink" title="@GetMapping"></a>@GetMapping</h3><p>@GetMapping是一个组合注解，是@RequestMapping(method &#x3D; RequestMethod.GET)的缩写</p>
+<h3 id="PostMapping-1"><a href="#PostMapping-1" class="headerlink" title="@PostMapping"></a>@PostMapping</h3><p>@PostMapping是一个组合注解，是@RequestMapping(method &#x3D; RequestMethod.POST) 缩写。同理，还有@PutMapping、@DeleteMapping 等注解。</p>
+<h3 id="RequestParam-1"><a href="#RequestParam-1" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><pre><code class="java">import org.springframework.web.bind.annotation.RequestParam;
+
+@RequestMapping(value = &quot;/param2&quot;)
+public String testParams(
+    @RequestParam(
+        value = &quot;username&quot;, // 前端传入的值
+        required = false, // 指定此参数不是必须要传的
+        defaultValue = &quot;rose&quot; // 如果前端没有传值的话,用我们自己的默认值
+    ) 
+    // 由于前后端的命名方式不同,因此通过@RequestParam注解进行转化
+    String name
+)&#123;
+    System.out.println(name);
+    return &quot;show&quot;;
+&#125;
+</code></pre>
+<h3 id="PathVariable-1"><a href="#PathVariable-1" class="headerlink" title="@PathVariable"></a>@PathVariable</h3><p>常用于获取restful风格的请求路径中URL中的值</p>
+<pre><code class="java">// URL中的包含的id通过@PathVariable注解获取出来
+@RequestMapping(value = &quot;/operate/&#123;id&#125;&quot;,method = RequestMethod.GET)
+public String findById(@PathVariable(&quot;id&quot;) Integer id)&#123;
+    System.out.println(&quot;findById:&quot; + id);
+    return &quot;show&quot;;
+&#125;
+</code></pre>
+<h2 id="5、初始化类"><a href="#5、初始化类" class="headerlink" title="5、初始化类"></a>5、初始化类</h2><h3 id="InitBinder"><a href="#InitBinder" class="headerlink" title="@InitBinder"></a>@InitBinder</h3><p>1、简介</p>
+<p>@InitBinder作用于@Controller中的方法，表示为当前控制器注册一个属性编辑器，对WebDataBinder进行初始化,且只对当前的Controller有效。</p>
+<p>2、执行时机</p>
+<p>@InitBinder注解被解析的时机，是其所标注的方法，在该方法被请求执行之前。同时@InitBinder标注的方法是可以多次执行的，也就是说来一次请求就执行一次@InitBinder解析。</p>
+<p>3、执行原理</p>
+<p>当某个Controller上的第一次请求，由SpringMVC前端控制器匹配到该Controller之后，根据Controller的 class 类型来查找所有标注了@InitBinder注解的方法，并且存入RequestMappingHandlerAdapter里的 initBinderCache 缓存中。等下一次请求执行对应业务方法之前,会先走initBinderCache缓存,而不用再去解析@InitBinder。</p>
+<p>4、应用场景（常用于数据绑定和数据转换）</p>
+<ul>
+<li><p>场景1：使用系统默认的属性编辑器</p>
+<pre><code class="java">@RequestMapping(&quot;/myInitBinder0954&quot;)
+@Controller
+public class MyInitBinderController &#123;
+
+    // 注册将字符串转换为Date的属性编辑器，该编辑器仅仅对当前controller有效
+    @InitBinder
+    public void initBinderXXX(WebDataBinder binder) &#123;
+        DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+        CustomDateEditor dateEditor = new CustomDateEditor(df, true);
+        binder.registerCustomEditor(Date.class, dateEditor);
+    &#125;
+    
+    // 前端访问URL
+    // http://localhost:8080/myInitBinder0954/test?date=2020-09-03%2010:17:17
+    @RequestMapping(value = &quot;/test&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public String testFormatData(Date date) &#123;
+        
+        // 将URL中日期字符串转换为Date类型
+        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;date&quot;, date);
+        return map.toString();
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>场景2：使用自定义的属性编辑器</p>
+<pre><code class="java">import java.beans.PropertyEditorSupport;
+
+public class StringToListPropertyEditor extends PropertyEditorSupport &#123;
+
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException &#123;
+        String[] resultArr = null;
+        if (!StringUtils.isEmpty(text)) &#123;
+            // 将字符串以&quot;_&quot;进行分隔
+            resultArr = text.split(&quot;_&quot;);
+        &#125;
+        this.setValue(resultArr);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">@RequestMapping(&quot;/myStringToList&quot;)
+@Controller
+public class StringToListController &#123;
+
+    @InitBinder
+    public void myStringToListBinder(WebDataBinder dataBinder) &#123;
+        dataBinder.registerCustomEditor(
+            String[].class, 
+            // 使用我们自定义的属性编辑器
+            new StringToListPropertyEditor()
+        );
+    &#125;
+
+    @RequestMapping(value = &quot;/test&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public String myStringToListTest(String[] strToListArr) &#123;
+        
+        String result = &quot;_分割字符串转String[]不成功！&quot;;
+        if (strToListArr != null &amp;&amp; strToListArr.length &gt; 0) &#123;
+            result = Arrays.asList(strToListArr).toString();
+        &#125;
+        return result;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h3 id="PostConstruct"><a href="#PostConstruct" class="headerlink" title="@PostConstruct"></a>@PostConstruct</h3><p>在需要初始化的方法上增加<code>@PostConstruct</code>注解，这样就有初始化的能力。</p>
+<pre><code class="java">import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AService &#123;
+
+    @PostConstruct
+    public void init() &#123;
+        System.out.println(&quot;===初始化===&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a>@ModelAttribute</h3><p>1、定义一个基础的控制类</p>
+<pre><code class="java">public class BaseController &#123;
+    
+    protected HttpServletRequest request;
+    protected HttpServletResponse response;
+    protected HttpSession session;
+    
+    // 每一个继承了BaseController的子Controller都会先执行下面的方法
+    @ModelAttribute
+    public void setReqAndRes(HttpServletRequest request, HttpServletResponse response) &#123;
+
+        this.request = request;
+        this.response = response;
+        this.session = request.getSession();
+    &#125;
+&#125;
+</code></pre>
+<p>2、子类控制类</p>
+<pre><code class="java">import org.apache.commons.lang3.StringUtils;
+
+@Controller
+public class CmsPagePreviewController extends BaseController &#123;
+
+    @Autowired
+    private PageService pageService;
+
+    // 页面预览
+    @RequestMapping(value=&quot;/cms/preview/&#123;pageId&#125;&quot;,method = RequestMethod.GET)
+    public void preview(@PathVariable(&quot;pageId&quot;)String pageId)&#123;
+        
+        // response 是 父类BaseController 中封装的对象
+        ServletOutputStream outputStream = response.getOutputStream();
+        response.setHeader(&quot;Content-type&quot;,&quot;text/html;charset=utf-8&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="6、响应类注解"><a href="#6、响应类注解" class="headerlink" title="6、响应类注解"></a>6、响应类注解</h2><h3 id="RequestBody-1"><a href="#RequestBody-1" class="headerlink" title="@RequestBody"></a>@RequestBody</h3><p>@RequestBody主要用来接收前端传递给后端的json字符串中的数据的(请求体中的数据的),一般会用一个对象来封装数据</p>
+<pre><code class="java">@RequestMapping(value = &quot;/dologin&quot;, method = RequestMethod.POST)
+@ResponseBody
+public void login(@RequestBody LoginUser userInfo) &#123;
+    // ...
+&#125;
+</code></pre>
+<h3 id="ResponseBody-1"><a href="#ResponseBody-1" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h3><ul>
+<li><p>@ResponseBody的作用其实是将java对象转为json格式的数据。</p>
+</li>
+<li><p>@responseBody注解的作用是将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。</p>
+</li>
+</ul>
+<pre><code class="java">@RequestMapping(&quot;/testResponseBody&quot;)
+@ResponseBody
+public List&lt;User&gt; testResponseBody()&#123;
+    
+    List&lt;User&gt; userList = new ArrayList&lt;&gt;();
+    // 新建一个对象放入数据
+    User user = new User();
+    user.setUsername(&quot;zhangsan&quot;);
+    user.setSex(&quot;男&quot;);
+    user.setId(2);
+    
+    // 新建一个对象放入数据
+    User user1 = new User();
+    user1.setUsername(&quot;zhangsan1&quot;);
+    user1.setSex(&quot;女&quot;);
+    user1.setId(1);
+    
+    userList.add(user);
+    userList.add(user1);
+
+    // 把封装好的数据传递给前端
+    return userList;
+&#125;
+</code></pre>
+<h2 id="7、Cookie和Session"><a href="#7、Cookie和Session" class="headerlink" title="7、Cookie和Session"></a>7、Cookie和Session</h2><h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><h4 id="1、注解的方式"><a href="#1、注解的方式" class="headerlink" title="1、注解的方式"></a>1、注解的方式</h4><ul>
+<li><p>若希望在多个请求之间共用数据,则可以在控制器类上标注一个 @SessionAttributes,配置需要在session中存放的数据范围,Spring MVC将存放在model中对应的数据暂存到HttpSession 中。</p>
+</li>
+<li><p>@SessionAttributes需要清除时,使用<code>SessionStatus.setComplete();</code>来清除。</p>
+</li>
+</ul>
+<p>注意：session.removeAttribute只清除@SessionAttributes的session，不会清除HttpSession的数据</p>
+<p>@SessionAttributes</p>
+<pre><code class="java">import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+
+import java.util.Date;
+import java.util.Map;
+
+@Controller
+@RequestMapping(&quot;/test&quot;)
+// 用来向session中存放数据,在session中可以存储这两个变量名
+@SessionAttributes(&#123;&quot;username&quot;,&quot;password&quot;&#125;)  
+public class TestController &#123;
+
+    // 把用户名和密码存入到Session范围内
+    @RequestMapping(&quot;/testPut&quot;)
+    public void testPut(Model model)&#123;
+        // 存放session对象的时候,用Model和ModelMap来存放对象都可以
+        model.addAttribute(&quot;username&quot;,&quot;zhangsan&quot;);
+        model.addAttribute(&quot;password&quot;,&quot;123456&quot;);
+    &#125;
+
+    // 获取session范围内的对象
+    @RequestMapping(&quot;/testGet&quot;)
+    public void testGet(ModelMap modelMap)&#123;
+        // 获取session对象的时候,要用modelMap来获取
+        Object username = modelMap.get(&quot;username&quot;);
+        System.out.println(username);  // zhangsan
+        Object password = modelMap.get(&quot;password&quot;);
+        System.out.println(password);  // 123456
+    &#125;
+
+    // 清空session中的数据
+    @RequestMapping(&quot;/testClear&quot;)
+    public void testClear(SessionStatus sessionStatus)&#123;
+        sessionStatus.setComplete();
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">@SessionAttributes(&quot;user&quot;)
+public class UserController &#123; 
+
+    @ModelAttribute(&quot;user&quot;)
+    publicUser getUser()&#123;
+        Useruser = new User();
+        User.setUserId(&quot;1001&quot;);
+        returnuser;
+    &#125;
+
+    @RequestMapping(&quot;/handle71&quot;)
+    public String handle71(@ModelAttribute(&quot;user&quot;) User user) &#123; 
+        user.setName(&quot;John&quot;);
+        return “redirect:/user/handle71.html”;
+    &#125; 
+
+    @RequestMapping(value= &quot;/handle72&quot;) 
+    public String handle72(ModelMapmodelMap, SessionStatus sessionStatus) &#123; 
+        User user = (User)modelMap.get(&quot;user&quot;);
+        If(user != null)&#123;
+            user.setName(&quot;jetty&quot;);
+            sessionStatus.setComplete();
+
+        &#125;
+        return &quot;user/showUser&quot;; 
+    &#125; 
+
+    @RequestMapping(&quot;/tologout&quot;)
+    public String tologout(HttpSession session, SessionStatus sessionStatus) &#123;
+        session.removeAttribute(&quot;user&quot;);
+        session.removeAttribute(&quot;date&quot;);
+        System.out.println(&quot;logout:&quot; + session.getAttribute(&quot;user&quot;));
+        
+        // 一定要通过这种方式清除@SessionAttributes中存放的数据
+        sessionStatus.setComplete(); 
+        
+        return &quot;redirect:/view/index&quot;;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="2、HttpServletRequest的方式"><a href="#2、HttpServletRequest的方式" class="headerlink" title="2、HttpServletRequest的方式"></a>2、HttpServletRequest的方式</h4><pre><code class="java">@Component
+public class Test &#123;
+
+    @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
+
+    @Override
+    public void test() &#123;
+
+        // 获取session对象
+        HttpSession session = request.getSession();
+
+        // 将数据放入session
+        session.setAttribute(&quot;shainNo&quot;, &quot;XXX&quot;);
+        session.setAttribute(&quot;shainMei&quot;, &quot;XXX&quot;);
+
+        // 从session中获取数据
+        session.getAttribute(&quot;shainMei&quot;);
+        
+        // 从session中清除数据
+        session.removeAttribute(&quot;shainMei&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="1、注解的方式-1"><a href="#1、注解的方式-1" class="headerlink" title="1、注解的方式"></a>1、注解的方式</h4><p>@CookieValue用来获取Cookie中的值</p>
+<pre><code class="java">@RestController
+public class HelloController &#123;
+
+    @RequestMapping(&quot;/hello2&quot;)
+    public String hello2(HttpServletResponse response)&#123;
+        
+        // 自己新建一个cookie
+        Cookie cookie = new Cookie(&quot;name&quot;,&quot;瓜田李下&quot;);
+        response.addCookie(cookie);
+
+        return &quot;success2&quot;;
+    &#125;
+    
+    // 通过@CookieValue的方式获取cookie中的值
+    @RequestMapping(&quot;/hello3&quot;)
+    public String hello3(HttpServletRequest request,@CookieValue(&quot;name&quot;) String name)&#123;
+        
+        // 打印从通过@CookieValue注解从cookie中获取到的值
+        System.out.println(name);  // 瓜田李下
+        
+        // 普通的方式获取cookie中的值
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies)&#123;
+            String value = cookie.getName() + &quot;  &quot; + cookie.getValue();
+            System.out.println(value);  // name  瓜田李下
+        &#125;
+
+        return &quot;success3&quot;;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="2、HttpServletResponse对象的方式"><a href="#2、HttpServletResponse对象的方式" class="headerlink" title="2、HttpServletResponse对象的方式"></a>2、HttpServletResponse对象的方式</h4><pre><code class="java">@Component
+public class Test &#123;
+
+    @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
+
+    @Override
+    public void test() &#123;
+       
+        // Cooikesの格納値を設定する
+        Cookie nameCookie = new Cookie(&quot;name&quot;, &quot;zhangsan&quot;);
+        Cookie pswCookie = new Cookie(&quot;pwd&quot;, &quot;123&quot;);
+        
+        // 设置cookie的超时时间
+        if (&quot;XXX&quot;) &#123;
+            nameCookie.setMaxAge(0);
+            pswCookie.setMaxAge(0);
+            remberMeCookie.setMaxAge(0);
+        &#125; else &#123;
+            nameCookie.setMaxAge(7 * 24 * 60 * 60);
+            pswCookie.setMaxAge(7 * 24 * 60 * 60);
+        &#125;
+        
+        // 将cookie添加到响应中
+        response.addCookie(nameCookie);
+        response.addCookie(pswCookie);
+    &#125;
+&#125;
+</code></pre>
+<p>Cookie的获取</p>
+<pre><code class="java">public static String getCookieValue(HttpServletRequest request, String name) &#123;
+    
+    // 获取本次请求中所有的cookie
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) &#123;
+        for (Cookie cookie : cookies) &#123;
+            // 获取cookie的key
+            String cookieName = cookie.getName();
+            if (cookieName.equals(name)) &#123;
+                // 获取cookie的值
+                return cookie.getValue();
+            &#125;
+        &#125;
+    &#125;
+    return null;
+&#125;
+</code></pre>
+<h2 id="8、事务注解"><a href="#8、事务注解" class="headerlink" title="8、事务注解"></a>8、事务注解</h2><blockquote>
+<p><strong>参考资料</strong></p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32370913/article/details/105924209">【springboot】为何不使用@EnableTransactionManagement就能使用事务？</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010963948/article/details/79208328">Spring Boot的事务管理注解@EnableTransactionManagement的使用</a></p>
+</li>
+</ol>
+</blockquote>
+<h3 id="EnableTransactionManagement-1"><a href="#EnableTransactionManagement-1" class="headerlink" title="@EnableTransactionManagement"></a>@EnableTransactionManagement</h3><p>为项目开启事务</p>
+<pre><code class="java">import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@SpringBootApplication
+@EnableTransactionManagement  // 使用此注解为Spring Boot项目开启事务配置
+public class SpringbootApplication &#123;
+
+    public static void main(String[] args) &#123;
+        try &#123;
+            SpringApplication.run(SpringbootApplication.class, args);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Transactional-1"><a href="#Transactional-1" class="headerlink" title="@Transactional"></a>@Transactional</h3><p>为方法开启事务</p>
+<pre><code class="java">import org.springframework.transaction.annotation.Transactional;
+
+// 使用此注解为update方法开启事务
+@Transactional(rollbackFor = Exception.class)
+public int update(CSPMailAddresHenkoForm form, LoginUser user) &#123;
+    // ...
+&#125;
+</code></pre>
+<h2 id="9、扫描类注解"><a href="#9、扫描类注解" class="headerlink" title="9、扫描类注解"></a>9、扫描类注解</h2><h3 id="ComponentScan-1"><a href="#ComponentScan-1" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h3><p>@ComponentScan做的事情就是告诉Spring从哪里找到Bean</p>
+<p>SpringbootApplication启动类会自动扫描与其同级别的目录下的类上是否标记了@Component,@Controller等注解.如果被标记则添加到容器中.如果启动类外层还有一层文件夹或者有些类不和启动类在同一个级别的文件下的话,就需要使用@ComponentScan注解,手动指定要扫描的包的位置</p>
+<pre><code class="java">import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@SpringBootApplication
+@EnableTransactionManagement
+// 扫描该包下面的组件,配置了
+@ComponentScan(&#123;&quot;com.csp.common.security.springsecurity&quot;&#125;)  
+public class SpringbootApplication &#123;
+    
+    public static void main(String[] args) &#123;
+        try &#123;
+            SpringApplication.run(SpringbootApplication.class, args);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="MapperScan"><a href="#MapperScan" class="headerlink" title="@MapperScan"></a>@MapperScan</h3><ul>
+<li>在SpringBoot启动类上面添加</li>
+<li>指定要变成实现类的接口所在的包，然后包下面的所有接口在编译之后都会生成相应的实现类</li>
+<li>省去了在每一个接口上手动添加@Mapper注解的麻烦</li>
+</ul>
+<pre><code class="java">import org.mybatis.spring.annotation.MapperScan;
+
+@SpringBootApplication
+@EnableTransactionManagement
+@MapperScan(&#123;&quot;com.csp.common.db.dao&quot;, &quot;com.csp.business.dao&quot;&#125;)
+public class SpringbootApplication &#123;
+    public static void main(String[] args) &#123;
+         SpringApplication.run(SpringbootApplication.class, args);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="10、异常注解"><a href="#10、异常注解" class="headerlink" title="10、异常注解"></a>10、异常注解</h2><blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lenve/p/10748453.html">SpringMVC 中 @ControllerAdvice 注解的三种使用场景！</a></p>
+</blockquote>
+<h3 id="ControllerAdvice-1"><a href="#ControllerAdvice-1" class="headerlink" title="@ControllerAdvice"></a>@ControllerAdvice</h3><p>最常见的使用场景就是异常处理</p>
+<pre><code class="java">import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+// 用来实现全局异常处理
+@ControllerAdvice
+public class GlobalExceptionHandler &#123;
+
+    // 此注解用来指明具体要处理的异常类型
+    @ExceptionHandler(value = &#123;Exception.class&#125;)
+    @ResponseBody
+    public void exceptionHandler(Exception exception) &#123;
+        
+        // ...
+    &#125;
+    
+    // 此注解用来指明具体要处理的异常类型
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public void handleNotValidException(MethodArgumentNotValidException ex) &#123;
+        
+        // ...
+    &#125;
+    
+    @ExceptionHandler(BindException.class)
+    @ResponseBody
+    public void handleBindException(BindException ex) &#123;
+        
+        // ...
+    &#125;
+&#125;
+</code></pre>
+<h3 id="ExceptionHandler-1"><a href="#ExceptionHandler-1" class="headerlink" title="@ExceptionHandler"></a>@ExceptionHandler</h3><blockquote>
+<p>此注解用来指明具体要处理的异常类型，具体使用例子参考@ControllerAdvice。</p>
+</blockquote>
+<h2 id="11、其他注解"><a href="#11、其他注解" class="headerlink" title="11、其他注解"></a>11、其他注解</h2><h3 id="Order-1"><a href="#Order-1" class="headerlink" title="@Order"></a>@Order</h3><ul>
+<li>定义Spring IOC容器中Bean的执行顺序的优先级,而不是定义Bean的加载顺序,Bean的加载顺序不受@Order或Ordered接口的影响</li>
+<li>可以和CommandLineRunner接口配合使用,通过@Order注解指定实现类的加载顺序</li>
+<li>值越小,加载的优先级就越高</li>
+</ul>
+<pre><code class="java">@Order(value=3)
+@Component
+class ApplicationStartupRunnerOne implements CommandLineRunner &#123;
+    
+    @Override
+    public void run(String... args) throws Exception &#123;
+        
+        System.out.println(&quot;ApplicationStartupRunnerOne run method Started !!&quot;);
+    &#125;
+&#125;
+ 
+@Order(value=2)
+@Component
+class ApplicationStartupRunnerTwo implements CommandLineRunner &#123;
+ 
+    @Override
+    public void run(String... args) throws Exception &#123;
+        
+        System.out.println(&quot;ApplicationStartupRunnerTwo run method Started !!&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">// 执行之后的打印顺序
+ApplicationStartupRunnerTwo run method Started !!
+ApplicationStartupRunnerOne run method Started !!
+</code></pre>
+<h3 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h3><blockquote>
+<p>参考资料：</p>
+<ol>
+<li>@lazy注解处理循环注入问题：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yangxiaohui227/p/10523025.html">https://www.cnblogs.com/yangxiaohui227/p/10523025.html</a></li>
+<li>Spring中的 @Lazy注解简析：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41888813/article/details/102947633">https://blog.csdn.net/weixin_41888813/article/details/102947633</a></li>
+</ol>
+</blockquote>
+<ul>
+<li>减少SpringIOC容器启动的加载时间，只有调用某个Bean的时候才会去初始化</li>
+<li>可以用来解除循环依赖注入的问题</li>
+</ul>
+<h1 id="参考文献-鸣谢"><a href="#参考文献-鸣谢" class="headerlink" title="参考文献 &amp; 鸣谢"></a>参考文献 &amp; 鸣谢</h1><ol>
+<li>肝了一周总结的SpringBoot常用注解大全，一目了然！<a target="_blank" rel="noopener" href="https://blog.csdn.net/BASK2312/article/details/128394257">https://blog.csdn.net/BASK2312/article/details/128394257</a></li>
+<li>SpringBoot 注解整理：<a target="_blank" rel="noopener" href="https://blog.csdn.net/feyehong/article/details/116378767">https://blog.csdn.net/feyehong/article/details/116378767</a></li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 8629303@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017-2024 Sam
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 18px 3px 15px 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

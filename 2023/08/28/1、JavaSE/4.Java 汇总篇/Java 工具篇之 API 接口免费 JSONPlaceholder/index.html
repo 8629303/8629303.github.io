@@ -1,0 +1,4414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Java 工具篇之 API 接口免费 JSONPlaceholder | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Java 工具篇之 API 接口免费 JSONPlaceholder | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
+<meta property="og:url" content="http://example.com/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
+<meta property="article:modified_time" content="2024-10-18T10:28:56.825Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/8629303"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:8629303@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(172)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="_posts">
+            <i class="fold iconfont icon-right"></i>
+            _posts
+            <small>(14)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;开发工具">
+            
+            开发工具
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="_posts&lt;---&gt;面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="微服务开发">
+            <i class="fold iconfont icon-right"></i>
+            微服务开发
+            <small>(61)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;Shiro">
+            
+            Shiro
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;Spring">
+            
+            Spring
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringBoot">
+            
+            SpringBoot
+            <small>(44)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringCloudAlibaba">
+            
+            SpringCloudAlibaba
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringDataJPA">
+            
+            SpringDataJPA
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringMVC">
+            
+            SpringMVC
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringSecurity">
+            
+            SpringSecurity
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="微服务开发&lt;---&gt;SpringTransaction">
+            
+            SpringTransaction
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java基础篇">
+            <i class="fold iconfont icon-right"></i>
+            Java基础篇
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java常用类库">
+            
+            Java常用类库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java多线程">
+            
+            Java多线程
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java反射与注解">
+            
+            Java反射与注解
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java基础语法">
+            
+            Java基础语法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;Java集合类">
+            
+            Java集合类
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;JavaIO流">
+            
+            JavaIO流
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java基础篇&lt;---&gt;JavaNIO流">
+            
+            JavaNIO流
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java进阶篇">
+            <i class="fold iconfont icon-right"></i>
+            Java进阶篇
+            <small>(4)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java进阶篇&lt;---&gt;Java设计模式">
+            
+            Java设计模式
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java进阶篇&lt;---&gt;JVM虚拟机">
+            
+            JVM虚拟机
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java新特性">
+            <i class="fold iconfont icon-right"></i>
+            Java新特性
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java10新特性">
+            
+            Java10新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java11新特性">
+            
+            Java11新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java12新特性">
+            
+            Java12新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java13新特性">
+            
+            Java13新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java14新特性">
+            
+            Java14新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java15新特性">
+            
+            Java15新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java16新特性">
+            
+            Java16新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java17新特性">
+            
+            Java17新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java18新特性">
+            
+            Java18新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java19新特性">
+            
+            Java19新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java20新特性">
+            
+            Java20新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java8新特性">
+            
+            Java8新特性
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Java新特性&lt;---&gt;Java9新特性">
+            
+            Java9新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JavaSE">
+            <i class="fold iconfont icon-right"></i>
+            JavaSE
+            <small>(34)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java汇总篇">
+            
+            Java汇总篇
+            <small>(28)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java新特性">
+            
+            Java新特性
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaSE&lt;---&gt;Java性能测试与安全">
+            
+            Java性能测试与安全
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            <i class="fold iconfont icon-right"></i>
+            Linux
+            <small>(7)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;虚拟机工具">
+            
+            虚拟机工具
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Docker">
+            
+            Docker
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Kubernetes">
+            
+            Kubernetes
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Nginx">
+            
+            Nginx
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Redis">
+            <i class="fold iconfont icon-right"></i>
+            Redis
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Redis&lt;---&gt;backup">
+            
+            backup
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="SpringTransaction">
+            <i class="fold iconfont icon-right"></i>
+            SpringTransaction
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="SpringTransaction&lt;---&gt;多数据源事务处理">
+            
+            多数据源事务处理
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SpringTransaction&lt;---&gt;多线程下事务处理">
+            
+            多线程下事务处理
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="172">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类</span>
+            <span class="post-date" title="2024-10-08 16:44:19">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E7%B3%BB%E5%88%97-%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%98%E6%9B%B4%E5%8F%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot系列-全网最全的版本变更史">SpringBoot系列-全网最全的版本变更史</span>
+            <span class="post-date" title="2024-10-08 16:38:53">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/10/08/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 参考文献 &amp; 鸣谢">Maven 教程之 参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-10-08 15:50:47">2024/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/10/07/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GitHub%20%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="GitHub 实战技巧">GitHub 实战技巧</span>
+            <span class="post-date" title="2024-10-07 15:55:34">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/10/07/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%20-%20%E9%9B%86%E6%88%90%20HirakiCP%20%E4%B8%8E%20Druid%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 数据库篇 - 集成 HirakiCP 与 Druid 数据库连接池">SpringBoot2.x 数据库篇 - 集成 HirakiCP 与 Druid 数据库连接池</span>
+            <span class="post-date" title="2024-10-07 14:19:43">2024/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/09/30/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/MacOS%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MacOS 开发环境搭建及软件安装卸载">MacOS 开发环境搭建及软件安装卸载</span>
+            <span class="post-date" title="2024-09-30 23:56:52">2024/09/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/30/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20JDK%20%E7%89%88%E6%9C%AC%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%20/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 JDK 版本默认设置">Maven 教程之 JDK 版本默认设置</span>
+            <span class="post-date" title="2024-09-30 16:37:08">2024/09/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/26/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20profiles%20%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 profiles 多环境配置">Maven 教程之 profiles 多环境配置</span>
+            <span class="post-date" title="2024-09-26 17:40:34">2024/09/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/25/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20plugin%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 plugin 详解">Maven 教程之 plugin 详解</span>
+            <span class="post-date" title="2024-09-25 11:32:44">2024/09/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/21/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20pom.xml%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 pom.xml 详解">Maven 教程之 pom.xml 详解</span>
+            <span class="post-date" title="2024-09-21 16:14:13">2024/09/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/09/21/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20settings.xml%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 settings.xml 详解">Maven 教程之 settings.xml 详解</span>
+            <span class="post-date" title="2024-09-21 16:14:09">2024/09/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 面试篇 "
+           href="/2024/08/27/0%E3%80%81%E9%9D%A2%E8%AF%95%E7%AF%87/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试宝典汇总">面试宝典汇总</span>
+            <span class="post-date" title="2024-08-27 16:20:25">2024/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/08/26/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9B%86%E5%90%88%E5%B8%B8%E9%87%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 自定义集合常量">Java 自定义集合常量</span>
+            <span class="post-date" title="2024-08-26 12:11:54">2024/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringMVC "
+           href="/2024/08/26/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20MVC/SpringMVC%E4%B9%8B@InitBinder%E6%B3%A8%E8%A7%A3%EF%BC%88%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC之@InitBinder注解（日期转换）">SpringMVC之@InitBinder注解（日期转换）</span>
+            <span class="post-date" title="2024-08-26 11:10:28">2024/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多线程下事务处理 "
+           href="/2024/08/21/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E7%9A%84%E5%A4%84%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程事务提交的处理">Java 多线程事务提交的处理</span>
+            <span class="post-date" title="2024-08-21 16:32:52">2024/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/08/20/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%20Cache%20%E6%95%B4%E5%90%88%20Redis%20%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot Cache 整合 Redis 缓存框架">SpringBoot Cache 整合 Redis 缓存框架</span>
+            <span class="post-date" title="2024-08-20 16:11:47">2024/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2024/08/16/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20%E4%BA%8B%E5%8A%A1%E5%BA%94%E7%94%A8%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 事务应用及源码分析">Spring 事务应用及源码分析</span>
+            <span class="post-date" title="2024-08-16 10:33:57">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2024/08/16/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20JDBC%20-%20NamedParameterJdbcTemplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring JDBC - NamedParameterJdbcTemplate">Spring JDBC - NamedParameterJdbcTemplate</span>
+            <span class="post-date" title="2024-08-16 00:18:18">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2024/07/18/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git%20&%20GitHub/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git &amp; GitHub">Git &amp; GitHub</span>
+            <span class="post-date" title="2024-07-18 10:34:58">2024/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/06/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 实战">Maven 实战</span>
+            <span class="post-date" title="2024-06-28 16:50:35">2024/06/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2024/06/26/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95%E5%AE%98%EF%BC%9A%E4%B8%8D%E4%BC%9A%E7%9C%8B%20Explain%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%EF%BC%8C%E7%AE%80%E5%8E%86%E6%95%A2%E5%86%99%20SQL%20%E4%BC%98%E5%8C%96%EF%BC%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试官：不会看 Explain执行计划，简历敢写 SQL 优化？">面试官：不会看 Explain执行计划，简历敢写 SQL 优化？</span>
+            <span class="post-date" title="2024-06-26 19:33:03">2024/06/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行篇之 IDEA - VM Options、Program Arguments、Environment Variable 解析">Java 命令行篇之 IDEA - VM Options、Program Arguments、Environment Variable 解析</span>
+            <span class="post-date" title="2024-04-22 10:53:10">2024/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2024/04/19/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E9%85%8D%E7%BD%AE%E5%A4%96%E9%83%A8%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-配置外部化">SpringBoot 2.x 配置文件-配置外部化</span>
+            <span class="post-date" title="2024-04-19 09:18:55">2024/04/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2024/04/16/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%8E%9F%E7%90%86%E7%AF%87%E4%B9%8B%20SPI%20%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
+            <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发工具 Maven "
+           href="/2024/01/14/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Maven/Maven%20%E6%95%99%E7%A8%8B%E4%B9%8B%20mirror%20&%20repository%20%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven 教程之 mirror &amp; repository 配置详解">Maven 教程之 mirror &amp; repository 配置详解</span>
+            <span class="post-date" title="2024-01-14 22:51:03">2024/01/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/12/07/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E4%B8%BA%E4%BB%80%E4%B9%88SpringBoot%20jar%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 为什么SpringBoot jar 可以直接运行">SpringBoot 2.x 为什么SpringBoot jar 可以直接运行</span>
+            <span class="post-date" title="2023-12-07 15:13:56">2023/12/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java多线程 "
+           href="/2023/12/04/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/5%E3%80%81Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E9%98%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程进阶">Java 多线程进阶</span>
+            <span class="post-date" title="2023-12-04 16:37:09">2023/12/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据库建模工具汇总">数据库建模工具汇总</span>
+            <span class="post-date" title="2023-11-18 15:31:11">2023/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/10/08/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/Mybatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mybatis">Mybatis</span>
+            <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 压测工具汇总">Java 性能测试篇之 压测工具汇总</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20%E9%AB%98%E5%B9%B6%E5%8F%91%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9AQPS%E3%80%81TPS%E3%80%81RT%E3%80%81%E5%B9%B6%E5%8F%91%E6%95%B0%E3%80%81%E5%90%9E%E5%90%90%E9%87%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 高并发性能指标：QPS、TPS、RT、并发数、吞吐量">Java 性能测试篇之 高并发性能指标：QPS、TPS、RT、并发数、吞吐量</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%20JMH%20%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 JMH 工具类">Java 性能测试篇之 JMH 工具类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E5%AE%89%E5%85%A8%E7%AF%87%E4%B9%8B%20API%20%E6%8E%A5%E5%8F%A3%E9%98%B2%E6%AD%A2%E5%8F%82%E6%95%B0%E7%AF%A1%E6%94%B9%E5%92%8C%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 安全篇之 API 接口防止参数篡改和重放攻击">Java 安全篇之 API 接口防止参数篡改和重放攻击</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java性能测试与安全 "
+           href="/2023/08/28/1%E3%80%81JavaSE/5.Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%AE%89%E5%85%A8/Java%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B%2048%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 性能测试篇之 48张图学会性能监控、压测和调优">Java 性能测试篇之 48张图学会性能监控、压测和调优</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E5%BF%AB%E6%8D%B7%E9%94%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 快捷键">IDEA 快捷键</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 基本使用">IDEA 基本使用</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%20%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IDEA 插件安装">IDEA 插件安装</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/PostMan%20%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostMan 工具的使用">PostMan 工具的使用</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 开发工具 "
+           href="/2023/08/28/6%E3%80%81%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%20%E6%A0%A1%E9%AA%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 自定义注解 校验数据库表中的数据不可重复">Java 优化篇之 自定义注解 校验数据库表中的数据不可重复</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%8E%A5%E5%8F%A3%E5%85%8D%E8%B4%B9%20JSONPlaceholder/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 API 接口免费 JSONPlaceholder">Java 工具篇之 API 接口免费 JSONPlaceholder</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%80%97%E6%97%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 如何优雅的统计代码耗时">Java 工具篇之 如何优雅的统计代码耗时</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B9%8B%20%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%207%20%E4%B8%AA%20JDK%20%E5%91%BD%E4%BB%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行之 不可不知的 7 个 JDK 命令">Java 命令行之 不可不知的 7 个 JDK 命令</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20Window%20%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8%20JAR%20%E7%A8%8B%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 命令行篇之 Window 后台启动 JAR 程序">Java 命令行篇之 Window 后台启动 JAR 程序</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20%E6%8E%8C%E6%8F%A114%E7%A7%8DUML%E5%9B%BE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具篇之 掌握14种UML图">Java 工具篇之 掌握14种UML图</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8B%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 工具类之 自定义工具类">Java 工具类之 自定义工具类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20Bean%20%E4%B9%8B%20DTO%E3%80%81VO%E3%80%81PO%E3%80%81DO%E3%80%81BO%20%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java Bean 之 DTO、VO、PO、DO、BO 类的区别">Java Bean 之 DTO、VO、PO、DO、BO 类的区别</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20Jackson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 Jackson">Java JSON 篇之 Jackson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20Gson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 Gson">Java JSON 篇之 Gson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Curl%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Curl 的使用及命令参数说明">Curl 的使用及命令参数说明</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20JSON%20%E7%AF%87%E4%B9%8B%20FastJson/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java JSON 篇之 FastJson">Java JSON 篇之 FastJson</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Redis backup "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/backup/Redis6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis6">Redis6</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 Redis "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/Redis-%E6%9C%80%E5%85%A8%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis-最全实战">Redis-最全实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 Redis "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/Redis-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis-代码实战">Redis-代码实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.8.14/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.8.14">RabbitMQ-3.8.14</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.7.x/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.7.x">RabbitMQ-3.7.x</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 RabbitMQ "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ-3.8.14-%E5%8D%9A%E5%AE%A2%E7%89%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ-3.8.14-博客版">RabbitMQ-3.8.14-博客版</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 MongoDB "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/MongoDB/MongDB-4.4.2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MongDB-4.4.2">MongDB-4.4.2</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 MongoDB "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/MongoDB/MongDB-4.4.2-%E5%8D%9A%E5%AE%A2%E7%89%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MongDB-4.4.2-博客版">MongDB-4.4.2-博客版</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 中间件 ElasticSearch "
+           href="/2023/08/28/5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6/ElasticSearch/ElasticSearch7.6.x%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch7.6.x实战">ElasticSearch7.6.x实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 虚拟机工具 "
+           href="/2023/08/28/4%E3%80%81Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7/Virtualbox%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE%E6%88%96%E9%85%8D%E7%BD%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Virtualbox网络设置或配置">Virtualbox网络设置或配置</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 虚拟机工具 "
+           href="/2023/08/28/4%E3%80%81Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7/Virtualbox%E5%AE%89%E8%A3%85Centos7%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Virtualbox安装Centos7实战">Virtualbox安装Centos7实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Kubernetes "
+           href="/2023/08/28/4%E3%80%81Linux/Kubernetes/Minikube-k8s/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Minikube-k8s">Minikube-k8s</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Kubernetes "
+           href="/2023/08/28/4%E3%80%81Linux/Kubernetes/k0s%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%9A%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%20Kubernetes%20%E9%9B%86%E7%BE%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="k0s 使用教程：如何快速搭建 Kubernetes 集群">k0s 使用教程：如何快速搭建 Kubernetes 集群</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Nginx "
+           href="/2023/08/28/4%E3%80%81Linux/Nginx/Nginx-1.8.0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Nginx-1.8.0">Nginx-1.8.0</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Docker "
+           href="/2023/08/28/4%E3%80%81Linux/Docker/Docker%E5%88%9D%E7%BA%A7%E5%88%B0%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker初级到实战">Docker初级到实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Docker "
+           href="/2023/08/28/4%E3%80%81Linux/Docker/Docker&Docker-Compose%E5%AE%9E%E6%88%98-%E5%93%88%E5%96%BD%E6%B2%83%E5%BE%B7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker&amp;Docker-Compose实战-哈喽沃德">Docker&amp;Docker-Compose实战-哈喽沃德</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Spring "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E6%B3%A8%E5%85%A5%E7%9A%843%E7%A7%8D%E6%96%B9%E5%BC%8F,%20%E4%B8%BA%E4%BD%95%E5%AE%98%E6%96%B9%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Bean 注入的3种方式, 为何官方建议使用构造器注入">Spring Bean 注入的3种方式, 为何官方建议使用构造器注入</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多数据源事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E6%BA%90%E3%80%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F%E3%80%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 实现动态数据源、多数据源切换方式、多数据事务管理">Spring 实现动态数据源、多数据源切换方式、多数据事务管理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86%E6%B7%B1%E5%85%A5%E4%B8%8E%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring 事务原理深入与分析">Spring 事务原理深入与分析</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringSecurity "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Security/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/JDBC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JDBC">JDBC</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringTransaction "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/Spring%20JDBC%20-%20JdbcTemplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring JDBC - JdbcTemplate">Spring JDBC - JdbcTemplate</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 SpringTransaction 多线程下事务处理 "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/JDBC%E6%89%B9%E5%A4%84%E7%90%86%E5%AE%9E%E7%8E%B0%E6%89%8B%E5%8A%A8%E4%BA%8B%E5%8A%A1%E6%8F%92%E5%85%A51000%E4%B8%87%E6%95%B0%E6%8D%AE%EF%BC%88%E5%8D%95%E7%BA%BF%E7%A8%8B%20&%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JDBC批处理实现手动事务插入1000万数据（单线程 &amp; 多线程）">JDBC批处理实现手动事务插入1000万数据（单线程 &amp; 多线程）</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/SpringData%20JPA%20%E7%B1%BB%E5%9B%BE%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringData JPA 类图及使用方法整理">SpringData JPA 类图及使用方法整理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/SpringData%20JPA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringData JPA">SpringData JPA</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/Spring%20Data%20JPA%20%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring Data JPA 原理与实战">Spring Data JPA 原理与实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringDataJPA "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Data%20JPA/Hibernata%20JPA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hibernata JPA">Hibernata JPA</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringCloudAlibaba "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Cloud%20Alibaba/SpringCloud%20Alibaba/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud Alibaba">SpringCloud Alibaba</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%20-%20%E6%95%B4%E5%90%88H2%E6%95%B0%E6%8D%AE%E5%BA%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 数据库篇 - 整合H2数据库">SpringBoot2.x 数据库篇 - 整合H2数据库</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E9%A1%B9%E7%9B%AE%E7%BB%9F%E4%B8%80%E6%9E%9A%E4%B8%BE%E8%BD%AC%E6%8D%A2%E5%AE%9E%E8%B7%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot2.x 项目统一枚举转换实践">SpringBoot2.x 项目统一枚举转换实践</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot从零开始学">SpringBoot从零开始学</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E4%B9%8BDataSource/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot配置属性之DataSource">SpringBoot配置属性之DataSource</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SprinigBoot%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%8F%8A%E8%BD%AC%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SprinigBoot文章摘要及转载">SprinigBoot文章摘要及转载</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码审查的必要性和最佳实践">代码审查的必要性和最佳实践</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取配置文件之@Value进阶">SpringBoot 2.x 配置文件-读取配置文件之@Value进阶</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取配置文件的N种方式">SpringBoot 2.x 配置文件-读取配置文件的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件的N种方式">SpringBoot 2.x 配置文件-读取 Resources 文件的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%E7%AF%87-%E6%8B%A6%E6%88%AA%E5%99%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E4%B8%8E%E7%9B%91%E5%90%AC%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 切面编程篇-拦截器过滤器与监听器">SpringBoot 2.x 切面编程篇-拦截器过滤器与监听器</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%AE%89%E5%85%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B9%8B%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解大全">SpringBoot 2.x 常用注解大全</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%90%AF%E5%8A%A8%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84N%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 启动时加载初始化的N种方式">SpringBoot 2.x 启动时加载初始化的N种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%8F%8A%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E8%BF%87%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 启动流程及自动装配过程">SpringBoot 2.x 启动流程及自动装配过程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8A%A8%E6%80%81%E8%A3%85%E9%85%8DBean%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 动态装配Bean的三种方式">SpringBoot 2.x 动态装配Bean的三种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-1%20JUnit5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-1 JUnit5">SpringBoot 2.x 单元测试利器-1 JUnit5</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-3%20MockMvc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-3 MockMvc">SpringBoot 2.x 单元测试利器-3 MockMvc</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%88%A9%E5%99%A8-2%20Mockito/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 单元测试利器-2 Mockito">SpringBoot 2.x 单元测试利器-2 Mockito</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%E3%80%81%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0%E3%80%81%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E3%80%81%E7%A7%92%E4%BC%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 分片上传、断点续传、大文件上传、秒传">SpringBoot 2.x 分片上传、断点续传、大文件上传、秒传</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Validation%20%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%EF%BC%88TODO%EF%BC%89/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Validation 参数校验（TODO）">SpringBoot 2.x Validation 参数校验（TODO）</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20WebMvcConfigurer%20%E8%AF%A6%E8%A7%A3%E3%80%90SpringMVC%E3%80%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x WebMvcConfigurer 详解【SpringMVC】">SpringBoot 2.x WebMvcConfigurer 详解【SpringMVC】</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20YML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x YML配置文件详解">SpringBoot 2.x YML配置文件详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%86%E5%B8%83%E5%BC%8F%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 分布式全局唯一ID生成方案">SpringBoot 2.x 分布式全局唯一ID生成方案</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20JWT%20%E6%A6%82%E5%BF%B5%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x JWT 概念篇">SpringBoot 2.x JWT 概念篇</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Jar%20%E5%8C%85%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E3%80%81%E9%87%8D%E5%90%AF%E8%84%9A%E6%9C%AC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Jar 包启动、停止、重启脚本">SpringBoot 2.x Jar 包启动、停止、重启脚本</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Java 实现异步编程的8种方式">SpringBoot 2.x Java 实现异步编程的8种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ConfigurationProperties%E4%BB%A5%E5%8F%8A@NestedConfigurationProperty%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20HTTP%20Content-Type%20%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x HTTP Content-Type 详解">SpringBoot 2.x HTTP Content-Type 详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20HTTP%20Headers%20%E5%A4%B4%E4%BF%A1%E6%81%AF%E8%AF%BB%E5%8F%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x HTTP Headers 头信息读取">SpringBoot 2.x HTTP Headers 头信息读取</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20JWT%20%E5%AE%9E%E6%88%98%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x JWT 实战篇">SpringBoot 2.x JWT 实战篇</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%20%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x  接口幂等性实现">SpringBoot 2.x  接口幂等性实现</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/Spring%20IO%20Platform%EF%BC%9A%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring IO Platform：解决依赖版本冲突">Spring IO Platform：解决依赖版本冲突</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 SpringBoot "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%E7%AF%87-AOP%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 切面编程篇-AOP 的使用及原理">SpringBoot 2.x 切面编程篇-AOP 的使用及原理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/SpringMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Shiro "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务开发 Shiro "
+           href="/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shiro权限实战">Shiro权限实战</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/Spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring">Spring</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE SSM框架 "
+           href="/2023/08/28/2%E3%80%81JavaEE/2%E3%80%81SSM%E6%A1%86%E6%9E%B6/MybatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MybatisPlus">MybatisPlus</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE JavaWeb "
+           href="/2023/08/28/2%E3%80%81JavaEE/1%E3%80%81JavaWeb/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA%20HTTP%20%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="你还在为 HTTP 的这些概念头疼吗">你还在为 HTTP 的这些概念头疼吗</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE JavaWeb "
+           href="/2023/08/28/2%E3%80%81JavaEE/1%E3%80%81JavaWeb/Cookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E7%BB%88%E4%BA%8E%E8%AE%B2%E6%B8%85%E6%A5%9A%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cookie、Session、Token、JWT终于讲清楚了">Cookie、Session、Token、JWT终于讲清楚了</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-%E9%AB%98%E7%BA%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL-高级">MySQL-高级</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL-%E5%88%9D%E7%BA%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL-初级">MySQL-初级</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 _posts 数据库 "
+           href="/2023/08/28/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/H2%20Database/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="H2 Database">H2 Database</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E9%9B%86%E5%90%88List%E7%9A%84%E4%BA%A4%E9%9B%86%E3%80%81%E8%A1%A5%E9%9B%86%E3%80%81%E5%B9%B6%E9%9B%86%E3%80%81%E5%B7%AE%E9%9B%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 集合篇之 获取两个集合List的交集、补集、并集、差集的几种方式">Java 集合篇之 获取两个集合List的交集、补集、并集、差集的几种方式</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20if-else%20%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 if-else 代码优化方案">Java 优化篇之 if-else 代码优化方案</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 动态代理">Java 动态代理</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%9F%BA%E6%9C%AC%E5%8A%9F%E7%AF%87%E4%B9%8B%20for%E3%80%81for-each%E3%80%81forEach()%20%E7%9A%84%20break%E3%80%81continue%E3%80%81return/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 基本功篇之 for、for-each、forEach() 的 break、continue、return">Java 基本功篇之 for、for-each、forEach() 的 break、continue、return</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 日志框架详解">Java 日志框架详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%20%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%89%88%E6%9C%AC%E5%8F%91%E8%A1%8C%E5%8F%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 新特性概述及版本发行史">Java 新特性概述及版本发行史</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20Bean%20%E4%B9%8B%20Record%20%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java Bean 之 Record 类">Java Bean 之 Record 类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaSE Java汇总篇 "
+           href="/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20GZIP%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 优化篇之 GZIP压缩字符串">Java 优化篇之 GZIP压缩字符串</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/Java%20GC%20%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java GC 总结">Java GC 总结</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java9新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%209%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%209%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 9 新特性">Java 9 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20Stream%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 Stream 流">Java 8 新特性之 Stream 流</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20Optional%20%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 Optional 类">Java 8 新特性之 Optional 类</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性">Java 8 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java8新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%20DateTime%20API/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 8 新特性之 DateTime API">Java 8 新特性之 DateTime API</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java18新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2018%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2018%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 18 新特性">Java 18 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java20新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2020%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2020%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 20 新特性">Java 20 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java19新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2019%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2019%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 19 新特性">Java 19 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java17新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2017%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2017%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 17 新特性">Java 17 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java15新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java16新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java13新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2013%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2013%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 13 新特性">Java 13 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java14新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2014%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2014%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 14 新特性">Java 14 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java10新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2010%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2010%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 10 新特性">Java 10 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java11新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java新特性 Java12新特性 "
+           href="/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java基础语法 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/1%E3%80%81Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 面向对象编程">Java 面向对象编程</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java集合类 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/3%E3%80%81Java%20%E9%9B%86%E5%90%88%E7%B1%BB/Java%20%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 类集框架">Java 类集框架</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java常用类库 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/2%E3%80%81Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 常用类库">Java 常用类库</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java多线程 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/5%E3%80%81Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 多线程基础">Java 多线程基础</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 Java反射与注解 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/4%E3%80%81Java%20%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/Java%20%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 反射与注解">Java 反射与注解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 JavaNIO流 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/7%E3%80%81Java%20NIO%20%E6%B5%81/Java%20NIO%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java NIO 流">Java NIO 流</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java基础篇 JavaIO流 "
+           href="/2023/08/28/1%E3%80%81JavaSE/1.Java%20%E5%9F%BA%E7%A1%80%E7%AF%87/6%E3%80%81Java%20IO%20%E6%B5%81/Java%20IO%20%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java IO 流">Java IO 流</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 Java设计模式 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java 设计模式">Java 设计模式</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/7%20%E6%AE%B5%E5%B0%8F%E4%BB%A3%E7%A0%81%EF%BC%8C%E7%8E%A9%E8%BD%ACJava%E7%A8%8B%E5%BA%8F%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B4%A9%E6%BA%83%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="7 段小代码，玩转Java程序常见的崩溃场景">7 段小代码，玩转Java程序常见的崩溃场景</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Java进阶篇 JVM虚拟机 "
+           href="/2023/08/28/1%E3%80%81JavaSE/2.Java%20%E8%BF%9B%E9%98%B6%E7%AF%87/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/JVM%20%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM 虚拟机">JVM 虚拟机</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-1、JavaSE/4.Java 汇总篇/Java 工具篇之 API 接口免费 JSONPlaceholder" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Java 工具篇之 API 接口免费 JSONPlaceholder</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="JavaSE">JavaSE</a> > 
+            
+            <a  data-rel="JavaSE&lt;---&gt;Java汇总篇">Java汇总篇</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-10-18 18:28:56'>2023-08-28 09:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A4%E8%AF%86-JSONPlaceholder"><span class="toc-text">一、认识 JSONPlaceholder</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8E%A5%E5%8F%A3%E7%9B%AE%E5%BD%95%E6%80%BB%E7%BB%93"><span class="toc-text">一、接口目录总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81GET-%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">二、GET 请求数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E7%AB%A0%EF%BC%88%E8%B4%B4%E5%AD%90%EF%BC%89%E6%95%B0%E6%8D%AE"><span class="toc-text">1、获取文章（贴子）数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%8E%B7%E5%8F%96%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE"><span class="toc-text">2、获取评论数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96%E4%B8%93%E8%BE%91%E6%95%B0%E6%8D%AE"><span class="toc-text">3、获取专辑数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%8E%B7%E5%8F%96%E5%BE%85%E5%8A%9E%E4%BA%8B%E5%AE%9C%E6%95%B0%E6%8D%AE"><span class="toc-text">4、获取待办事宜数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE"><span class="toc-text">5、获取用户数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E8%8E%B7%E5%8F%96%E7%85%A7%E7%89%87%E6%95%B0%E6%8D%AE"><span class="toc-text">6、获取照片数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81POST-%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-text">三、POST 请求数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B6%E4%BB%96%E5%85%8D%E8%B4%B9-API-%E6%8E%A5%E5%8F%A3"><span class="toc-text">四、其他免费 API 接口</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、认识-JSONPlaceholder"><a href="#一、认识-JSONPlaceholder" class="headerlink" title="一、认识 JSONPlaceholder"></a>一、认识 JSONPlaceholder</h1><p>官网地址：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/">http://jsonplaceholder.typicode.com/</a></p>
+<p>JSONPlaceholder 是一个提在线 REST API 的网站，我们在开发时可以使用它获取一些假数据、假图片。其返回的数据为 JSON 格式，且同时支持 HTTP 和 HTTPS 这两种请求类型。</p>
+<p>JSONPlaceholder 一共有6种通用资源（Resources）：</p>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th>Data Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts">&#x2F;posts</a></td>
+<td>100 posts</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments">&#x2F;comments</a></td>
+<td>500 comments</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums">&#x2F;albums</a></td>
+<td>100 albums</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos">&#x2F;photos</a></td>
+<td>5000 photos</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos">&#x2F;todos</a></td>
+<td>200 todos</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users">&#x2F;users</a></td>
+<td>10 users</td>
+</tr>
+</tbody></table>
+<p>Routes：All HTTP methods are supported. You can use http or https for your requests.</p>
+<table>
+<thead>
+<tr>
+<th>HTTP Methods</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts">&#x2F;posts</a></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts/1">&#x2F;posts&#x2F;1</a></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts/1/comments">&#x2F;posts&#x2F;1&#x2F;comments</a></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments?postId=1">&#x2F;comments?postId&#x3D;1</a></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>&#x2F;posts</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>&#x2F;posts&#x2F;1</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>&#x2F;posts&#x2F;1</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>&#x2F;posts&#x2F;1</td>
+</tr>
+</tbody></table>
+<p><strong>Note</strong>: see <a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/guide">guide</a> for usage examples.</p>
+<h1 id="一、接口目录总结"><a href="#一、接口目录总结" class="headerlink" title="一、接口目录总结"></a>一、接口目录总结</h1><p>1、帖子接口：</p>
+<ul>
+<li>获取帖子列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts">http://jsonplaceholder.typicode.com/posts</a></li>
+<li>根据帖子ID获取详情：<a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a></li>
+<li>获取某个用户所有的帖子：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts?userId=5">http://jsonplaceholder.typicode.com/posts?userId=5</a></li>
+</ul>
+<p>2、评论接口</p>
+<ul>
+<li>获取评论列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments">http://jsonplaceholder.typicode.com/comments</a></li>
+<li>获取某个帖子的所有评论（两种方式）：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments?postId=4">http://jsonplaceholder.typicode.com/comments?postId=4</a></li>
+<li>获取某个帖子所有的评论（两种方式）：<a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/posts/1/comments">https://jsonplaceholder.typicode.com/posts/1/comments</a></li>
+</ul>
+<p>3、专辑接口：</p>
+<ul>
+<li>获取专辑列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums">http://jsonplaceholder.typicode.com/albums</a></li>
+<li>根据专辑ID获取详情：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums/6">http://jsonplaceholder.typicode.com/albums/6</a></li>
+<li>获取某个用户所有专辑：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums?userId=9">http://jsonplaceholder.typicode.com/albums?userId=9</a></li>
+</ul>
+<p>4、待办事宜接口：</p>
+<ul>
+<li>获取待办事宜列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos">http://jsonplaceholder.typicode.com/todos</a></li>
+<li>根据待办ID获取详情：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos/6">http://jsonplaceholder.typicode.com/todos/6</a></li>
+<li>获取某个用户所有待办事宜：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos?userId=9">http://jsonplaceholder.typicode.com/todos?userId=9</a></li>
+</ul>
+<p>5、用户接口：</p>
+<ul>
+<li>获取用户列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users">http://jsonplaceholder.typicode.com/users</a></li>
+<li>根据用户ID获取详情：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users/5">http://jsonplaceholder.typicode.com/users/5</a></li>
+</ul>
+<p>6、照片接口：</p>
+<ul>
+<li>获取照片列表：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos">http://jsonplaceholder.typicode.com/photos</a></li>
+<li>根据照片ID获取详情：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos/8">http://jsonplaceholder.typicode.com/photos/8</a></li>
+<li>获取某个专辑所有照片：<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos?albumId=5">http://jsonplaceholder.typicode.com/photos?albumId=5</a></li>
+</ul>
+<h1 id="二、GET-请求数据"><a href="#二、GET-请求数据" class="headerlink" title="二、GET 请求数据"></a>二、GET 请求数据</h1><p>PS：GET方式请求可以直接使用浏览器访问。</p>
+<h2 id="1、获取文章（贴子）数据"><a href="#1、获取文章（贴子）数据" class="headerlink" title="1、获取文章（贴子）数据"></a>1、获取文章（贴子）数据</h2><p>（1）使用此地址可以获取到文章列表假数据，共100条，有帖子ID、发贴人ID、标题、内容。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts">http://jsonplaceholder.typicode.com/posts</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+        &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 2,
+        &quot;title&quot;: &quot;qui est esse&quot;,
+        &quot;body&quot;: &quot;est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 3,
+        &quot;title&quot;: &quot;ea molestias quasi exercitationem repellat qui ipsa sit aut&quot;,
+        &quot;body&quot;: &quot;et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 4,
+        &quot;title&quot;: &quot;eum et est occaecati&quot;,
+        &quot;body&quot;: &quot;ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;nesciunt quas odio&quot;,
+        &quot;body&quot;: &quot;repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 6,
+        &quot;title&quot;: &quot;dolorem eum magni eos aperiam quia&quot;,
+        &quot;body&quot;: &quot;ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 7,
+        &quot;title&quot;: &quot;magnam facilis autem&quot;,
+        &quot;body&quot;: &quot;dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 8,
+        &quot;title&quot;: &quot;dolorem dolore est ipsam&quot;,
+        &quot;body&quot;: &quot;dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 9,
+        &quot;title&quot;: &quot;nesciunt iure omnis dolorem tempora et accusantium&quot;,
+        &quot;body&quot;: &quot;consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 10,
+        &quot;title&quot;: &quot;optio molestias id quia eum&quot;,
+        &quot;body&quot;: &quot;quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error&quot;
+    &#125;,
+    // 省略了中间的数据
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 91,
+        &quot;title&quot;: &quot;aut amet sed&quot;,
+        &quot;body&quot;: &quot;libero voluptate eveniet aperiam sed\nsunt placeat suscipit molestias\nsimilique fugit nam natus\nexpedita consequatur consequatur dolores quia eos et placeat&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 92,
+        &quot;title&quot;: &quot;ratione ex tenetur perferendis&quot;,
+        &quot;body&quot;: &quot;aut et excepturi dicta laudantium sint rerum nihil\nlaudantium et at\na neque minima officia et similique libero et\ncommodi voluptate qui&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 93,
+        &quot;title&quot;: &quot;beatae soluta recusandae&quot;,
+        &quot;body&quot;: &quot;dolorem quibusdam ducimus consequuntur dicta aut quo laboriosam\nvoluptatem quis enim recusandae ut sed sunt\nnostrum est odit totam\nsit error sed sunt eveniet provident qui nulla&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 94,
+        &quot;title&quot;: &quot;qui qui voluptates illo iste minima&quot;,
+        &quot;body&quot;: &quot;aspernatur expedita soluta quo ab ut similique\nexpedita dolores amet\nsed temporibus distinctio magnam saepe deleniti\nomnis facilis nam ipsum natus sint similique omnis&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 95,
+        &quot;title&quot;: &quot;id minus libero illum nam ad officiis&quot;,
+        &quot;body&quot;: &quot;earum voluptatem facere provident blanditiis velit laboriosam\npariatur accusamus odio saepe\ncumque dolor qui a dicta ab doloribus consequatur omnis\ncorporis cupiditate eaque assumenda ad nesciunt&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 96,
+        &quot;title&quot;: &quot;quaerat velit veniam amet cupiditate aut numquam ut sequi&quot;,
+        &quot;body&quot;: &quot;in non odio excepturi sint eum\nlabore voluptates vitae quia qui et\ninventore itaque rerum\nveniam non exercitationem delectus aut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 97,
+        &quot;title&quot;: &quot;quas fugiat ut perspiciatis vero provident&quot;,
+        &quot;body&quot;: &quot;eum non blanditiis soluta porro quibusdam voluptas\nvel voluptatem qui placeat dolores qui velit aut\nvel inventore aut cumque culpa explicabo aliquid at\nperspiciatis est et voluptatem dignissimos dolor itaque sit nam&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 98,
+        &quot;title&quot;: &quot;laboriosam dolor voluptates&quot;,
+        &quot;body&quot;: &quot;doloremque ex facilis sit sint culpa\nsoluta assumenda eligendi non ut eius\nsequi ducimus vel quasi\nveritatis est dolores&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 99,
+        &quot;title&quot;: &quot;temporibus sit alias delectus eligendi possimus magni&quot;,
+        &quot;body&quot;: &quot;quo deleniti praesentium dicta non quod\naut est molestias\nmolestias et officia quis nihil\nitaque dolorem quia&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 100,
+        &quot;title&quot;: &quot;at nam consequatur ea labore ea harum&quot;,
+        &quot;body&quot;: &quot;cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut&quot;
+    &#125;
+]
+</code></pre>
+<p>（2）根据传入的贴子 ID，可以得到具体某个贴子的数据，里面同样包含贴子 ID、发贴人 ID、标题、内容。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts/55">http://jsonplaceholder.typicode.com/posts/55</a></li>
+</ul>
+<pre><code class="json">&#123;
+    &quot;userId&quot;: 6,
+    &quot;id&quot;: 55,
+    &quot;title&quot;: &quot;sit vel voluptatem et non libero&quot;,
+    &quot;body&quot;: &quot;debitis excepturi ea perferendis harum libero optio\neos accusamus cum fuga ut sapiente repudiandae\net ut incidunt omnis molestiae\nnihil ut eum odit&quot;
+&#125;
+</code></pre>
+<p>（3）根据发贴人 ID 来查询他发的所有贴子，里面同样包含贴子 ID、发贴人 ID、标题、内容。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts?userId=5">http://jsonplaceholder.typicode.com/posts?userId=5</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 41,
+        &quot;title&quot;: &quot;non est facere&quot;,
+        &quot;body&quot;: &quot;molestias id nostrum\nexcepturi molestiae dolore omnis repellendus quaerat saepe\nconsectetur iste quaerat tenetur asperiores accusamus ex ut\nnam quidem est ducimus sunt debitis saepe&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 42,
+        &quot;title&quot;: &quot;commodi ullam sint et excepturi error explicabo praesentium voluptas&quot;,
+        &quot;body&quot;: &quot;odio fugit voluptatum ducimus earum autem est incidunt voluptatem\nodit reiciendis aliquam sunt sequi nulla dolorem\nnon facere repellendus voluptates quia\nratione harum vitae ut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 43,
+        &quot;title&quot;: &quot;eligendi iste nostrum consequuntur adipisci praesentium sit beatae perferendis&quot;,
+        &quot;body&quot;: &quot;similique fugit est\nillum et dolorum harum et voluptate eaque quidem\nexercitationem quos nam commodi possimus cum odio nihil nulla\ndolorum exercitationem magnam ex et a et distinctio debitis&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 44,
+        &quot;title&quot;: &quot;optio dolor molestias sit&quot;,
+        &quot;body&quot;: &quot;temporibus est consectetur dolore\net libero debitis vel velit laboriosam quia\nipsum quibusdam qui itaque fuga rem aut\nea et iure quam sed maxime ut distinctio quae&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 45,
+        &quot;title&quot;: &quot;ut numquam possimus omnis eius suscipit laudantium iure&quot;,
+        &quot;body&quot;: &quot;est natus reiciendis nihil possimus aut provident\nex et dolor\nrepellat pariatur est\nnobis rerum repellendus dolorem autem&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 46,
+        &quot;title&quot;: &quot;aut quo modi neque nostrum ducimus&quot;,
+        &quot;body&quot;: &quot;voluptatem quisquam iste\nvoluptatibus natus officiis facilis dolorem\nquis quas ipsam\nvel et voluptatum in aliquid&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 47,
+        &quot;title&quot;: &quot;quibusdam cumque rem aut deserunt&quot;,
+        &quot;body&quot;: &quot;voluptatem assumenda ut qui ut cupiditate aut impedit veniam\noccaecati nemo illum voluptatem laudantium\nmolestiae beatae rerum ea iure soluta nostrum\neligendi et voluptate&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 48,
+        &quot;title&quot;: &quot;ut voluptatem illum ea doloribus itaque eos&quot;,
+        &quot;body&quot;: &quot;voluptates quo voluptatem facilis iure occaecati\nvel assumenda rerum officia et\nillum perspiciatis ab deleniti\nlaudantium repellat ad ut et autem reprehenderit&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 49,
+        &quot;title&quot;: &quot;laborum non sunt aut ut assumenda perspiciatis voluptas&quot;,
+        &quot;body&quot;: &quot;inventore ab sint\nnatus fugit id nulla sequi architecto nihil quaerat\neos tenetur in in eum veritatis non\nquibusdam officiis aspernatur cumque aut commodi aut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 5,
+        &quot;id&quot;: 50,
+        &quot;title&quot;: &quot;repellendus qui recusandae incidunt voluptates tenetur qui omnis exercitationem&quot;,
+        &quot;body&quot;: &quot;error suscipit maxime adipisci consequuntur recusandae\nvoluptas eligendi et est et voluptates\nquia distinctio ab amet quaerat molestiae et vitae\nadipisci impedit sequi nesciunt quis consectetur&quot;
+    &#125;
+]
+</code></pre>
+<h2 id="2、获取评论数据"><a href="#2、获取评论数据" class="headerlink" title="2、获取评论数据"></a>2、获取评论数据</h2><p>（1）获取所有文章的所有评论，共500条。每条内容都包含有贴子 ID、评论 ID、评论人姓名、评论人邮箱、评论内容。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments">http://jsonplaceholder.typicode.com/comments</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;postId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;id labore ex et quam laborum&quot;,
+        &quot;email&quot;: &quot;Eliseo@gardner.biz&quot;,
+        &quot;body&quot;: &quot;laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 1,
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;quo vero reiciendis velit similique earum&quot;,
+        &quot;email&quot;: &quot;Jayne_Kuhic@sydney.com&quot;,
+        &quot;body&quot;: &quot;est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 1,
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;odio adipisci rerum aut animi&quot;,
+        &quot;email&quot;: &quot;Nikita@garfield.biz&quot;,
+        &quot;body&quot;: &quot;quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 1,
+        &quot;id&quot;: 4,
+        &quot;name&quot;: &quot;alias odio sit&quot;,
+        &quot;email&quot;: &quot;Lew@alysha.tv&quot;,
+        &quot;body&quot;: &quot;non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 1,
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;vero eaque aliquid doloribus et culpa&quot;,
+        &quot;email&quot;: &quot;Hayden@althea.biz&quot;,
+        &quot;body&quot;: &quot;harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 2,
+        &quot;id&quot;: 6,
+        &quot;name&quot;: &quot;et fugit eligendi deleniti quidem qui sint nihil autem&quot;,
+        &quot;email&quot;: &quot;Presley.Mueller@myrl.com&quot;,
+        &quot;body&quot;: &quot;doloribus at sed quis culpa deserunt consectetur qui praesentium\naccusamus fugiat dicta\nvoluptatem rerum ut voluptate autem\nvoluptatem repellendus aspernatur dolorem in&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 2,
+        &quot;id&quot;: 7,
+        &quot;name&quot;: &quot;repellat consequatur praesentium vel minus molestias voluptatum&quot;,
+        &quot;email&quot;: &quot;Dallas@ole.me&quot;,
+        &quot;body&quot;: &quot;maiores sed dolores similique labore et inventore et\nquasi temporibus esse sunt id et\neos voluptatem aliquam\naliquid ratione corporis molestiae mollitia quia et magnam dolor&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 2,
+        &quot;id&quot;: 8,
+        &quot;name&quot;: &quot;et omnis dolorem&quot;,
+        &quot;email&quot;: &quot;Mallory_Kunze@marie.org&quot;,
+        &quot;body&quot;: &quot;ut voluptatem corrupti velit\nad voluptatem maiores\net nisi velit vero accusamus maiores\nvoluptates quia aliquid ullam eaque&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 2,
+        &quot;id&quot;: 9,
+        &quot;name&quot;: &quot;provident id voluptas&quot;,
+        &quot;email&quot;: &quot;Meghan_Littel@rene.us&quot;,
+        &quot;body&quot;: &quot;sapiente assumenda molestiae atque\nadipisci laborum distinctio aperiam et ab ut omnis\net occaecati aspernatur odit sit rem expedita\nquas enim ipsam minus&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 2,
+        &quot;id&quot;: 10,
+        &quot;name&quot;: &quot;eaque et deleniti atque tenetur ut quo ut&quot;,
+        &quot;email&quot;: &quot;Carmen_Keeling@caroline.name&quot;,
+        &quot;body&quot;: &quot;voluptate iusto quis nobis reprehenderit ipsum amet nulla\nquia quas dolores velit et non\naut quia necessitatibus\nnostrum quaerat nulla et accusamus nisi facilis&quot;
+    &#125;,
+    // 中间省略了许多数据
+    &#123;
+        &quot;postId&quot;: 100,
+        &quot;id&quot;: 496,
+        &quot;name&quot;: &quot;et occaecati asperiores quas voluptas ipsam nostrum&quot;,
+        &quot;email&quot;: &quot;Zola@lizzie.com&quot;,
+        &quot;body&quot;: &quot;neque unde voluptatem iure\nodio excepturi ipsam ad id\nipsa sed expedita error quam\nvoluptatem tempora necessitatibus suscipit culpa veniam porro iste vel&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 100,
+        &quot;id&quot;: 497,
+        &quot;name&quot;: &quot;doloribus dolores ut dolores occaecati&quot;,
+        &quot;email&quot;: &quot;Dolly@mandy.co.uk&quot;,
+        &quot;body&quot;: &quot;non dolor consequatur\nlaboriosam ut deserunt autem odit\nlibero dolore non nesciunt qui\naut est consequatur quo dolorem&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 100,
+        &quot;id&quot;: 498,
+        &quot;name&quot;: &quot;dolores minus aut libero&quot;,
+        &quot;email&quot;: &quot;Davion@eldora.net&quot;,
+        &quot;body&quot;: &quot;aliquam pariatur suscipit fugiat eos sunt\noptio voluptatem eveniet rerum dignissimos\nquia aut beatae\nmodi consequatur qui rerum sint veritatis deserunt est&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 100,
+        &quot;id&quot;: 499,
+        &quot;name&quot;: &quot;excepturi sunt cum a et rerum quo voluptatibus quia&quot;,
+        &quot;email&quot;: &quot;Wilburn_Labadie@araceli.name&quot;,
+        &quot;body&quot;: &quot;et necessitatibus tempora ipsum quaerat inventore est quasi quidem\nea repudiandae laborum omnis ab reprehenderit ut\nratione sit numquam culpa a rem\natque aut et&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 100,
+        &quot;id&quot;: 500,
+        &quot;name&quot;: &quot;ex eaque eum natus&quot;,
+        &quot;email&quot;: &quot;Emma@joanny.ca&quot;,
+        &quot;body&quot;: &quot;perspiciatis quis doloremque\nveniam nisi eos velit sed\nid totam inventore voluptatem laborum et eveniet\naut aut aut maxime quia temporibus ut omnis&quot;
+    &#125;
+]
+</code></pre>
+<p>（2）下面根据帖子 ID 获取指定贴子的评论（有两种方式），里面包含贴子 ID、评论 ID、评论人姓名、评论人邮箱、评论内容。</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/posts/4/comments">http://jsonplaceholder.typicode.com/posts/4/comments</a></li>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/comments?postId=4">http://jsonplaceholder.typicode.com/comments?postId=4</a></li>
+</ol>
+<pre><code class="json">[
+    &#123;
+        &quot;postId&quot;: 4,
+        &quot;id&quot;: 16,
+        &quot;name&quot;: &quot;perferendis temporibus delectus optio ea eum ratione dolorum&quot;,
+        &quot;email&quot;: &quot;Christine@ayana.info&quot;,
+        &quot;body&quot;: &quot;iste ut laborum aliquid velit facere itaque\nquo ut soluta dicta voluptate\nerror tempore aut et\nsequi reiciendis dignissimos expedita consequuntur libero sed fugiat facilis&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 4,
+        &quot;id&quot;: 17,
+        &quot;name&quot;: &quot;eos est animi quis&quot;,
+        &quot;email&quot;: &quot;Preston_Hudson@blaise.tv&quot;,
+        &quot;body&quot;: &quot;consequatur necessitatibus totam sed sit dolorum\nrecusandae quae odio excepturi voluptatum harum voluptas\nquisquam sit ad eveniet delectus\ndoloribus odio qui non labore&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 4,
+        &quot;id&quot;: 18,
+        &quot;name&quot;: &quot;aut et tenetur ducimus illum aut nulla ab&quot;,
+        &quot;email&quot;: &quot;Vincenza_Klocko@albertha.name&quot;,
+        &quot;body&quot;: &quot;veritatis voluptates necessitatibus maiores corrupti\nneque et exercitationem amet sit et\nullam velit sit magnam laborum\nmagni ut molestias&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 4,
+        &quot;id&quot;: 19,
+        &quot;name&quot;: &quot;sed impedit rerum quia et et inventore unde officiis&quot;,
+        &quot;email&quot;: &quot;Madelynn.Gorczany@darion.biz&quot;,
+        &quot;body&quot;: &quot;doloribus est illo sed minima aperiam\nut dignissimos accusantium tempore atque et aut molestiae\nmagni ut accusamus voluptatem quos ut voluptates\nquisquam porro sed architecto ut&quot;
+    &#125;,
+    &#123;
+        &quot;postId&quot;: 4,
+        &quot;id&quot;: 20,
+        &quot;name&quot;: &quot;molestias expedita iste aliquid voluptates&quot;,
+        &quot;email&quot;: &quot;Mariana_Orn@preston.org&quot;,
+        &quot;body&quot;: &quot;qui harum consequatur fugiat\net eligendi perferendis at molestiae commodi ducimus\ndoloremque asperiores numquam qui\nut sit dignissimos reprehenderit tempore&quot;
+    &#125;
+]
+</code></pre>
+<h2 id="3、获取专辑数据"><a href="#3、获取专辑数据" class="headerlink" title="3、获取专辑数据"></a>3、获取专辑数据</h2><p>（1）下面获取所有专辑数据，共 100 条。专辑数据与贴子数据相比就是少了内容项（body）<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums">http://jsonplaceholder.typicode.com/albums</a></p>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;quidem molestiae enim&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 2,
+        &quot;title&quot;: &quot;sunt qui excepturi placeat culpa&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 3,
+        &quot;title&quot;: &quot;omnis laborum odio&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 4,
+        &quot;title&quot;: &quot;non esse culpa molestiae omnis sed optio&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;eaque aut omnis a&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 6,
+        &quot;title&quot;: &quot;natus impedit quibusdam illo est&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 7,
+        &quot;title&quot;: &quot;quibusdam autem aliquid et et quia&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 8,
+        &quot;title&quot;: &quot;qui fuga est a eum&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 9,
+        &quot;title&quot;: &quot;saepe unde necessitatibus rem&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 10,
+        &quot;title&quot;: &quot;distinctio laborum qui&quot;
+    &#125;,
+    // 省略了数据
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 91,
+        &quot;title&quot;: &quot;repellendus praesentium debitis officiis&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 92,
+        &quot;title&quot;: &quot;incidunt et et eligendi assumenda soluta quia recusandae&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 93,
+        &quot;title&quot;: &quot;nisi qui dolores perspiciatis&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 94,
+        &quot;title&quot;: &quot;quisquam a dolores et earum vitae&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 95,
+        &quot;title&quot;: &quot;consectetur vel rerum qui aperiam modi eos aspernatur ipsa&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 96,
+        &quot;title&quot;: &quot;unde et ut molestiae est molestias voluptatem sint&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 97,
+        &quot;title&quot;: &quot;est quod aut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 98,
+        &quot;title&quot;: &quot;omnis quia possimus nesciunt deleniti assumenda sed autem&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 99,
+        &quot;title&quot;: &quot;consectetur ut id impedit dolores sit ad ex aut&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 100,
+        &quot;title&quot;: &quot;enim repellat iste&quot;
+    &#125;
+]
+</code></pre>
+<p>（2）根据 ID 获取指定专辑数据。<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums/6">http://jsonplaceholder.typicode.com/albums/6</a></p>
+<pre><code class="json">&#123;
+    &quot;userId&quot;: 1,
+    &quot;id&quot;: 6,
+    &quot;title&quot;: &quot;natus impedit quibusdam illo est&quot;
+&#125;
+</code></pre>
+<p>（3）根据用户 ID 获取该用户的所有专辑数据。<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/albums?userId=9">http://jsonplaceholder.typicode.com/albums?userId=9</a></p>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 81,
+        &quot;title&quot;: &quot;quibusdam sapiente et&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 82,
+        &quot;title&quot;: &quot;recusandae consequatur vel amet unde&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 83,
+        &quot;title&quot;: &quot;aperiam odio fugiat&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 84,
+        &quot;title&quot;: &quot;est et at eos expedita&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 85,
+        &quot;title&quot;: &quot;qui voluptatem consequatur aut ab quis temporibus praesentium&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 86,
+        &quot;title&quot;: &quot;eligendi mollitia alias aspernatur vel ut iusto&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 87,
+        &quot;title&quot;: &quot;aut aut architecto&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 88,
+        &quot;title&quot;: &quot;quas perspiciatis optio&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 89,
+        &quot;title&quot;: &quot;sit optio id voluptatem est eum et&quot;
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 90,
+        &quot;title&quot;: &quot;est vel dignissimos&quot;
+    &#125;
+]
+</code></pre>
+<h2 id="4、获取待办事宜数据"><a href="#4、获取待办事宜数据" class="headerlink" title="4、获取待办事宜数据"></a>4、获取待办事宜数据</h2><p>（1）下面获取所有待办数据，共 200 条。待办数据特点是除了标题外，还有个布尔类型属性项（completed）表示任务是否完成。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos">http://jsonplaceholder.typicode.com/todos</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;delectus aut autem&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 2,
+        &quot;title&quot;: &quot;quis ut nam facilis et officia qui&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 3,
+        &quot;title&quot;: &quot;fugiat veniam minus&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 4,
+        &quot;title&quot;: &quot;et porro tempora&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;laboriosam mollitia et enim quasi adipisci quia provident illum&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 6,
+        &quot;title&quot;: &quot;qui ullam ratione quibusdam voluptatem quia omnis&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 7,
+        &quot;title&quot;: &quot;illo expedita consequatur quia in&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 8,
+        &quot;title&quot;: &quot;quo adipisci enim quam ut ab&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 9,
+        &quot;title&quot;: &quot;molestiae perspiciatis ipsa&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 10,
+        &quot;title&quot;: &quot;illo est ratione doloremque quia maiores aut&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 11,
+        &quot;title&quot;: &quot;vero rerum temporibus dolor&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 12,
+        &quot;title&quot;: &quot;ipsa repellendus fugit nisi&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 13,
+        &quot;title&quot;: &quot;et doloremque nulla&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 14,
+        &quot;title&quot;: &quot;repellendus sunt dolores architecto voluptatum&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 15,
+        &quot;title&quot;: &quot;ab voluptatum amet voluptas&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 16,
+        &quot;title&quot;: &quot;accusamus eos facilis sint et aut voluptatem&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 17,
+        &quot;title&quot;: &quot;quo laboriosam deleniti aut qui&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 18,
+        &quot;title&quot;: &quot;dolorum est consequatur ea mollitia in culpa&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 19,
+        &quot;title&quot;: &quot;molestiae ipsa aut voluptatibus pariatur dolor nihil&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 20,
+        &quot;title&quot;: &quot;ullam nobis libero sapiente ad optio sint&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    // 省略了数据
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 190,
+        &quot;title&quot;: &quot;accusamus sint iusto et voluptatem exercitationem&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 191,
+        &quot;title&quot;: &quot;temporibus atque distinctio omnis eius impedit tempore molestias pariatur&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 192,
+        &quot;title&quot;: &quot;ut quas possimus exercitationem sint voluptates&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 193,
+        &quot;title&quot;: &quot;rerum debitis voluptatem qui eveniet tempora distinctio a&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 194,
+        &quot;title&quot;: &quot;sed ut vero sit molestiae&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 195,
+        &quot;title&quot;: &quot;rerum ex veniam mollitia voluptatibus pariatur&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 196,
+        &quot;title&quot;: &quot;consequuntur aut ut fugit similique&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 197,
+        &quot;title&quot;: &quot;dignissimos quo nobis earum saepe&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 198,
+        &quot;title&quot;: &quot;quis eius est sint explicabo&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 199,
+        &quot;title&quot;: &quot;numquam repellendus a magnam&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 10,
+        &quot;id&quot;: 200,
+        &quot;title&quot;: &quot;ipsam aperiam voluptates qui&quot;,
+        &quot;completed&quot;: false
+    &#125;
+]
+</code></pre>
+<p>（2）根据 ID 获取指定待办数据。<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos/6">http://jsonplaceholder.typicode.com/todos/6</a></p>
+<pre><code class="json">&#123;
+    &quot;userId&quot;: 1,
+    &quot;id&quot;: 6,
+    &quot;title&quot;: &quot;qui ullam ratione quibusdam voluptatem quia omnis&quot;,
+    &quot;completed&quot;: false
+&#125;
+</code></pre>
+<p>（3）根据用户 ID 获取该用户的所有待办数据。20 条数据。<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/todos?userId=9">http://jsonplaceholder.typicode.com/todos?userId=9</a></p>
+<pre><code class="json">[
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 161,
+        &quot;title&quot;: &quot;ex hic consequuntur earum omnis alias ut occaecati culpa&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 162,
+        &quot;title&quot;: &quot;omnis laboriosam molestias animi sunt dolore&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 163,
+        &quot;title&quot;: &quot;natus corrupti maxime laudantium et voluptatem laboriosam odit&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 164,
+        &quot;title&quot;: &quot;reprehenderit quos aut aut consequatur est sed&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 165,
+        &quot;title&quot;: &quot;fugiat perferendis sed aut quidem&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 166,
+        &quot;title&quot;: &quot;quos quo possimus suscipit minima ut&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 167,
+        &quot;title&quot;: &quot;et quis minus quo a asperiores molestiae&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 168,
+        &quot;title&quot;: &quot;recusandae quia qui sunt libero&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 169,
+        &quot;title&quot;: &quot;ea odio perferendis officiis&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 170,
+        &quot;title&quot;: &quot;quisquam aliquam quia doloribus aut&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 171,
+        &quot;title&quot;: &quot;fugiat aut voluptatibus corrupti deleniti velit iste odio&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 172,
+        &quot;title&quot;: &quot;et provident amet rerum consectetur et voluptatum&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 173,
+        &quot;title&quot;: &quot;harum ad aperiam quis&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 174,
+        &quot;title&quot;: &quot;similique aut quo&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 175,
+        &quot;title&quot;: &quot;laudantium eius officia perferendis provident perspiciatis asperiores&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 176,
+        &quot;title&quot;: &quot;magni soluta corrupti ut maiores rem quidem&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 177,
+        &quot;title&quot;: &quot;et placeat temporibus voluptas est tempora quos quibusdam&quot;,
+        &quot;completed&quot;: false
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 178,
+        &quot;title&quot;: &quot;nesciunt itaque commodi tempore&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 179,
+        &quot;title&quot;: &quot;omnis consequuntur cupiditate impedit itaque ipsam quo&quot;,
+        &quot;completed&quot;: true
+    &#125;,
+    &#123;
+        &quot;userId&quot;: 9,
+        &quot;id&quot;: 180,
+        &quot;title&quot;: &quot;debitis nisi et dolorem repellat et&quot;,
+        &quot;completed&quot;: true
+    &#125;
+]
+</code></pre>
+<h2 id="5、获取用户数据"><a href="#5、获取用户数据" class="headerlink" title="5、获取用户数据"></a>5、获取用户数据</h2><p>（1）下面获取所有用户数据，共 10 条。数据包含姓名、电话、地址等各种用户信息。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users">http://jsonplaceholder.typicode.com/users</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Leanne Graham&quot;,
+        &quot;username&quot;: &quot;Bret&quot;,
+        &quot;email&quot;: &quot;Sincere@april.biz&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Kulas Light&quot;,
+            &quot;suite&quot;: &quot;Apt. 556&quot;,
+            &quot;city&quot;: &quot;Gwenborough&quot;,
+            &quot;zipcode&quot;: &quot;92998-3874&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-37.3159&quot;,
+                &quot;lng&quot;: &quot;81.1496&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;1-770-736-8031 x56442&quot;,
+        &quot;website&quot;: &quot;hildegard.org&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Romaguera-Crona&quot;,
+            &quot;catchPhrase&quot;: &quot;Multi-layered client-server neural-net&quot;,
+            &quot;bs&quot;: &quot;harness real-time e-markets&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Ervin Howell&quot;,
+        &quot;username&quot;: &quot;Antonette&quot;,
+        &quot;email&quot;: &quot;Shanna@melissa.tv&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Victor Plains&quot;,
+            &quot;suite&quot;: &quot;Suite 879&quot;,
+            &quot;city&quot;: &quot;Wisokyburgh&quot;,
+            &quot;zipcode&quot;: &quot;90566-7771&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-43.9509&quot;,
+                &quot;lng&quot;: &quot;-34.4618&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;010-692-6593 x09125&quot;,
+        &quot;website&quot;: &quot;anastasia.net&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Deckow-Crist&quot;,
+            &quot;catchPhrase&quot;: &quot;Proactive didactic contingency&quot;,
+            &quot;bs&quot;: &quot;synergize scalable supply-chains&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Clementine Bauch&quot;,
+        &quot;username&quot;: &quot;Samantha&quot;,
+        &quot;email&quot;: &quot;Nathan@yesenia.net&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Douglas Extension&quot;,
+            &quot;suite&quot;: &quot;Suite 847&quot;,
+            &quot;city&quot;: &quot;McKenziehaven&quot;,
+            &quot;zipcode&quot;: &quot;59590-4157&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-68.6102&quot;,
+                &quot;lng&quot;: &quot;-47.0653&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;1-463-123-4447&quot;,
+        &quot;website&quot;: &quot;ramiro.info&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Romaguera-Jacobson&quot;,
+            &quot;catchPhrase&quot;: &quot;Face to face bifurcated interface&quot;,
+            &quot;bs&quot;: &quot;e-enable strategic applications&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 4,
+        &quot;name&quot;: &quot;Patricia Lebsack&quot;,
+        &quot;username&quot;: &quot;Karianne&quot;,
+        &quot;email&quot;: &quot;Julianne.OConner@kory.org&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Hoeger Mall&quot;,
+            &quot;suite&quot;: &quot;Apt. 692&quot;,
+            &quot;city&quot;: &quot;South Elvis&quot;,
+            &quot;zipcode&quot;: &quot;53919-4257&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;29.4572&quot;,
+                &quot;lng&quot;: &quot;-164.2990&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;493-170-9623 x156&quot;,
+        &quot;website&quot;: &quot;kale.biz&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Robel-Corkery&quot;,
+            &quot;catchPhrase&quot;: &quot;Multi-tiered zero tolerance productivity&quot;,
+            &quot;bs&quot;: &quot;transition cutting-edge web services&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Chelsey Dietrich&quot;,
+        &quot;username&quot;: &quot;Kamren&quot;,
+        &quot;email&quot;: &quot;Lucio_Hettinger@annie.ca&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Skiles Walks&quot;,
+            &quot;suite&quot;: &quot;Suite 351&quot;,
+            &quot;city&quot;: &quot;Roscoeview&quot;,
+            &quot;zipcode&quot;: &quot;33263&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-31.8129&quot;,
+                &quot;lng&quot;: &quot;62.5342&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;(254)954-1289&quot;,
+        &quot;website&quot;: &quot;demarco.info&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Keebler LLC&quot;,
+            &quot;catchPhrase&quot;: &quot;User-centric fault-tolerant solution&quot;,
+            &quot;bs&quot;: &quot;revolutionize end-to-end systems&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 6,
+        &quot;name&quot;: &quot;Mrs. Dennis Schulist&quot;,
+        &quot;username&quot;: &quot;Leopoldo_Corkery&quot;,
+        &quot;email&quot;: &quot;Karley_Dach@jasper.info&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Norberto Crossing&quot;,
+            &quot;suite&quot;: &quot;Apt. 950&quot;,
+            &quot;city&quot;: &quot;South Christy&quot;,
+            &quot;zipcode&quot;: &quot;23505-1337&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-71.4197&quot;,
+                &quot;lng&quot;: &quot;71.7478&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;1-477-935-8478 x6430&quot;,
+        &quot;website&quot;: &quot;ola.org&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Considine-Lockman&quot;,
+            &quot;catchPhrase&quot;: &quot;Synchronised bottom-line interface&quot;,
+            &quot;bs&quot;: &quot;e-enable innovative applications&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 7,
+        &quot;name&quot;: &quot;Kurtis Weissnat&quot;,
+        &quot;username&quot;: &quot;Elwyn.Skiles&quot;,
+        &quot;email&quot;: &quot;Telly.Hoeger@billy.biz&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Rex Trail&quot;,
+            &quot;suite&quot;: &quot;Suite 280&quot;,
+            &quot;city&quot;: &quot;Howemouth&quot;,
+            &quot;zipcode&quot;: &quot;58804-1099&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;24.8918&quot;,
+                &quot;lng&quot;: &quot;21.8984&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;210.067.6132&quot;,
+        &quot;website&quot;: &quot;elvis.io&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Johns Group&quot;,
+            &quot;catchPhrase&quot;: &quot;Configurable multimedia task-force&quot;,
+            &quot;bs&quot;: &quot;generate enterprise e-tailers&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 8,
+        &quot;name&quot;: &quot;Nicholas Runolfsdottir V&quot;,
+        &quot;username&quot;: &quot;Maxime_Nienow&quot;,
+        &quot;email&quot;: &quot;Sherwood@rosamond.me&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Ellsworth Summit&quot;,
+            &quot;suite&quot;: &quot;Suite 729&quot;,
+            &quot;city&quot;: &quot;Aliyaview&quot;,
+            &quot;zipcode&quot;: &quot;45169&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-14.3990&quot;,
+                &quot;lng&quot;: &quot;-120.7677&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;586.493.6943 x140&quot;,
+        &quot;website&quot;: &quot;jacynthe.com&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Abernathy Group&quot;,
+            &quot;catchPhrase&quot;: &quot;Implemented secondary concept&quot;,
+            &quot;bs&quot;: &quot;e-enable extensible e-tailers&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 9,
+        &quot;name&quot;: &quot;Glenna Reichert&quot;,
+        &quot;username&quot;: &quot;Delphine&quot;,
+        &quot;email&quot;: &quot;Chaim_McDermott@dana.io&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Dayna Park&quot;,
+            &quot;suite&quot;: &quot;Suite 449&quot;,
+            &quot;city&quot;: &quot;Bartholomebury&quot;,
+            &quot;zipcode&quot;: &quot;76495-3109&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;24.6463&quot;,
+                &quot;lng&quot;: &quot;-168.8889&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;(775)976-6794 x41206&quot;,
+        &quot;website&quot;: &quot;conrad.com&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Yost and Sons&quot;,
+            &quot;catchPhrase&quot;: &quot;Switchable contextually-based project&quot;,
+            &quot;bs&quot;: &quot;aggregate real-time technologies&quot;
+        &#125;
+    &#125;,
+    &#123;
+        &quot;id&quot;: 10,
+        &quot;name&quot;: &quot;Clementina DuBuque&quot;,
+        &quot;username&quot;: &quot;Moriah.Stanton&quot;,
+        &quot;email&quot;: &quot;Rey.Padberg@karina.biz&quot;,
+        &quot;address&quot;: &#123;
+            &quot;street&quot;: &quot;Kattie Turnpike&quot;,
+            &quot;suite&quot;: &quot;Suite 198&quot;,
+            &quot;city&quot;: &quot;Lebsackbury&quot;,
+            &quot;zipcode&quot;: &quot;31428-2261&quot;,
+            &quot;geo&quot;: &#123;
+                &quot;lat&quot;: &quot;-38.2386&quot;,
+                &quot;lng&quot;: &quot;57.2232&quot;
+            &#125;
+        &#125;,
+        &quot;phone&quot;: &quot;024-648-3804&quot;,
+        &quot;website&quot;: &quot;ambrose.net&quot;,
+        &quot;company&quot;: &#123;
+            &quot;name&quot;: &quot;Hoeger LLC&quot;,
+            &quot;catchPhrase&quot;: &quot;Centralized empowering task-force&quot;,
+            &quot;bs&quot;: &quot;target end-to-end models&quot;
+        &#125;
+    &#125;
+]
+</code></pre>
+<p>（2）根据 ID 获取指定用户数据。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users/5">http://jsonplaceholder.typicode.com/users/5</a></li>
+</ul>
+<pre><code class="json">&#123;
+    &quot;id&quot;: 5,
+    &quot;name&quot;: &quot;Chelsey Dietrich&quot;,
+    &quot;username&quot;: &quot;Kamren&quot;,
+    &quot;email&quot;: &quot;Lucio_Hettinger@annie.ca&quot;,
+    &quot;address&quot;: &#123;
+        &quot;street&quot;: &quot;Skiles Walks&quot;,
+        &quot;suite&quot;: &quot;Suite 351&quot;,
+        &quot;city&quot;: &quot;Roscoeview&quot;,
+        &quot;zipcode&quot;: &quot;33263&quot;,
+        &quot;geo&quot;: &#123;
+            &quot;lat&quot;: &quot;-31.8129&quot;,
+            &quot;lng&quot;: &quot;62.5342&quot;
+        &#125;
+    &#125;,
+    &quot;phone&quot;: &quot;(254)954-1289&quot;,
+    &quot;website&quot;: &quot;demarco.info&quot;,
+    &quot;company&quot;: &#123;
+        &quot;name&quot;: &quot;Keebler LLC&quot;,
+        &quot;catchPhrase&quot;: &quot;User-centric fault-tolerant solution&quot;,
+        &quot;bs&quot;: &quot;revolutionize end-to-end systems&quot;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="6、获取照片数据"><a href="#6、获取照片数据" class="headerlink" title="6、获取照片数据"></a>6、获取照片数据</h2><p>（1）下面获取所有相簿里的所有照片数据，共 5000 条。数据包含照片 ID、相簿 ID、标题、照片原图地址、照片缩略图地址。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos">http://jsonplaceholder.typicode.com/photos</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;albumId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;accusamus beatae ad facilis cum similique qui sunt&quot;,
+        &quot;url&quot;: &quot;https://via.placeholder.com/600/92c952&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://via.placeholder.com/150/92c952&quot;
+    &#125;,
+    //...中间省略了数据
+    &#123;
+        &quot;albumId&quot;: 100,
+        &quot;id&quot;: 5000,
+        &quot;title&quot;: &quot;error quasi sunt cupiditate voluptate ea odit beatae&quot;,
+        &quot;url&quot;: &quot;https://via.placeholder.com/600/6dd9cb&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://via.placeholder.com/150/6dd9cb&quot;
+    &#125;
+]
+</code></pre>
+<p>PS注意：数据里面的两个 url 也是可以访问的，比如缩略图地址访问结果如下。</p>
+<p><img src="https://via.placeholder.com/150/6dd9cb"></p>
+<p>（2）根据 ID 获取指定照片数据。<a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos/8">http://jsonplaceholder.typicode.com/photos/8</a></p>
+<pre><code class="json">&#123;
+    &quot;albumId&quot;: 1,
+    &quot;id&quot;: 8,
+    &quot;title&quot;: &quot;aut porro officiis laborum odit ea laudantium corporis&quot;,
+    &quot;url&quot;: &quot;https://via.placeholder.com/600/54176f&quot;,
+    &quot;thumbnailUrl&quot;: &quot;https://via.placeholder.com/150/54176f&quot;
+&#125;
+</code></pre>
+<p>（3）根据相簿 ID 获取该相簿下所有的照片数据。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/photos?albumId=5">http://jsonplaceholder.typicode.com/photos?albumId=5</a></li>
+</ul>
+<pre><code class="json">[
+    &#123;
+        &quot;albumId&quot;: 5,
+        &quot;id&quot;: 201,
+        &quot;title&quot;: &quot;nesciunt dolorum consequatur ullam tempore accusamus debitis sit&quot;,
+        &quot;url&quot;: &quot;https://via.placeholder.com/600/250289&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://via.placeholder.com/150/250289&quot;
+    &#125;,
+    // ...中间省略了数据
+    &#123;
+        &quot;albumId&quot;: 5,
+        &quot;id&quot;: 250,
+        &quot;title&quot;: &quot;voluptatem repellendus voluptatibus id occaecati ipsam dignissimos officia&quot;,
+        &quot;url&quot;: &quot;https://via.placeholder.com/600/e33ffb&quot;,
+        &quot;thumbnailUrl&quot;: &quot;https://via.placeholder.com/150/e33ffb&quot;
+    &#125;
+]
+</code></pre>
+<h1 id="三、POST-请求数据"><a href="#三、POST-请求数据" class="headerlink" title="三、POST 请求数据"></a>三、POST 请求数据</h1><p>我们可以将数据通过 POST 方式提交到如下地址，它除了会把我们提交的数据返回来，还会在结果中附带个随机的 id 值。</p>
+<ol>
+<li>添加帖子接口请求地址：<a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a></li>
+</ol>
+<pre><code class="bash">$ curl https://jsonplaceholder.typicode.com/posts -H &quot;Content-Type: application/json&quot; -X POST -d &#39;&#123;&quot;name&quot;: &quot;Sam&quot;, &quot;age&quot;:18, &quot;msg&quot;:&quot;OK&quot; &#125;&#39;
+&#123;
+  &quot;name&quot;: &quot;Sam&quot;,
+  &quot;age&quot;: 18,
+  &quot;msg&quot;: &quot;OK&quot;,
+  &quot;id&quot;: 101
+&#125;
+</code></pre>
+<p>请求的request body为：</p>
+<pre><code class="json">&#123;
+    &quot;name&quot;: &quot;Sam&quot;, 
+    &quot;age&quot;:18, 
+    &quot;msg&quot;:&quot;OK&quot; 
+&#125;
+</code></pre>
+<p>返回的response body为：</p>
+<pre><code class="json">&#123;
+    &quot;name&quot;: &quot;Sam&quot;,
+    &quot;age&quot;: 18,
+    &quot;msg&quot;: &quot;OK&quot;,
+    &quot;id&quot;: 101
+&#125;
+</code></pre>
+<h1 id="四、其他免费-API-接口"><a href="#四、其他免费-API-接口" class="headerlink" title="四、其他免费 API 接口"></a>四、其他免费 API 接口</h1><blockquote>
+<p>分享免费api接口：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FEGZm6YJDIOF0cYDZUrVrg">https://mp.weixin.qq.com/s/FEGZm6YJDIOF0cYDZUrVrg</a></p>
+</blockquote>
+<p>一、UomgAPI【稳定、快速、免费的 API 接口服务】：<a target="_blank" rel="noopener" href="https://api.uomg.com/">https://api.uomg.com/</a></p>
+<p>二、极速数据：<a target="_blank" rel="noopener" href="https://www.jisuapi.com/api/?isfree=1">https://www.jisuapi.com/api/?isfree=1</a></p>
+<p>三、小白API接口【稳定、快速、免费的 API 接口服务共收录了 32 个接口项目】：<a target="_blank" rel="noopener" href="https://api.xiaobaibk.com/">https://api.xiaobaibk.com/</a></p>
+<p>四、黑马优购：<a target="_blank" rel="noopener" href="https://www.showdoc.com.cn/128719739414963/2513235043485226">https://www.showdoc.com.cn/128719739414963/2513235043485226</a></p>
+<p>五、网易云音乐API：<a target="_blank" rel="noopener" href="https://binaryify.github.io/NeteaseCloudMusicApi/#/">https://binaryify.github.io/NeteaseCloudMusicApi/#/</a></p>
+<p>六、其他免费接口API：</p>
+<p>1、猫眼电影接口：</p>
+<ul>
+<li>正在热映：<a target="_blank" rel="noopener" href="https://m.maoyan.com/ajax/movieOnInfoLis">https://m.maoyan.com/ajax/movieOnInfoLis</a></li>
+<li>影院：<a target="_blank" rel="noopener" href="https://m.maoyan.com/ajax/filterCinemas?ci=57">https://m.maoyan.com/ajax/filterCinemas?ci=57</a><ul>
+<li>参数：ci ⇒ 城市id</li>
+</ul>
+</li>
+<li>影院详情：<a target="_blank" rel="noopener" href="https://m.maoyan.com/ajax/cinemaDetail?cinemaId=890">https://m.maoyan.com/ajax/cinemaDetail?cinemaId=890</a><ul>
+<li>参数：cinemaId ⇒ 影院id</li>
+</ul>
+</li>
+<li>即将上映：<a target="_blank" rel="noopener" href="https://m.maoyan.com/ajax/comingList?ci=10&token=&limit=10">https://m.maoyan.com/ajax/comingList?ci=10&amp;token=&amp;limit=10</a><ul>
+<li>参数：ci ⇒ 城市id、limit ⇒ 请求几条</li>
+</ul>
+</li>
+<li>电影详情：<a target="_blank" rel="noopener" href="https://m.maoyan.com/ajax/detailmovie?movieId=1203734">https://m.maoyan.com/ajax/detailmovie?movieId=1203734</a></li>
+</ul>
+<p>2、B站视频接口：</p>
+<ul>
+<li>推荐视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/index/ding.json">https://www.bilibili.com/index/ding.json</a></li>
+<li>默认搜索词：<a target="_blank" rel="noopener" href="http://api.bilibili.cn/x/web-interface/search/default">http://api.bilibili.cn/x/web-interface/search/default</a></li>
+<li>搜索热词：<a target="_blank" rel="noopener" href="https://s.search.bilibili.com/main/hotword">https://s.search.bilibili.com/main/hotword</a></li>
+<li>分区视频排行榜：<a target="_blank" rel="noopener" href="https://api.bilibili.com/x/web-interface/ranking">https://api.bilibili.com/x/web-interface/ranking</a></li>
+</ul>
+<p>3、网易新闻接口：</p>
+<ul>
+<li>头条：<a target="_blank" rel="noopener" href="http://c.m.163.com/nc/article/headline/T1348647853363/0-40.html">http://c.m.163.com/nc/article/headline/T1348647853363/0-40.html</a></li>
+<li>精选：<a target="_blank" rel="noopener" href="http://c.3g.163.com/nc/article/list/T1467284926140/0-20.html">http://c.3g.163.com/nc/article/list/T1467284926140/0-20.html</a></li>
+<li>娱乐：<a target="_blank" rel="noopener" href="http://c.3g.163.com/nc/article/list/T1348648517839/0-20.html">http://c.3g.163.com/nc/article/list/T1348648517839/0-20.html</a></li>
+<li>汽车：<a target="_blank" rel="noopener" href="http://c.m.163.com/nc/auto/list/5bmz6aG25bGx/0-20.html">http://c.m.163.com/nc/auto/list/5bmz6aG25bGx/0-20.html</a></li>
+<li>新闻：<a target="_blank" rel="noopener" href="http://c.m.163.com/nc/auto/list/6YOR5bee/0-20.html">http://c.m.163.com/nc/auto/list/6YOR5bee/0-20.html</a></li>
+<li>新闻：<a target="_blank" rel="noopener" href="http://c.m.163.com/nc/auto/list/6YOR5bee/20-20.html">http://c.m.163.com/nc/auto/list/6YOR5bee/20-20.html</a></li>
+<li>运动：<a target="_blank" rel="noopener" href="http://c.3g.163.com/nc/article/list/T1348649079062/0-20.html">http://c.3g.163.com/nc/article/list/T1348649079062/0-20.html</a></li>
+<li>视频：<a target="_blank" rel="noopener" href="http://c.m.163.com/recommend/getChanListNews?channel=T1457068979049&size=20">http://c.m.163.com/recommend/getChanListNews?channel=T1457068979049&amp;size=20</a></li>
+</ul>
+<p>3、360图片接口：</p>
+<ul>
+<li>获取某类壁纸：<a target="_blank" rel="noopener" href="http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=9&start=0&count=99">http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&amp;a=getAppsByCategory&amp;cid=9&amp;start=0&amp;count=99</a><ul>
+<li>total：返回数据数量</li>
+<li>data：返回的数据</li>
+<li>pid：</li>
+<li>cid：类别ID</li>
+<li>url：壁纸地址</li>
+<li>fav_total：收藏数</li>
+</ul>
+</li>
+<li>搜索壁纸：<a target="_blank" rel="noopener" href="http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=search&start=0&count=99&kw=by&start=0&count=99">http://wallpaper.apc.360.cn/index.php?c=WallPaper&amp;a=search&amp;start=0&amp;count=99&amp;kw=by&amp;start=0&amp;count=99</a><ul>
+<li>kw：关键字</li>
+<li>start：跳过的记录数</li>
+<li>count：返回的数量</li>
+</ul>
+</li>
+<li>获取今日搜索热词：<a target="_blank" rel="noopener" href="http://openbox.mobilem.360.cn/html/api/wallpaperhot.html">http://openbox.mobilem.360.cn/html/api/wallpaperhot.html</a></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 8629303@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017-2024 Sam
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 18px 3px 15px 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
