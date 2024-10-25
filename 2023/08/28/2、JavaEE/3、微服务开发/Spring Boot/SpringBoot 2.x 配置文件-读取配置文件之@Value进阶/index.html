@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SpringBoot 2.x 配置文件-读取配置文件之@Value进阶 | Hexo</title>
+  <title>SpringBoot 2.x 配置文件-读取配置文件之@Value进阶 | Sam Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="SpringBoot 2.x 配置文件-读取配置文件之@Value进阶 | Hexo">
+  <meta name="description" content="SpringBoot 2.x 配置文件-读取配置文件之@Value进阶 | Sam Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
 <meta property="og:url" content="https://8629303.github.io/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Sam Blog">
 <meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
-<meta property="article:modified_time" content="2024-10-22T03:50:18.319Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-10-25T10:00:36.010Z">
+<meta property="article:author" content="Sam Liu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="icon" href="/img/avatar.jpg">
+<link rel="icon" href="/img/my-avatar.jpg">
 
 <link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -61,53 +61,19 @@
         <a href="/blog/"
    class="avatar_target">
     <img class="avatar"
-         src="/blog/img/avatar.jpg"/>
+         src="/blog/img/my-avatar.jpg"/>
 </a>
 <div class="author">
-    <span>John Doe</span>
+    <span>Sam Liu</span>
 </div>
 
 <div class="icon">
     
-        
-            <a title="github"
-               href="https://github.com/8629303"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-github"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="email"
-               href="mailto:8629303@qq.com"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-email"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="qq"
-               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-qq"></use>
-                    </svg>
-                
-            </a>
-        
-    
 </div>
 
 
+
+    <a class="more-menus">更多菜单</a>
 
 
 
@@ -115,221 +81,10 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(172)</small>
+                <small>(183)</small>
             
         </div>
     </li>
-    
-        
-            
-                
-    <li>
-        <div data-rel="数据库">
-            
-            数据库
-            <small>(5)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="开发工具">
-            <i class="fold iconfont icon-right"></i>
-            开发工具
-            <small>(16)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="开发工具&lt;---&gt;Maven">
-            
-            Maven
-            <small>(8)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="面试篇">
-            
-            面试篇
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="中间件">
-            <i class="fold iconfont icon-right"></i>
-            中间件
-            <small>(9)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;ElasticSearch">
-            
-            ElasticSearch
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;MongoDB">
-            
-            MongoDB
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;RabbitMQ">
-            
-            RabbitMQ
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;Redis">
-            
-            Redis
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="JavaEE">
-            <i class="fold iconfont icon-right"></i>
-            JavaEE
-            <small>(72)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;微服务开发">
-            
-            微服务开发
-            <small>(66)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
-            
-            JavaWeb
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;SSM框架">
-            
-            SSM框架
-            <small>(4)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
     
         
             
@@ -407,9 +162,131 @@
     
         
             
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(71)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;微服务开发">
+            
+            微服务开发
+            <small>(65)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
         
     
         
+            
+                
+    <li>
+        <div data-rel="数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(9)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
             
         
     
@@ -478,6 +355,129 @@
     
         
             
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端框架">
+            <i class="fold iconfont icon-right"></i>
+            前端框架
+            <small>(10)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端框架&lt;---&gt;前端入门">
+            
+            前端入门
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
         
     
         
@@ -507,6 +507,11 @@
             
             
             
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/8629303">GitHub</a>
+        
     </div>
     <div>
         
@@ -520,7 +525,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="172">
+<input type="hidden" id="yelog_site_posts_number" value="183">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -763,6 +768,24 @@
         </a>
         
         
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/06/20/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程">VS Code开发工具的使用教程</span>
+            <span class="post-date" title="2024-06-20 14:04:02">2024/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/05/03/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程-1">VS Code开发工具的使用教程-1</span>
+            <span class="post-date" title="2024-05-03 17:11:49">2024/05/03</span>
+        </a>
+        
+        
         <a  class="全部文章 JavaSE Java汇总篇 "
            href="/blog/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
            data-tag=""
@@ -787,6 +810,15 @@
            data-author="" >
             <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
             <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/04/15/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="参考文献 &amp; 鸣谢">参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-04-15 18:01:47">2024/04/15</span>
         </a>
         
         
@@ -817,6 +849,15 @@
         </a>
         
         
+        <a  class="全部文章 "
+           href="/blog/2023/11/29/MarkdownTools/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MarkdownTools">MarkdownTools</span>
+            <span class="post-date" title="2023-11-29 15:02:34">2023/11/29</span>
+        </a>
+        
+        
         <a  class="全部文章 数据库 "
            href="/blog/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
            data-tag=""
@@ -832,6 +873,15 @@
            data-author="" >
             <span class="post-title" title="Mybatis">Mybatis</span>
             <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/2023/08/28/Markdown/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown">Markdown</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
@@ -971,19 +1021,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1196,19 +1246,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1223,19 +1273,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1412,19 +1462,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1448,6 +1498,15 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
            data-tag=""
            data-author="" >
@@ -1461,15 +1520,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1592,15 +1642,6 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
@@ -1610,10 +1651,10 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1623,6 +1664,15 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1686,15 +1736,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringMVC">SpringMVC</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1772,19 +1813,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1808,19 +1849,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1970,19 +2011,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2015,19 +2056,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2121,6 +2162,69 @@
             <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
         </a>
         
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome 浏览器开发者工具使用技巧总结">Chrome 浏览器开发者工具使用技巧总结</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/HTML5%20%E6%A0%87%E7%AD%BE%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HTML5 标签大全">HTML5 标签大全</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/3.JavaScript%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3.JavaScript详解">3.JavaScript详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/2.CSS3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.CSS3详解">2.CSS3详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue2&Vue3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2&amp;Vue3">Vue2&amp;Vue3</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/0.%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="0.前端知识体系">0.前端知识体系</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/1.HTML5%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.HTML5详解">1.HTML5详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
         <div id="no-item-tips">
 
         </div>
@@ -2161,7 +2265,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-10-22 11:50:18'>2023-08-28 09:23</time>
+            发布时间 : <time class="date" title='最后更新: 2024-10-25 18:00:36'>2023-08-28 09:23</time>
         
     </div>
     <div class="article-meta">
@@ -2240,7 +2344,7 @@ public class MyConfig &#123;
 <p>配置文件中的系统属性名用 <strong>驼峰标识</strong> 或 <strong>小写字母加中划线的组合</strong>，Spring都能找到配置类中的属性名userName进行赋值。由此可见，配置文件中的系统属性名，可以跟配置类中的属性名不一样。不过，有个前提，前缀susan.test必须相同。</p>
 <p>那么，@Value注解中定义的系统属性名也可以不一样吗？</p>
 <p>答案：不能。如果不一样，启动项目时会直接报错。</p>
-<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309811.png">此外，如果只在@Value注解中指定了系统属性名，但实际在配置文件中没有配置它，也会报跟上面一样的错。</p>
+<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538200.png" alt="图片">此外，如果只在@Value注解中指定了系统属性名，但实际在配置文件中没有配置它，也会报跟上面一样的错。</p>
 <p>所以，**@Value注解中指定的系统属性名，必须跟配置文件中的相同。**</p>
 <h2 id="四、乱码问题"><a href="#四、乱码问题" class="headerlink" title="四、乱码问题"></a>四、乱码问题</h2><p>不知道细心的小伙伴们有没有发现，我配置的属性值：<code>张三</code>，其实是<code>转义</code>过的。</p>
 <pre><code class="properties">susan.test.userName=\u5f20\u4e09
@@ -2254,7 +2358,7 @@ public class MyConfig &#123;
 </blockquote>
 <p>what？为什么会出现乱码？</p>
 <p>答：在SpringBoot的<strong>CharacterReader</strong>类中，默认的编码格式是<strong>ISO-8859-1</strong>，该类负责<code>.properties</code>文件中系统属性的读取。如果系统属性包含中文字符，就会出现乱码。</p>
-<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309812.png"></p>
+<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538201.png" alt="图片"></p>
 <p>那么，如何解决乱码问题呢？</p>
 <p>目前主要有如下三种方案：</p>
 <ol>
@@ -2289,7 +2393,7 @@ public class UserService &#123;
 <p>在这里顺便告诉你一个小秘密：如果你使用的是<code>.yml</code>或<code>.yaml</code>格式的配置文件，并不会出现中文乱码问题。</p>
 <p>这又是为什么？</p>
 <p>因为<code>.yml</code>或<code>.yaml</code>格式的配置文件，最终会使用<strong>UnicodeReader</strong>类进行解析，它的init方法中，首先读取BOM文件头信息，如果头信息中有UTF8、UTF16BE、UTF16LE，就采用对应的编码，如果没有，则采用默认UTF8编码。</p>
-<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309813.png"></p>
+<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538202.png" alt="图片"></p>
 <blockquote>
 <p>需要注意的是：乱码问题一般出现在本地环境，因为本地直接读取的.properties配置文件。在dev、test、生产等环境，如果从zookeeper、apollo、nacos等配置中心中获取系统参数值，走的是另外的逻辑，并不会出现乱码问题。</p>
 </blockquote>
@@ -2422,7 +2526,7 @@ private int[] array;
 <p>顺便说一下，定义数组的时候，里面还是有挺多门道的。比如上面列子中，我的数据是：1,2,3,4,5。</p>
 <p>如果我们把数组定义成：short、int、long、char、string类型，Spring是可以正常注入属性值的。</p>
 <p>但如果把数组定义成：float、double类型，启动项目时就会直接报错。</p>
-<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309814.png"></p>
+<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538203.png" alt="图片"></p>
 <p>小伙伴们，下巴惊掉了没？</p>
 <p>按理说，1,2,3,4,5用float、double是能够表示的呀，为什么会报错？</p>
 <p>如果使用int的包装类，比如：</p>
@@ -2448,7 +2552,7 @@ susan.test.list[2]=12
 susan.test.list[3]=13
 </code></pre>
 <p>当你满怀希望的启动项目，准备使用这个功能的时候，却发现竟然报错了。</p>
-<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309815.png"></p>
+<p><img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538204.png" alt="图片"></p>
 <p>看来@Value不支持这种直接的List注入。那么，如何解决这个问题呢？</p>
 <p>有人说用@ConfigurationProperties。需要定义一个MyConfig类：</p>
 <pre><code class="java">@Data
@@ -2499,15 +2603,15 @@ private Set&lt;String&gt; set;
 <pre><code class="java">@Value(&quot;#&#123;&#39;$&#123;susan.test.set:&#125;&#39;.split(&#39;,&#39;)&#125;&quot;)
 private Set&lt;String&gt; set;
 </code></pre>
-<p>结果却跟想象中不太一样：<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309816.png">Set集合怎么不是空的，而是包含了一个空字符串的集合？</p>
-<p>好吧，那我在:号后加null，总可以了吧？<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309817.png">Set集合也不是空的，而是包含了一个”null”字符串的集合。</p>
+<p>结果却跟想象中不太一样：<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538205.png" alt="图片">Set集合怎么不是空的，而是包含了一个空字符串的集合？</p>
+<p>好吧，那我在:号后加null，总可以了吧？<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538206.png" alt="图片">Set集合也不是空的，而是包含了一个”null”字符串的集合。</p>
 <p>这也不行，那也不行，该如何是好？</p>
 <p>答：使用EL表达式的<code>empty</code>方法。</p>
 <p>具体代码如下：</p>
 <pre><code class="java">@Value(&quot;#&#123;&#39;$&#123;susan.test.set:&#125;&#39;.empty ? null : &#39;$&#123;susan.test.set:&#125;&#39;.split(&#39;,&#39;)&#125;&quot;)
 private Set&lt;String&gt; set;
 </code></pre>
-<p>运行之后，结果对了：<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241017215309818.png"></p>
+<p>运行之后，结果对了：<img src="/blog/SpringBoot-2.x-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B9%8B@Value%E8%BF%9B%E9%98%B6.assets/image-20241025145538207.png" alt="图片"></p>
 <p>其实List也有类似的问题，也能使用该方法解决问题。</p>
 <blockquote>
 <p>在这里温馨的提醒一下，该判断的表达式比较复杂，自己手写非常容易写错，建议复制粘贴之后根据实际需求改改。</p>
@@ -3003,6 +3107,18 @@ private Resource demoFile;
 
 
 
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/8629303">GitHub</a>
+    
+</div>
 
 
 </html>

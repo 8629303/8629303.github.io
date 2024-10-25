@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Java 性能测试篇之 48张图学会性能监控、压测和调优 | Hexo</title>
+  <title>Java 性能测试篇之 48张图学会性能监控、压测和调优 | Sam Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Java 性能测试篇之 48张图学会性能监控、压测和调优 | Hexo">
+  <meta name="description" content="Java 性能测试篇之 48张图学会性能监控、压测和调优 | Sam Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
 <meta property="og:url" content="https://8629303.github.io/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Sam Blog">
 <meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
-<meta property="article:modified_time" content="2024-10-22T03:50:18.319Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-10-25T10:00:36.010Z">
+<meta property="article:author" content="Sam Liu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="icon" href="/img/avatar.jpg">
+<link rel="icon" href="/img/my-avatar.jpg">
 
 <link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -61,53 +61,19 @@
         <a href="/blog/"
    class="avatar_target">
     <img class="avatar"
-         src="/blog/img/avatar.jpg"/>
+         src="/blog/img/my-avatar.jpg"/>
 </a>
 <div class="author">
-    <span>John Doe</span>
+    <span>Sam Liu</span>
 </div>
 
 <div class="icon">
     
-        
-            <a title="github"
-               href="https://github.com/8629303"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-github"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="email"
-               href="mailto:8629303@qq.com"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-email"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="qq"
-               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-qq"></use>
-                    </svg>
-                
-            </a>
-        
-    
 </div>
 
 
+
+    <a class="more-menus">更多菜单</a>
 
 
 
@@ -115,221 +81,10 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(172)</small>
+                <small>(183)</small>
             
         </div>
     </li>
-    
-        
-            
-                
-    <li>
-        <div data-rel="数据库">
-            
-            数据库
-            <small>(5)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="开发工具">
-            <i class="fold iconfont icon-right"></i>
-            开发工具
-            <small>(16)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="开发工具&lt;---&gt;Maven">
-            
-            Maven
-            <small>(8)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="面试篇">
-            
-            面试篇
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="中间件">
-            <i class="fold iconfont icon-right"></i>
-            中间件
-            <small>(9)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;ElasticSearch">
-            
-            ElasticSearch
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;MongoDB">
-            
-            MongoDB
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;RabbitMQ">
-            
-            RabbitMQ
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;Redis">
-            
-            Redis
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="JavaEE">
-            <i class="fold iconfont icon-right"></i>
-            JavaEE
-            <small>(72)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;微服务开发">
-            
-            微服务开发
-            <small>(66)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
-            
-            JavaWeb
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;SSM框架">
-            
-            SSM框架
-            <small>(4)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
     
         
             
@@ -407,9 +162,131 @@
     
         
             
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(71)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;微服务开发">
+            
+            微服务开发
+            <small>(65)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
         
     
         
+            
+                
+    <li>
+        <div data-rel="数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(9)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
             
         
     
@@ -478,6 +355,129 @@
     
         
             
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端框架">
+            <i class="fold iconfont icon-right"></i>
+            前端框架
+            <small>(10)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端框架&lt;---&gt;前端入门">
+            
+            前端入门
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
         
     
         
@@ -507,6 +507,11 @@
             
             
             
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/8629303">GitHub</a>
+        
     </div>
     <div>
         
@@ -520,7 +525,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="172">
+<input type="hidden" id="yelog_site_posts_number" value="183">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -763,6 +768,24 @@
         </a>
         
         
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/06/20/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程">VS Code开发工具的使用教程</span>
+            <span class="post-date" title="2024-06-20 14:04:02">2024/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/05/03/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程-1">VS Code开发工具的使用教程-1</span>
+            <span class="post-date" title="2024-05-03 17:11:49">2024/05/03</span>
+        </a>
+        
+        
         <a  class="全部文章 JavaSE Java汇总篇 "
            href="/blog/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
            data-tag=""
@@ -787,6 +810,15 @@
            data-author="" >
             <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
             <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/04/15/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="参考文献 &amp; 鸣谢">参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-04-15 18:01:47">2024/04/15</span>
         </a>
         
         
@@ -817,6 +849,15 @@
         </a>
         
         
+        <a  class="全部文章 "
+           href="/blog/2023/11/29/MarkdownTools/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MarkdownTools">MarkdownTools</span>
+            <span class="post-date" title="2023-11-29 15:02:34">2023/11/29</span>
+        </a>
+        
+        
         <a  class="全部文章 数据库 "
            href="/blog/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
            data-tag=""
@@ -832,6 +873,15 @@
            data-author="" >
             <span class="post-title" title="Mybatis">Mybatis</span>
             <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/2023/08/28/Markdown/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown">Markdown</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
@@ -971,19 +1021,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1196,19 +1246,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1223,19 +1273,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1412,19 +1462,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1448,6 +1498,15 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
            data-tag=""
            data-author="" >
@@ -1461,15 +1520,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1592,15 +1642,6 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
@@ -1610,10 +1651,10 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1623,6 +1664,15 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1686,15 +1736,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringMVC">SpringMVC</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1772,19 +1813,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1808,19 +1849,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1970,19 +2011,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2015,19 +2056,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2121,6 +2162,69 @@
             <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
         </a>
         
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome 浏览器开发者工具使用技巧总结">Chrome 浏览器开发者工具使用技巧总结</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/HTML5%20%E6%A0%87%E7%AD%BE%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HTML5 标签大全">HTML5 标签大全</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/3.JavaScript%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3.JavaScript详解">3.JavaScript详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/2.CSS3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.CSS3详解">2.CSS3详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue2&Vue3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2&amp;Vue3">Vue2&amp;Vue3</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/0.%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="0.前端知识体系">0.前端知识体系</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/1.HTML5%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.HTML5详解">1.HTML5详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
         <div id="no-item-tips">
 
         </div>
@@ -2161,7 +2265,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-10-22 11:50:18'>2023-08-28 09:23</time>
+            发布时间 : <time class="date" title='最后更新: 2024-10-25 18:00:36'>2023-08-28 09:23</time>
         
     </div>
     <div class="article-meta">
@@ -2202,7 +2306,7 @@
         <blockquote>
 <p>作者：Java中文社群；来源：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IWthSkypENdnJmDitAy2Aw">https://mp.weixin.qq.com/s/IWthSkypENdnJmDitAy2Aw</a></p>
 </blockquote>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310398.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539362.png" alt="图片"></p>
 <h2 id="一、何为压力测试"><a href="#一、何为压力测试" class="headerlink" title="一、何为压力测试"></a>一、何为压力测试</h2><h3 id="1、大白话解释"><a href="#1、大白话解释" class="headerlink" title="1、大白话解释"></a>1、大白话解释</h3><ul>
 <li>性能压测是什么：就是考察当前<code>软件</code>和<code>硬件</code>环境下，系统所能承受的<code>最大负荷</code>，并帮助找出系统的<code>瓶颈</code>所在。</li>
 <li>性能压测的目的：为了系统在线上的<code>处理能力</code>和<code>稳定性</code>维持在一个<code>标准范围</code>内，做到知己知彼，百战不殆。还可以发现内存泄漏、并发与同步的问题。</li>
@@ -2225,23 +2329,23 @@
 <li>下载和安装 Jmeter 工具：下载地址：<a target="_blank" rel="noopener" href="https://jmeter.apache.org/download_jmeter.cgi">https://jmeter.apache.org/download_jmeter.cgi</a></li>
 </ul>
 <p>我下载的版本是 apache-jmeter-5.3</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310399.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539363.png" alt="图片"></p>
 <ul>
 <li>运行 JMeter 程序：打开批处理文件：\apache-jmeter-5.3\bin\jmeter.bat。如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310400.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539364.png" alt="图片"></p>
 <ul>
 <li>添加线程组，如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310401.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539365.png" alt="图片"></p>
 <ul>
 <li>1s 内启动 200 个线程，循环次数 100 次。2 w 个请求。如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310402.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539366.png" alt="图片"></p>
 <ul>
 <li>测试 HTTP 请求，如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310403.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539367.png" alt="图片"></p>
 <p>配置要测试的协议、服务器地址、端口号。配置信息如下：</p>
 <ul>
 <li><p>协议：使用 http 协议。</p>
@@ -2252,26 +2356,26 @@
 </li>
 </ul>
 <p>如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310404.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539368.png" alt="图片"></p>
 <ul>
 <li>添加查看结果树、汇总报告和聚合报告。如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310405.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539369.png" alt="图片"></p>
 <ul>
 <li>开始压力测试：点击播放按钮就开始启动了。注意启动之前需要先设置线程组的参数配置和 HTTP 请求的配置。如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310406.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539370.png" alt="图片"></p>
 <ul>
 <li>查看每个请求结果，如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310407.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539371.png" alt="图片"></p>
 <ul>
 <li><p>查看汇总报告。</p>
 <p>主要关心平均值和吞吐量。</p>
 <p>200 个线程，每个线程调用 100 次，总共 2 w 次，可以看到下图中表格中的样本列也是 2 w，请求所耗费的时间是 151 ms，吞吐量是 880 个请求每秒。如下图所示：</p>
 </li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310408.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539372.png" alt="图片"></p>
 <ul>
 <li><p>查看聚合报告。</p>
 <ul>
@@ -2289,41 +2393,41 @@
 </li>
 </ul>
 <p>如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310409.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539373.png" alt="图片"></p>
 <ul>
 <li>查看汇总图：查看汇总图时，需要先勾选想要查看的信息，如下图所示：</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310410.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539374.png" alt="图片"></p>
 <p>然后查看图形汇总：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310411.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539375.png" alt="图片"></p>
 <p>可以看到勾选的几列在图表中是用不同颜色表示的，比如绿色的柱状条就是 90 % 百分位。</p>
 <p>我们来测试下 PassJava（佳必过）的管理后台的性能，吞吐量接近 2000&#x2F;s。如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310412.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539376.png" alt="图片"></p>
 <h2 id="三、性能监控之-jconsole"><a href="#三、性能监控之-jconsole" class="headerlink" title="三、性能监控之 jconsole"></a>三、性能监控之 jconsole</h2><p>jconsole 和 jvisualvm 是 Java JDK 的两个小工具，用来监控内存泄漏、跟踪垃圾回收、执行时的内存情况、对 CPU 进行分析、线程的分析。都可以通过命令行启动，而且可以监控本地和远程应用。而 jvisualvm 是升级版的 jconsole。我们先来看下 jconsole 的使用。</p>
 <p>首先用 cmd 命令行的方式启动 jconsole。</p>
-<h3 id="1、启动-jconsole"><a href="#1、启动-jconsole" class="headerlink" title="1、启动 jconsole"></a>1、启动 jconsole</h3><p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310413.png"></p>
+<h3 id="1、启动-jconsole"><a href="#1、启动-jconsole" class="headerlink" title="1、启动 jconsole"></a>1、启动 jconsole</h3><p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539377.png" alt="图片"></p>
 <h3 id="2、选择监控哪个应用"><a href="#2、选择监控哪个应用" class="headerlink" title="2、选择监控哪个应用"></a>2、选择监控哪个应用</h3><p>然后选择 passjava 项目的 question 服务。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310414.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539378.png" alt="图片"></p>
 <p>对应的就是下面这个微服务：passjava-question。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310415.png">对应 passjava-question 微服务</p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539379.png" alt="图片">对应 passjava-question 微服务</p>
 <h3 id="3、概览"><a href="#3、概览" class="headerlink" title="3、概览"></a>3、概览</h3><p>从监控界面上有 6 个菜单，首先看到的是概览功能，上面有堆内存使用量、线程数、类的使用情况、CPU 占用率，都是用趋势图来表示的，能很方便的看出当前性能的概览。注意：这些监控都是实时的。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310416.png">概览</p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539380.png" alt="图片">概览</p>
 <h3 id="4、内存"><a href="#4、内存" class="headerlink" title="4、内存"></a>4、内存</h3><p>下面是内存的使用情况，可以从下图中看到有个下拉框，里面可以选择不同的内存维度，然后下面的图标和柱状图也会跟着选择的维度而展示不同。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310417.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539381.png" alt="图片"></p>
 <h3 id="5、线程"><a href="#5、线程" class="headerlink" title="5、线程"></a>5、线程</h3><p>下面是线程的使用情况，可以看到线程峰值和活动线程的总数量，目前看到的峰值是59，活动线程数是 57。下半部分可以看到具体是哪些线程，以及线程的堆栈信息，非常详细。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310418.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539382.png" alt="图片"></p>
 <h3 id="6、类"><a href="#6、类" class="headerlink" title="6、类"></a>6、类</h3><p>下面是类的加载和卸载情况，已加载类总数是 10679，而已卸载的类是 1 个，所以当前已加装当前类的总数是 10679 - 1 &#x3D; 10678 个。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310419.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539383.png" alt="图片"></p>
 <h3 id="7、VM-概要"><a href="#7、VM-概要" class="headerlink" title="7、VM 概要"></a>7、VM 概要</h3><p>我们再来看下VM（虚拟机）的情况。如下图所示，可以看到虚拟机情况，线程、类、堆的概要信息，以及 VM 的参数，是不是很方便呀~</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310420.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539384.png" alt="图片"></p>
 <h3 id="8、MBean-信息"><a href="#8、MBean-信息" class="headerlink" title="8、MBean 信息"></a>8、MBean 信息</h3><p>接下来我们来看下 MBean 信息。对于 MBean，可能很多同学不知道是啥，下面做个解释：</p>
 <p>MBean就是一种规范的JavaBean，通过集成和实现一套标准的Bean接口，这种叫MBean。MBean可以用来干嘛？就是可以有一套JDK级别的对外的服务接口。比如，你写了一个JVM允许状态辅助查询的Bean,你希望别人下载一个Jconsole就可以看到你写的杰作。那你就可以考虑用MBean规范来实现。很多垃圾收集器算法Bean就这么干的（说的就是这个类sun.management.MemoryImpl）。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310421.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539385.png" alt="图片"></p>
 <h2 id="四、性能监控之-jvisualvm"><a href="#四、性能监控之-jvisualvm" class="headerlink" title="四、性能监控之 jvisualvm"></a>四、性能监控之 jvisualvm</h2><p>jvisualvm 比 jconsole 更强大，界面展示的信息更丰富。还可以安装插件，太赞了。</p>
 <h3 id="1、启动-jvisualvm-和概述"><a href="#1、启动-jvisualvm-和概述" class="headerlink" title="1、启动 jvisualvm 和概述"></a>1、启动 jvisualvm 和概述</h3><p>启动方式和 jconsole 一样，也是通过 cmd 命令行启动。还是选择 passjava-question 微服务，然后选择第一个菜单栏：概述。可以看到 JVM 的版本，启动参数等信息。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310422.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539386.png" alt="图片"></p>
 <h3 id="2、监视"><a href="#2、监视" class="headerlink" title="2、监视"></a>2、监视</h3><p>监视 CPU、堆、类、线程的情况。整体显示的效果比 jconsole 更美观。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310423.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539387.png" alt="图片"></p>
 <h3 id="3、线程"><a href="#3、线程" class="headerlink" title="3、线程"></a>3、线程</h3><p>再来查下线程的情况。可以看到有 5 种状态的线程：</p>
 <ul>
 <li>运行：正在运行的线程。</li>
@@ -2332,26 +2436,26 @@
 <li>驻留：线程里面的空闲线程。</li>
 <li>监视：阻塞的线程，正在等待锁。</li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310424.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539388.png" alt="图片"></p>
 <h3 id="4、抽样器"><a href="#4、抽样器" class="headerlink" title="4、抽样器"></a>4、抽样器</h3><p>另外我们也可以抽样器对 CPU 或内存进行抽样。如下图所示，对内存进行抽样。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310425.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539389.png" alt="图片"></p>
 <h3 id="5、插件的使用"><a href="#5、插件的使用" class="headerlink" title="5、插件的使用"></a>5、插件的使用</h3><blockquote>
 <p><strong>安装Visual GC 插件</strong></p>
 </blockquote>
 <p>安装步骤：工具-&gt;插件-&gt;可用插件-&gt;Visual GC-&gt;安装。安装完成后，重启就可以使用插件功能了。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310426.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539390.png" alt="图片"></p>
 <p>安装完成后，就可以看到</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310427.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539391.png" alt="图片"></p>
 <p>下图是实时监控垃圾回收的情况。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310428.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539392.png" alt="图片"></p>
 <h2 id="五、对网关的性能测试"><a href="#五、对网关的性能测试" class="headerlink" title="五、对网关的性能测试"></a>五、对网关的性能测试</h2><p>现在我想对 Passjava 系统的 question 微服务的接口进行一个压测，该如何进行呢？</p>
 <p>首先我们来看下 passjava 的架构是怎么样的，如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310429.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539393.png" alt="图片"></p>
 <p>客户端分为手机端和 PC 端，http 请求先经过 API Gateway，然后再转发到 question 微服务。其中涉及到了中间件：Gateway 网关。</p>
 <p>我们来对 Gateway 网关进行压力测试。网关的端口号是 8060，我们配置下 JMeter。如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310430.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539394.png" alt="图片"></p>
 <p>配置每秒发送 200 个请求，一直循环执行，直到手动停止压测。如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310431.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539395.png" alt="图片"></p>
 <p>可以看下执行结果，吞吐量在 2422 个每秒，还是比较高的。</p>
 <ul>
 <li><p>吞吐量：2422&#x2F;s 。</p>
@@ -2361,19 +2465,19 @@
 <li><p>99% 响应时间：281 毫秒。</p>
 </li>
 </ul>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310432.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539396.png" alt="图片"></p>
 <p>我们再来看看垃圾回收的情况，Eden 区垃圾回收用时 2.7 s，用时太长了吧，看看这里怎么能优化下。</p>
 <p>通常的优化方向是增大新生代堆内存配置。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310433.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539397.png" alt="图片"></p>
 <h2 id="六、对微服务的性能测试"><a href="#六、对微服务的性能测试" class="headerlink" title="六、对微服务的性能测试"></a>六、对微服务的性能测试</h2><p>根据上面的架构原理图，我们知道客户端请求都是经过 Gateway 转发了一次的，如果我们想单独看下微服务的性能该怎么测试呢？下面我来演示下如何测试 passjava-question 微服务的性能。</p>
 <p>首先需要在 passjava-question 微服务中添加一个测试方法：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310434.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539398.png" alt="图片"></p>
 <p>有两种方式测试这个 api 是否添加正确。</p>
 <p>第一种：用 postman 测试下这个请求是否能正确响应，返回 “test” 则表示响应正确。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310435.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539399.png" alt="图片"></p>
 <p>第二种：通过浏览器进行测试。浏览器地址栏输入以下链接后，回车，看下浏览器窗口是否显示 “test”，是则表示响应正确。</p>
 <p>然后我们需要用 Jmeter 压测工具来测试这个微服务下的 api 的性能究竟如何。（单独压测微服务的 api的结果）</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310436.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539400.png" alt="图片"></p>
 <ul>
 <li><p>吞吐量：3542&#x2F;s 。</p>
 </li>
@@ -2388,7 +2492,7 @@
 </code></pre>
 <p>然后在浏览器输入该网址，返回 “test” 即表示响应正确。</p>
 <p>然后我们还是用 Jmeter 压测工具测试下 test api 的性能。测试结果如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310437.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539401.png" alt="图片"></p>
 <p>从结果可以看到：</p>
 <ul>
 <li><p>吞吐量：982&#x2F;s 。</p>
@@ -2399,30 +2503,30 @@
 </li>
 </ul>
 <p>这里做个横向对比：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310438.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539402.png" alt="图片"></p>
 <p>说明微服务 api 经过网关转发一次后，性能至少下降了一半。可以得出结果：中间件越多，性能损失越大，大部分损失都是网络交互导致的。可以通过增强网络通信质量来减少网络的延迟。</p>
 <h2 id="八、对数据库查询进行优化"><a href="#八、对数据库查询进行优化" class="headerlink" title="八、对数据库查询进行优化"></a>八、对数据库查询进行优化</h2><p>一般情况下，出现性能问题更多的是业务中查询数据库的耗时。接下来看下如何优化数据的查询。</p>
 <p>下面是一个查询问题列表的 api：通过问题类型 type 字段过滤问题列表。api 路径如下：</p>
 <pre><code>http://localhost:11000/question/v1/admin/question/list?type=5
 </code></pre>
 <p>这个 api 的代码如下，很容易看懂（查询问题列表的 api）</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310439.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539403.png" alt="图片"></p>
 <p>我们加些测试代码：统计查询数据库的耗时。如下所示（耗时统计）：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310440.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539404.png" alt="图片"></p>
 <p>然后重启 passjava-question 服务，再次测试这个 api，耗时 43 ms</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310441.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539405.png" alt="图片"></p>
 <p>怎么对查询进行优化呢？很容易想到加索引，我们来试下加在 question 表加索引后的效果。给 type 字段加上普通索引，如下图所示：</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310442.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539406.png" alt="图片"></p>
 <p>我们再来看下加了索引后的耗时情况：耗时 18 ms，确实比之前的 43 ms 快了很多。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310443.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539407.png" alt="图片"></p>
 <h2 id="九、优化垃圾回收"><a href="#九、优化垃圾回收" class="headerlink" title="九、优化垃圾回收"></a>九、优化垃圾回收</h2><p>我们可以通过 jvisulavm工具查看垃圾回收的情况，Eden 区频繁发生 GC，短时间（1分钟）内共造成了 480 次 stop the world。另外从压测工具中也可以看到，吞吐量为 275&#x2F;s。</p>
 <p>原因是 Eden 区的内存分配得太小了，只有 32 M，我们来调大一点。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310444.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539408.png" alt="图片"></p>
 <h3 id="1、增大-Eden-区大小"><a href="#1、增大-Eden-区大小" class="headerlink" title="1、增大 Eden 区大小"></a>1、增大 Eden 区大小</h3><p>通过在 IDEA 工具中配置以下参数，调整堆内存最大为 1024 M，新生代内存为 512 M。</p>
 <pre><code>-Xmx1024m -Xms1024m -Xmn512m
 </code></pre>
 <p>然后可以观察到在相当长的短时间（1分钟）内只进行了 92 次垃圾回收，说明垃圾回收的频率降低了。应用程序的性能也提升了。另外从压测工具中也可以看到，吞吐量为 347&#x2F;s，吞吐量也有较大提升。</p>
-<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241017215310445.png"></p>
+<p><img src="/blog/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AF%87%E4%B9%8B-48%E5%BC%A0%E5%9B%BE%E5%AD%A6%E4%BC%9A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E3%80%81%E5%8E%8B%E6%B5%8B%E5%92%8C%E8%B0%83%E4%BC%98.assets/image-20241025145539409.png" alt="图片"></p>
 <h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2><p>本文通过压测工具 Jmeter 讲解压测如何实施，然后用性能监控工具 jconsole 和 jvisualvm 来监控 Java 应用程序的性能，以及如何用工具来优化开源项目 passjava 的性能，并且非常详细地介绍了每一步以及执行结果，通过对比的方式，更加清晰地知道如何做性能优化。</p>
 <p>下面是对系统性能的常规优化手段：</p>
 <ul>
@@ -2674,6 +2778,18 @@
 
 
 
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/8629303">GitHub</a>
+    
+</div>
 
 
 </html>

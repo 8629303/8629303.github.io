@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>你还在为 HTTP 的这些概念头疼吗 | Hexo</title>
+  <title>你还在为 HTTP 的这些概念头疼吗 | Sam Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="你还在为 HTTP 的这些概念头疼吗 | Hexo">
+  <meta name="description" content="你还在为 HTTP 的这些概念头疼吗 | Sam Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
 <meta property="og:url" content="https://8629303.github.io/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Sam Blog">
 <meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
-<meta property="article:modified_time" content="2024-10-22T03:50:18.319Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-10-25T10:00:36.010Z">
+<meta property="article:author" content="Sam Liu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="icon" href="/img/avatar.jpg">
+<link rel="icon" href="/img/my-avatar.jpg">
 
 <link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -61,53 +61,19 @@
         <a href="/blog/"
    class="avatar_target">
     <img class="avatar"
-         src="/blog/img/avatar.jpg"/>
+         src="/blog/img/my-avatar.jpg"/>
 </a>
 <div class="author">
-    <span>John Doe</span>
+    <span>Sam Liu</span>
 </div>
 
 <div class="icon">
     
-        
-            <a title="github"
-               href="https://github.com/8629303"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-github"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="email"
-               href="mailto:8629303@qq.com"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-email"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="qq"
-               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-qq"></use>
-                    </svg>
-                
-            </a>
-        
-    
 </div>
 
 
+
+    <a class="more-menus">更多菜单</a>
 
 
 
@@ -115,221 +81,10 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(172)</small>
+                <small>(183)</small>
             
         </div>
     </li>
-    
-        
-            
-                
-    <li>
-        <div data-rel="数据库">
-            
-            数据库
-            <small>(5)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="开发工具">
-            <i class="fold iconfont icon-right"></i>
-            开发工具
-            <small>(16)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="开发工具&lt;---&gt;Maven">
-            
-            Maven
-            <small>(8)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="面试篇">
-            
-            面试篇
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="中间件">
-            <i class="fold iconfont icon-right"></i>
-            中间件
-            <small>(9)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;ElasticSearch">
-            
-            ElasticSearch
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;MongoDB">
-            
-            MongoDB
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;RabbitMQ">
-            
-            RabbitMQ
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;Redis">
-            
-            Redis
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="JavaEE">
-            <i class="fold iconfont icon-right"></i>
-            JavaEE
-            <small>(72)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;微服务开发">
-            
-            微服务开发
-            <small>(66)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
-            
-            JavaWeb
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;SSM框架">
-            
-            SSM框架
-            <small>(4)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
     
         
             
@@ -407,9 +162,131 @@
     
         
             
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(71)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;微服务开发">
+            
+            微服务开发
+            <small>(65)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
         
     
         
+            
+                
+    <li>
+        <div data-rel="数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(9)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
             
         
     
@@ -478,6 +355,129 @@
     
         
             
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端框架">
+            <i class="fold iconfont icon-right"></i>
+            前端框架
+            <small>(10)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端框架&lt;---&gt;前端入门">
+            
+            前端入门
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
         
     
         
@@ -507,6 +507,11 @@
             
             
             
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/8629303">GitHub</a>
+        
     </div>
     <div>
         
@@ -520,7 +525,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="172">
+<input type="hidden" id="yelog_site_posts_number" value="183">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -763,6 +768,24 @@
         </a>
         
         
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/06/20/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程">VS Code开发工具的使用教程</span>
+            <span class="post-date" title="2024-06-20 14:04:02">2024/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/05/03/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程-1">VS Code开发工具的使用教程-1</span>
+            <span class="post-date" title="2024-05-03 17:11:49">2024/05/03</span>
+        </a>
+        
+        
         <a  class="全部文章 JavaSE Java汇总篇 "
            href="/blog/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
            data-tag=""
@@ -787,6 +810,15 @@
            data-author="" >
             <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
             <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/04/15/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="参考文献 &amp; 鸣谢">参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-04-15 18:01:47">2024/04/15</span>
         </a>
         
         
@@ -817,6 +849,15 @@
         </a>
         
         
+        <a  class="全部文章 "
+           href="/blog/2023/11/29/MarkdownTools/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MarkdownTools">MarkdownTools</span>
+            <span class="post-date" title="2023-11-29 15:02:34">2023/11/29</span>
+        </a>
+        
+        
         <a  class="全部文章 数据库 "
            href="/blog/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
            data-tag=""
@@ -832,6 +873,15 @@
            data-author="" >
             <span class="post-title" title="Mybatis">Mybatis</span>
             <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/2023/08/28/Markdown/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown">Markdown</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
@@ -971,19 +1021,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1196,19 +1246,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1223,19 +1273,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1412,19 +1462,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1448,6 +1498,15 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
            data-tag=""
            data-author="" >
@@ -1461,15 +1520,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1592,15 +1642,6 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
@@ -1610,10 +1651,10 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1623,6 +1664,15 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1686,15 +1736,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringMVC">SpringMVC</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1772,19 +1813,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1808,19 +1849,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1970,19 +2011,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2015,19 +2056,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2121,6 +2162,69 @@
             <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
         </a>
         
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome 浏览器开发者工具使用技巧总结">Chrome 浏览器开发者工具使用技巧总结</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/HTML5%20%E6%A0%87%E7%AD%BE%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HTML5 标签大全">HTML5 标签大全</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/3.JavaScript%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3.JavaScript详解">3.JavaScript详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/2.CSS3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.CSS3详解">2.CSS3详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue2&Vue3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2&amp;Vue3">Vue2&amp;Vue3</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/0.%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="0.前端知识体系">0.前端知识体系</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/1.HTML5%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.HTML5详解">1.HTML5详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
         <div id="no-item-tips">
 
         </div>
@@ -2161,7 +2265,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-10-22 11:50:18'>2023-08-28 09:23</time>
+            发布时间 : <time class="date" title='最后更新: 2024-10-25 18:00:36'>2023-08-28 09:23</time>
         
     </div>
     <div class="article-meta">
@@ -2225,7 +2329,7 @@
 <blockquote>
 <p>请注意，在 Cache-Control 标头中只能出现一个指令，但是在消息中可以出现多个这样的标头。</p>
 </blockquote>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309892.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538282.png" alt="图片"></p>
 <p>上面这个表格其实会有四种分类</p>
 <ul>
 <li><code>可缓存性</code>：它们分别是 <code>no-cache</code>、<code>no-store</code>、<code>private</code> 和 <code>public</code></li>
@@ -2239,7 +2343,7 @@
 <p>使用 no-cache 指令的目的是<strong>为了防止从缓存中返回过期的资源</strong>，例如下图所示</p>
 <pre><code>Cache-Control: no-cache
 </code></pre>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309893.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538283.png" alt="图片"></p>
 <p>举个例子你就明白了，No-Cache 就相当于是<code>吃着碗里的，占着锅里的</code>，如果锅里还有新的肉片，就先吃锅里的，如果锅里没有新的，再吃自己的，这里<code>锅里的</code>就相当于是源服务器产生的，<code>碗里的</code>就相当于是缓存的。</p>
 <p><strong>no-store</strong></p>
 <p><code>no-store</code> 才是真正意义上的<code>不缓存</code>，每次服务器接受到客户端的请求后，都会返回最新的资源给客户端。</p>
@@ -2260,17 +2364,17 @@
 <pre><code>Cache-Control: must-revalidate
 </code></pre>
 <p><code>no-store</code> 、<code>no_cache</code> 、 <code>must-revalidate</code> 和 <code>max-age</code> 可以一起看，下面是一个这四个标头的流程图</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309894.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538284.png" alt="图片"></p>
 <p><strong>public</strong></p>
 <p><code>public</code> 属性只出现在客户端响应中，表示响应可以被任何缓存所缓存。在计算机网络中，分为两种缓存，共享缓存和私有缓存，如下所示</p>
 <pre><code>Cache-Control: public
 </code></pre>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309895.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538285.png" alt="图片"></p>
 <p><strong>private</strong></p>
 <p>当指定 <code>private</code> 指令后，响应只以特定的用户作为对象，这与 <code>public</code> 的用法相反，缓存服务器只对特定的客户端进行缓存，其他客户端发送过来的请求，缓存服务器则不会返回缓存。</p>
 <pre><code>Cache-Control: private
 </code></pre>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309896.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538286.png" alt="图片"></p>
 <p><strong>s-maxage</strong></p>
 <p><code>s-maxage</code> 指令的功能和 <code>max-age</code> 指令的功能相同，不同点之处在于 s-maxage 不能用于私有缓存，只能用于多用户使用的公共服务器，对于同一用户的重复请求和响应来说，这个指令没有任何作用。</p>
 <pre><code>Cache-Control: s-maxage=60
@@ -2317,7 +2421,7 @@ Keep-Alive: timeout=5, max=1000
 <pre><code>Date: Wed, 21 Oct 2015 07:28:00 GMT
 </code></pre>
 <p>表示的是格林威治标准时间，这个时间要比北京时间慢八个小时</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309897.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538287.png" alt="图片"></p>
 <h4 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a>Pragma</h4><p><code>Pragma</code>是 http 1.1 之前版本的历史遗留字段，仅作为与 http 的向后兼容而定义。它的一般形式如下</p>
 <pre><code>Pragma: no-cache
 </code></pre>
@@ -2341,7 +2445,7 @@ Trailer: Expires
 <p>除了下面八种属于逐跳首部外，其余都属于端到端首部</p>
 <p><strong>Connection、Keep-Alive、Proxy-Authenticate、Proxy-Authorization、Trailer、TE、Transfer-Encoding、Upgrade</strong></p>
 <p>下面回到讨论中来，Transfer-Encoding 用于两个节点之间传输消息，而不是资源本身。在多个节点传输消息的过程中，每一段消息的传输都可以使用不同的 <code>Transfer-Encoding</code>。如图所示</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309898.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538288.png" alt="图片"></p>
 <p>Transfer-Encoding 支持文件压缩，如果你想要以文件压缩后的形式发送的话。Transfer-Encoding 所有可选类型如下</p>
 <ul>
 <li><code>chunked</code>：数据按照一系列块发送，在这种情况下，将省略 <code>Content-Length</code> 标头，并在每个块的开头，需要以十六进制填充当前块的长度，后跟 <code>&#39;\r\n&#39;</code>，然后是块本身，然后是另一个<code>&#39;\r\n&#39;</code>。当将大量数据发送到客户端并且在请求已被完全处理之前，可能无法知道响应的总大小时，分块编码很有用。例如，在生成由数据库查询产生的大型 HTML 表时或在传输大型图像时。分块的响应看起来像这样</li>
@@ -2372,7 +2476,7 @@ Network\r\n
 <h4 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h4><p>首部字段 Upgrade 用于检测 HTTP 协议及其他协议是否可使用更高的版本进行通信，其参数值可以用来指定一个完全不同的通信协议。</p>
 <p>上图用例中，首部字段 <code>Upgrade</code> 指定的值为 <code>TLS/1.0</code>。请注意此处两个字段首部字段的对应关系，Connection 的值被指定为 Upgrade。Upgrade 首部字段产生作用的对象仅限于客户端和临近服务器之间。因此，使用首部字段 Upgrade 时，还需要额外指定 <code>Connection: Upgrade</code>。对于附有首部字段 Upgrade 的请求，服务器可用 <code>101 Switching Protocols</code> 状态码作为响应返回。</p>
 <h4 id="Via"><a href="#Via" class="headerlink" title="Via"></a>Via</h4><p>使用 Via 是为了跟踪客户端和服务器之间的请求&#x2F;响应路径，避免请求循环以及能够识别<code>请求/响应</code>链中发送者协议的功能。Via 字段由代理服务器添加，不论是正向代理还是反向代理，并且可以出现在请求标头和响应标头中。它用于跟踪消息转发。例如下图所示</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309899.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538289.png" alt="图片"></p>
 <p>Via 后面的的 <code>1.1, 1.0</code> 表示接收服务器上的 HTTP 版本，Via 首部是为了跟踪路径，经常和 <code>TRACE</code> 方法一起使用。</p>
 <h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h4><blockquote>
 <p>注意：Warning 字段即将被弃用</p>
@@ -2380,7 +2484,7 @@ Network\r\n
 </blockquote>
 <p>Warning 通用 HTTP 标头通常会告知用户一些与缓存相关的问题的警告</p>
 <p>HTTP&#x2F;1.1 中定义了 7 种警告。它们分别如下</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309900.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538290.png" alt="图片"></p>
 <h3 id="请求标头"><a href="#请求标头" class="headerlink" title="请求标头"></a>请求标头</h3><p>请求标头用于客户端发送 HTTP 请求到服务器中所使用的字段，下面我们一起来看一下 HTTP 请求标头都包含哪些字段，分别是什么意思。下面会介绍</p>
 <ul>
 <li>Accept</li>
@@ -2418,7 +2522,7 @@ Network\r\n
 <pre><code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 </code></pre>
 <p>这是什么意思呢？若想要给显示的<strong>媒体类型增加优先级</strong>，则使用 q&#x3D; 来额外表示权重值，没有显示权重的时候默认值是1.0 ，我给你列个表格你就明白了</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309901.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538291.png" alt="图片"></p>
 <p>也就是说，这是一个放置顺序，权重高的在前，低的在后，<code>application/xml;q=0.9</code> 是不可分割的整体。</p>
 <h4 id="Accept-Charset"><a href="#Accept-Charset" class="headerlink" title="Accept-Charset"></a>Accept-Charset</h4><p><code>Accept-Charset</code> 表示客户端能够接受的字符编码。Accept-Charset 也是属于<code>内容协商</code>的一部分，它和</p>
 <p><code>Accept</code> 一样，也可以用 q 来表示字符集，用<code>逗号</code>进行分割，例如</p>
@@ -2468,7 +2572,7 @@ Accept-Language: de-CH
 Accept-Language: en-US,en;q=0.5
 </code></pre>
 <h4 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h4><p>HTTP <code>Authorization</code> 请求头用于向服务器认证用户代理的凭据，通常用在服务器以401未经授权状态和WWW-Authenticate标头响应之后，啥意思呢？你不明白的话我画张图给你看</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309902.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538292.png" alt="图片"></p>
 <p>请求标头 <code>Authorization</code> 是用来告知服务器，用户的认证信息，服务器在只有收到认证后才会返回给客户端 200 OK 的响应，如果没有认证信息，则会返回 401 并告知客户端需要认证信息。详细关于 Authorization 的信息，后面也会详细解释</p>
 <h4 id="Expect"><a href="#Expect" class="headerlink" title="Expect"></a>Expect</h4><p>Expect HTTP 请求标头指示服务器需要满足的期望才能正确处理请求。如果服务器没有办法完成客服端所期望完成的事情并且服务端存在错误的话，会返回 <code>417 Expectation Failed</code> 。HTTP 1.1 只规定了<code>100-continue</code> 。</p>
 <ul>
@@ -2571,7 +2675,7 @@ Accept-Ranges: none
 </code></pre>
 <h4 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h4><p>ETag 对于条件请求来说真是太重要了。因为条件请求就是根据 ETag 的值进行匹配的，下面我们就来详细了解一下。</p>
 <p>ETag 响应头是<code>特定版本</code>的标识，它能够使缓存变得更高效并能够节省带宽，因为如果缓存内容未发生变更，Web 服务器则不需要重新发送完整的响应。除此之外，ETag 能够防止资源同时更新互相覆盖。</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309903.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538293.png" alt="图片"></p>
 <p>如果给定 URL 上的资源发生变更，必须生成一个新的 <code>ETag</code> 值，通过比较它们可以确定资源的两个表示形式是否相同。</p>
 <p>ETag 值有两种，一种是强 ETag，一种是弱 ETag；</p>
 <ul>
@@ -2585,7 +2689,7 @@ Accept-Ranges: none
 <pre><code>ETag: W/&quot;0815&quot;
 </code></pre>
 <h4 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h4><p>Location 响应标头表示 URL 需要重定向页面，它仅仅与 <code>3xx(重定向)</code> 或 <code>201(已创建)</code> 状态响应一起使用。下面是一个页面重定向的过程</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309904.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538294.png" alt="图片"></p>
 <p>使用首部字段 Location 可以将响应接受方引导至某个与请求 URI 位置不同的资源。</p>
 <p><code>Location</code> 和 <code>content-Location</code> 是不一样的：Location 表示目标的重定向（或新创建资源的 URL）。然而 Content-Location 表示发生内容协商时用于访问资源的直接 URL，而无须进一步协商。Location 是与响应相关联的标头，而 Content-Location 与返回的实体相关联。</p>
 <pre><code>Location: /index.html
@@ -2682,7 +2786,7 @@ Content-Encoding: gzip
 <pre><code>Content-MD5: e10adc3949ba59abbe56e057f20f883e
 </code></pre>
 <p>首部字段 Content-MD5 是一串由 MD5 算法生成的值，其目的在于检查报文主体在传输过程中是否保持完整，有无被修改的情况，以及确认传输到达。</p>
-<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241017215309905.png"></p>
+<p><img src="/blog/%E4%BD%A0%E8%BF%98%E5%9C%A8%E4%B8%BA-HTTP-%E7%9A%84%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%A4%B4%E7%96%BC%E5%90%97.assets/image-20241025145538295.png" alt="图片"></p>
 <h4 id="Content-Range"><a href="#Content-Range" class="headerlink" title="Content-Range"></a>Content-Range</h4><p>HTTP 的 Content-Range 响应标头是针对范围请求而设定的，返回响应时使用首部字段 <code>Content-Range</code>，能够告知客户端响应实体的哪部分是符合客户端请求的，字段以字节为单位。它的一般表示如下</p>
 <pre><code>Content-Range: bytes 200-1000/67589
 </code></pre>
@@ -2931,6 +3035,18 @@ Content-Encoding: gzip
 
 
 
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/8629303">GitHub</a>
+    
+</div>
 
 
 </html>

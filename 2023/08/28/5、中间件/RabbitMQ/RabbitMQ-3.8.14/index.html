@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>RabbitMQ-3.8.14 | Hexo</title>
+  <title>RabbitMQ-3.8.14 | Sam Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="RabbitMQ-3.8.14 | Hexo">
+  <meta name="description" content="RabbitMQ-3.8.14 | Sam Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot2.x 内置功能 - 内置过滤器和 AOP 工具类">
 <meta property="og:url" content="https://8629303.github.io/2024/10/08/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot2.x%20%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD%20-%20%E5%86%85%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%20AOP%20%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Sam Blog">
 <meta property="og:description" content="请不要自己写，Spring Boot非常实用的内置功能：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7417630844100231206  在 SpringBoot 框架中，内置了许多实用的功能，这些功能可以帮助开发者高效地开发和维护应用程序。 一、请求数据记录器SpringBoot 提供了一个内置的日志记录解决方案，通过 AbstractRequestLoggingFilter 可以记录请">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:44:19.743Z">
-<meta property="article:modified_time" content="2024-10-22T03:50:18.319Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-10-25T10:00:36.010Z">
+<meta property="article:author" content="Sam Liu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="icon" href="/img/avatar.jpg">
+<link rel="icon" href="/img/my-avatar.jpg">
 
 <link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -61,53 +61,19 @@
         <a href="/blog/"
    class="avatar_target">
     <img class="avatar"
-         src="/blog/img/avatar.jpg"/>
+         src="/blog/img/my-avatar.jpg"/>
 </a>
 <div class="author">
-    <span>John Doe</span>
+    <span>Sam Liu</span>
 </div>
 
 <div class="icon">
     
-        
-            <a title="github"
-               href="https://github.com/8629303"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-github"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="email"
-               href="mailto:8629303@qq.com"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-email"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="qq"
-               href="http://wpa.qq.com/msgrd?v=3&uin=8629303&site=qq&menu=yes"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-qq"></use>
-                    </svg>
-                
-            </a>
-        
-    
 </div>
 
 
+
+    <a class="more-menus">更多菜单</a>
 
 
 
@@ -115,221 +81,10 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(172)</small>
+                <small>(183)</small>
             
         </div>
     </li>
-    
-        
-            
-                
-    <li>
-        <div data-rel="数据库">
-            
-            数据库
-            <small>(5)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="开发工具">
-            <i class="fold iconfont icon-right"></i>
-            开发工具
-            <small>(16)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="开发工具&lt;---&gt;Maven">
-            
-            Maven
-            <small>(8)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="面试篇">
-            
-            面试篇
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="中间件">
-            <i class="fold iconfont icon-right"></i>
-            中间件
-            <small>(9)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;ElasticSearch">
-            
-            ElasticSearch
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;MongoDB">
-            
-            MongoDB
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;RabbitMQ">
-            
-            RabbitMQ
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="中间件&lt;---&gt;Redis">
-            
-            Redis
-            <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-                
-    <li>
-        <div data-rel="JavaEE">
-            <i class="fold iconfont icon-right"></i>
-            JavaEE
-            <small>(72)</small>
-        </div>
-        
-            <ul class="sub hide">
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;微服务开发">
-            
-            微服务开发
-            <small>(66)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
-            
-            JavaWeb
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="JavaEE&lt;---&gt;SSM框架">
-            
-            SSM框架
-            <small>(4)</small>
-        </div>
-        
-    </li>
-
-                
-            </ul>
-        
-    </li>
-
-            
-        
     
         
             
@@ -407,9 +162,131 @@
     
         
             
+                
+    <li>
+        <div data-rel="JavaEE">
+            <i class="fold iconfont icon-right"></i>
+            JavaEE
+            <small>(71)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;微服务开发">
+            
+            微服务开发
+            <small>(65)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;JavaWeb">
+            
+            JavaWeb
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="JavaEE&lt;---&gt;SSM框架">
+            
+            SSM框架
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
         
     
         
+            
+                
+    <li>
+        <div data-rel="数据库">
+            
+            数据库
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="中间件">
+            <i class="fold iconfont icon-right"></i>
+            中间件
+            <small>(9)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;RabbitMQ">
+            
+            RabbitMQ
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="中间件&lt;---&gt;Redis">
+            
+            Redis
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
             
         
     
@@ -478,6 +355,129 @@
     
         
             
+                
+    <li>
+        <div data-rel="开发工具">
+            <i class="fold iconfont icon-right"></i>
+            开发工具
+            <small>(16)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发工具&lt;---&gt;Maven">
+            
+            Maven
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="面试篇">
+            
+            面试篇
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端框架">
+            <i class="fold iconfont icon-right"></i>
+            前端框架
+            <small>(10)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端框架&lt;---&gt;前端入门">
+            
+            前端入门
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
         
     
         
@@ -507,6 +507,11 @@
             
             
             
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://github.com/8629303">GitHub</a>
+        
     </div>
     <div>
         
@@ -520,7 +525,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="172">
+<input type="hidden" id="yelog_site_posts_number" value="183">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -763,6 +768,24 @@
         </a>
         
         
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/06/20/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程">VS Code开发工具的使用教程</span>
+            <span class="post-date" title="2024-06-20 14:04:02">2024/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/05/03/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/VS%20Code%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="VS Code开发工具的使用教程-1">VS Code开发工具的使用教程-1</span>
+            <span class="post-date" title="2024-05-03 17:11:49">2024/05/03</span>
+        </a>
+        
+        
         <a  class="全部文章 JavaSE Java汇总篇 "
            href="/blog/2024/04/22/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AF%87%E4%B9%8B%20IDEA%20-%20VM%20Options%E3%80%81Program%20Arguments%E3%80%81Environment%20Variable%20%E8%A7%A3%E6%9E%90/"
            data-tag=""
@@ -787,6 +810,15 @@
            data-author="" >
             <span class="post-title" title="Java 原理篇之 SPI 机制">Java 原理篇之 SPI 机制</span>
             <span class="post-date" title="2024-04-16 17:26:15">2024/04/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2024/04/15/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20&%20%E9%B8%A3%E8%B0%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="参考文献 &amp; 鸣谢">参考文献 &amp; 鸣谢</span>
+            <span class="post-date" title="2024-04-15 18:01:47">2024/04/15</span>
         </a>
         
         
@@ -817,6 +849,15 @@
         </a>
         
         
+        <a  class="全部文章 "
+           href="/blog/2023/11/29/MarkdownTools/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MarkdownTools">MarkdownTools</span>
+            <span class="post-date" title="2023-11-29 15:02:34">2023/11/29</span>
+        </a>
+        
+        
         <a  class="全部文章 数据库 "
            href="/blog/2023/11/18/3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"
            data-tag=""
@@ -832,6 +873,15 @@
            data-author="" >
             <span class="post-title" title="Mybatis">Mybatis</span>
             <span class="post-date" title="2023-10-08 19:45:47">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/2023/08/28/Markdown/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown">Markdown</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
@@ -971,19 +1021,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
+            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20API%20%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%20Swagger3.x-2.x/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%20Lombok/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 工具篇之 API 文档工具 Swagger3.x-2.x">Java 工具篇之 API 文档工具 Swagger3.x-2.x</span>
+            <span class="post-title" title="Java 工具篇之 Lombok">Java 工具篇之 Lombok</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1196,19 +1246,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
+            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E8%8E%B7%E5%8F%96%E5%88%A0%E9%99%A4/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring/Spring%20Bean%20%E7%9A%8412%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring Bean 的动态创建获取删除">Spring Bean 的动态创建获取删除</span>
+            <span class="post-title" title="Spring Bean 的12种定义方法">Spring Bean 的12种定义方法</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1223,19 +1273,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
+            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E8%A7%A3%E5%86%B3%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Transaction/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/Spring%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%9E%E6%88%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Spring 解决单机环境下多数据源的事务问题">Spring 解决单机环境下多数据源的事务问题</span>
+            <span class="post-title" title="Spring 实现多数据源实战">Spring 实现多数据源实战</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1412,19 +1462,19 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
+            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E8%AF%BB%E5%8F%96%20Resources%20%E6%96%87%E4%BB%B6%E4%B9%8B%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96Jar%E5%8C%85classpath%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件">SpringBoot 2.x 配置文件-读取 Resources 文件之无法读取Jar包classpath下的文件</span>
+            <span class="post-title" title="SpringBoot 2.x 统一接口返回格式">SpringBoot 2.x 统一接口返回格式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1448,6 +1498,15 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/"
            data-tag=""
            data-author="" >
@@ -1461,15 +1520,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x 安全密码学之加解密算法">SpringBoot 2.x 安全密码学之加解密算法</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x 常用注解详解">SpringBoot 2.x 常用注解详解</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1592,15 +1642,6 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
            href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%848%E7%A7%8D%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
@@ -1610,10 +1651,10 @@
         
         
         <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20Java%20%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
+            <span class="post-title" title="SpringBoot 2.x Java 程序命令行参数总结">SpringBoot 2.x Java 程序命令行参数总结</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1623,6 +1664,15 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解">SpringBoot 2.x @ConfigurationProperties以及@NestedConfigurationProperty的使用详解</span>
+            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 JavaEE 微服务开发 "
+           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Spring%20Boot/SpringBoot%202.x%20@ControllerAdvice%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot 2.x @ControllerAdvice三种使用场景">SpringBoot 2.x @ControllerAdvice三种使用场景</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1686,15 +1736,6 @@
            data-tag=""
            data-author="" >
             <span class="post-title" title="SpringMVC">SpringMVC</span>
-            <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
-        </a>
-        
-        
-        <a  class="全部文章 JavaEE 微服务开发 "
-           href="/blog/2023/08/28/2%E3%80%81JavaEE/3%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91/Shiro/Shiro%E6%9D%83%E9%99%90%E5%AE%9E%E6%88%98%E8%AF%BE%E7%A8%8B/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Shiro权限实战课程">Shiro权限实战课程</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1772,19 +1813,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
+            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E6%B3%A8%E8%A7%A3%20+%20%E5%8F%8D%E5%B0%84%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E4%BC%98%E5%8C%96%E7%AF%87%E4%B9%8B%20%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97%20-%20%E8%AE%A2%E5%8D%95%E8%B6%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8F%96%E6%B6%88%E7%9A%84N%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 优化篇之 注解 + 反射消除重复代码">Java 优化篇之 注解 + 反射消除重复代码</span>
+            <span class="post-title" title="Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式">Java 优化篇之 延时队列 - 订单超时自动取消的N种实现方式</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1808,19 +1849,19 @@
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
+            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java汇总篇 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%90%84%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/4.Java%20%E6%B1%87%E6%80%BB%E7%AF%87/Java%20%E9%9B%86%E5%90%88%E7%AF%87%E4%B9%8B%20Lambda%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%BC%BA%E6%8E%92%E5%BA%8F/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 日期时间各类型相互转换">Java 日期时间各类型相互转换</span>
+            <span class="post-title" title="Java 集合篇之 Lambda 实现超强排序">Java 集合篇之 Lambda 实现超强排序</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -1970,19 +2011,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
+            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%E6%96%B0%E7%89%B9%E6%80%A7/Java%2015%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2016%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 15 新特性">Java 15 新特性</span>
+            <span class="post-title" title="Java 16 新特性">Java 16 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2015,19 +2056,19 @@
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
+            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
         
         <a  class="全部文章 JavaSE Java新特性 "
-           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2012%20%E6%96%B0%E7%89%B9%E6%80%A7/"
+           href="/blog/2023/08/28/1%E3%80%81JavaSE/3.Java%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/Java%2011%20%E6%96%B0%E7%89%B9%E6%80%A7/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Java 12 新特性">Java 12 新特性</span>
+            <span class="post-title" title="Java 11 新特性">Java 11 新特性</span>
             <span class="post-date" title="2023-08-28 09:23:45">2023/08/28</span>
         </a>
         
@@ -2121,6 +2162,69 @@
             <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
         </a>
         
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome 浏览器开发者工具使用技巧总结">Chrome 浏览器开发者工具使用技巧总结</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/HTML5%20%E6%A0%87%E7%AD%BE%E5%A4%A7%E5%85%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HTML5 标签大全">HTML5 标签大全</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/3.JavaScript%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3.JavaScript详解">3.JavaScript详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/2.CSS3%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.CSS3详解">2.CSS3详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/Vue2&Vue3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2&amp;Vue3">Vue2&amp;Vue3</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/0.%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="0.前端知识体系">0.前端知识体系</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端框架 前端入门 "
+           href="/blog/2023/08/28/7%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/1.HTML5%E8%AF%A6%E8%A7%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.HTML5详解">1.HTML5详解</span>
+            <span class="post-date" title="2023-08-28 09:23:44">2023/08/28</span>
+        </a>
+        
         <div id="no-item-tips">
 
         </div>
@@ -2161,7 +2265,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-10-22 11:50:18'>2023-08-28 09:23</time>
+            发布时间 : <time class="date" title='最后更新: 2024-10-25 18:00:36'>2023-08-28 09:23</time>
         
     </div>
     <div class="article-meta">
@@ -2206,7 +2310,7 @@
 <li>Erlang和RabbitMQ版本匹配: <a target="_blank" rel="noopener" href="https://www.rabbitmq.com/which-erlang.html">https://www.rabbitmq.com/which-erlang.html</a></li>
 </ul>
 </blockquote>
-<h3 id="1、安装Erlang"><a href="#1、安装Erlang" class="headerlink" title="1、安装Erlang"></a>1、安装Erlang</h3><p><img src="/blog/RabbitMQ/image-20241017215310035.png"></p>
+<h3 id="1、安装Erlang"><a href="#1、安装Erlang" class="headerlink" title="1、安装Erlang"></a>1、安装Erlang</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538602.png" alt="20210314201339"></p>
 <ul>
 <li>官网下载地址：<a target="_blank" rel="noopener" href="https://www.erlang.org/downloads">https://www.erlang.org/downloads</a></li>
 <li><strong>历史版本下载</strong>：<a target="_blank" rel="noopener" href="http://erlang.org/download/">http://erlang.org/download/</a></li>
@@ -2324,8 +2428,8 @@ rabbitmqctl.bat set_permissions -p / admin &quot;.*&quot; &quot;.*&quot; &quot;.
 </code></pre>
 </blockquote>
 <h3 id="4、RabbitMQ服务安装"><a href="#4、RabbitMQ服务安装" class="headerlink" title="4、RabbitMQ服务安装"></a>4、RabbitMQ服务安装</h3><p>1、如上是通过*.exe方式安装的，所以自动帮我们安装好了服务启动和服务暂时删除等</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310036.png"></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310037.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538603.png" alt="20210418110505"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538604.png" alt="20210418110803"></p>
 <p>2、如果是通过 *.zip 文件安装的话需要手动安装RabbitMQ服务</p>
 <ol>
 <li><p>以应用方式启动（如何没有install安装成windows服务）</p>
@@ -2887,10 +2991,10 @@ management.tcp.ip   = 0.0.0.0
 <p>简单概述：RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，支持多种客户端（语言）。用于在分布式系统中存储消息，转发消息，具有高可用，高可扩性，易用性等特征。</p>
 <h2 id="2、什么是-AMQP"><a href="#2、什么是-AMQP" class="headerlink" title="2、什么是 AMQP"></a>2、什么是 AMQP</h2><p><strong>AMQP</strong>（Advanced Message Queuing Protocol）高级消息队列协议：是应用层协议的一个开发标准，为面向消息的中间件设计</p>
 <p><strong>AMQP生产者流转过程：</strong></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310038.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538605.png" alt="20210418110804"></p>
 <p><strong>AMQP消费者流转过程：</strong></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310039.png"></p>
-<h2 id="3、RabbitMQ-核心组成"><a href="#3、RabbitMQ-核心组成" class="headerlink" title="3、RabbitMQ 核心组成"></a>3、RabbitMQ 核心组成</h2><h3 id="1、RabbitMQ的核心组成部分"><a href="#1、RabbitMQ的核心组成部分" class="headerlink" title="1、RabbitMQ的核心组成部分"></a>1、RabbitMQ的核心组成部分</h3><p><img src="/blog/RabbitMQ/image-20241017215310040.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538606.png" alt="20210418110805"></p>
+<h2 id="3、RabbitMQ-核心组成"><a href="#3、RabbitMQ-核心组成" class="headerlink" title="3、RabbitMQ 核心组成"></a>3、RabbitMQ 核心组成</h2><h3 id="1、RabbitMQ的核心组成部分"><a href="#1、RabbitMQ的核心组成部分" class="headerlink" title="1、RabbitMQ的核心组成部分"></a>1、RabbitMQ的核心组成部分</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538607.png" alt="20210418110806"></p>
 <p>核心概念：</p>
 <ul>
 <li><strong>Server</strong>：又称Broker ,接受客户端的连接，实现AMQP实体服务。 安装rabbitmq-server</li>
@@ -2903,8 +3007,8 @@ management.tcp.ip   = 0.0.0.0
 <li><strong>Routing key</strong>：是一个路由规则，虚拟机可以用它来确定如何路由一个特定消息</li>
 <li><strong>Queue</strong>：队列：也成为Message Queue,消息队列，保存消息并将它们转发给消费者</li>
 </ul>
-<h3 id="2、RabbitMQ整体架构模型"><a href="#2、RabbitMQ整体架构模型" class="headerlink" title="2、RabbitMQ整体架构模型"></a>2、RabbitMQ整体架构模型</h3><p><img src="/blog/RabbitMQ/image-20241017215310041.png"></p>
-<h3 id="3、RabbitMQ的运行流程"><a href="#3、RabbitMQ的运行流程" class="headerlink" title="3、RabbitMQ的运行流程"></a>3、RabbitMQ的运行流程</h3><p><img src="/blog/RabbitMQ/image-20241017215310042.png"></p>
+<h3 id="2、RabbitMQ整体架构模型"><a href="#2、RabbitMQ整体架构模型" class="headerlink" title="2、RabbitMQ整体架构模型"></a>2、RabbitMQ整体架构模型</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538608.png" alt="20210418110807"></p>
+<h3 id="3、RabbitMQ的运行流程"><a href="#3、RabbitMQ的运行流程" class="headerlink" title="3、RabbitMQ的运行流程"></a>3、RabbitMQ的运行流程</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538609.png" alt="20210418110808"></p>
 <h2 id="4、七种队列模式"><a href="#4、七种队列模式" class="headerlink" title="4、七种队列模式"></a>4、七种队列模式</h2><p>七种模式介绍与应用场景：</p>
 <ol>
 <li>简单模式（Hello World）：简单生产者-消费者</li>
@@ -2915,13 +3019,13 @@ management.tcp.ip   = 0.0.0.0
 <li>远程过程调用（RPC）</li>
 <li>发布者确认（Publisher Confirms）</li>
 </ol>
-<h3 id="1、简单模式（Hello-World）"><a href="#1、简单模式（Hello-World）" class="headerlink" title="1、简单模式（Hello World）"></a>1、简单模式（Hello World）</h3><p><img src="/blog/RabbitMQ/image-20241017215310043.png"></p>
+<h3 id="1、简单模式（Hello-World）"><a href="#1、简单模式（Hello-World）" class="headerlink" title="1、简单模式（Hello World）"></a>1、简单模式（Hello World）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538610.png" alt="20210418110809"></p>
 <p>做最简单的事情，一个生产者对应一个消费者，RabbitMQ相当于一个消息代理，负责将A的消息转发给B</p>
 <p><strong>应用场景：</strong> 将发送的电子邮件放到消息队列，然后邮件服务在队列中获取邮件并发送给收件人</p>
-<h3 id="2、工作队列模式（Work-queues）"><a href="#2、工作队列模式（Work-queues）" class="headerlink" title="2、工作队列模式（Work queues）"></a>2、工作队列模式（Work queues）</h3><p><img src="/blog/RabbitMQ/image-20241017215310044.png"></p>
+<h3 id="2、工作队列模式（Work-queues）"><a href="#2、工作队列模式（Work-queues）" class="headerlink" title="2、工作队列模式（Work queues）"></a>2、工作队列模式（Work queues）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538611.png" alt="20210418110810"></p>
 <p>在多个消费者之间分配任务（竞争的消费者模式），一个生产者对应多个消费者，一般适用于执行资源密集型任务，单个消费者处理不过来，需要多个消费者进行处理</p>
 <p><strong>应用场景：</strong> 一个订单的处理需要10s，有多个订单可以同时放到消息队列，然后让多个消费者同时处理，这样就是并行了，而不是单个消费者的串行情况</p>
-<h3 id="3、订阅模式-fanout（Pub-Sub）"><a href="#3、订阅模式-fanout（Pub-Sub）" class="headerlink" title="3、订阅模式-fanout（Pub&#x2F;Sub）"></a>3、订阅模式-fanout（Pub&#x2F;Sub）</h3><p><img src="/blog/RabbitMQ/image-20241017215310045.png"></p>
+<h3 id="3、订阅模式-fanout（Pub-Sub）"><a href="#3、订阅模式-fanout（Pub-Sub）" class="headerlink" title="3、订阅模式-fanout（Pub&#x2F;Sub）"></a>3、订阅模式-fanout（Pub&#x2F;Sub）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538612.png" alt="20210418110811"></p>
 <p>一次向许多消费者发送消息，一个生产者发送的消息会被多个消费者获取，也就是将消息将广播到所有的消费者中。</p>
 <p><strong>应用场景：</strong> 更新商品库存后需要通知多个缓存和多个数据库，这里的结构应该是：</p>
 <ul>
@@ -2929,13 +3033,13 @@ management.tcp.ip   = 0.0.0.0
 <li>一个缓存消息队列对应着多个缓存消费者</li>
 <li>一个数据库消息队列对应着多个数据库消费者</li>
 </ul>
-<h3 id="4、路由模式（Routing）"><a href="#4、路由模式（Routing）" class="headerlink" title="4、路由模式（Routing）"></a>4、路由模式（Routing）</h3><p><img src="/blog/RabbitMQ/image-20241017215310046.png"></p>
+<h3 id="4、路由模式（Routing）"><a href="#4、路由模式（Routing）" class="headerlink" title="4、路由模式（Routing）"></a>4、路由模式（Routing）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538613.png" alt="20210418110812"></p>
 <p>有选择地（Routing key）接收消息，发送消息到交换机并且要指定路由key ，消费者将队列绑定到交换机时需要指定路由key，仅消费指定路由key的消息</p>
 <p><strong>应用场景：</strong> 如在商品库存中增加了1台iphone12，iphone12促销活动消费者指定routing key为iphone12，只有此促销活动会接收到消息，其它促销活动不关心也不会消费此routing key的消息</p>
-<h3 id="5、主题模式（Topics）"><a href="#5、主题模式（Topics）" class="headerlink" title="5、主题模式（Topics）"></a>5、主题模式（Topics）</h3><p><img src="/blog/RabbitMQ/image-20241017215310047.png"></p>
+<h3 id="5、主题模式（Topics）"><a href="#5、主题模式（Topics）" class="headerlink" title="5、主题模式（Topics）"></a>5、主题模式（Topics）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538614.png" alt="20210418110813"></p>
 <p>根据主题（Topics）来接收消息，将路由key和某模式进行匹配，此时队列需要绑定在一个模式上，<code>#</code>匹配一个词或多个词，<code>*</code>只匹配一个词。</p>
 <p><strong>应用场景：</strong> 同上，iphone促销活动可以接收主题为iphone的消息，如iphone12、iphone13等</p>
-<h3 id="6、远程过程调用（RPC）"><a href="#6、远程过程调用（RPC）" class="headerlink" title="6、远程过程调用（RPC）"></a>6、远程过程调用（RPC）</h3><p><img src="/blog/RabbitMQ/image-20241017215310048.png"></p>
+<h3 id="6、远程过程调用（RPC）"><a href="#6、远程过程调用（RPC）" class="headerlink" title="6、远程过程调用（RPC）"></a>6、远程过程调用（RPC）</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538615.png" alt="20210418110814"></p>
 <p>如果我们需要在远程计算机上运行功能并等待结果就可以使用RPC，具体流程可以看图。应用场景：需要等待接口返回数据，如订单支付</p>
 <h3 id="7、发布者确认（Publisher-Confirms）"><a href="#7、发布者确认（Publisher-Confirms）" class="headerlink" title="7、发布者确认（Publisher Confirms）"></a>7、发布者确认（Publisher Confirms）</h3><p>与发布者进行可靠的发布确认，发布者确认是RabbitMQ扩展，可以实现可靠的发布。在通道上启用发布者确认后，RabbitMQ将异步确认发送者发布的消息，这意味着它们已在服务器端处理。</p>
 <p><strong>应用场景：</strong> 对于消息可靠性要求较高，比如钱包扣款</p>
@@ -2980,7 +3084,7 @@ management.tcp.ip   = 0.0.0.0
 <p>按需选择即可。番外：rabbitmq和spring同属一个公司开放的产品，所以他们的支持也是非常完善，这也是为什么推荐使用rabbitmq的一个原因。</p>
 </blockquote>
 <h2 id="1、Simple-简单队列"><a href="#1、Simple-简单队列" class="headerlink" title="1、Simple 简单队列"></a>1、Simple 简单队列</h2><h3 id="1、简单理解"><a href="#1、简单理解" class="headerlink" title="1、简单理解"></a>1、简单理解</h3><p>如果把使用 RabbitMQ 进行消息发送的过程比喻成邮寄邮件。那么简单队列的场景是，只有一个邮箱、一个邮局、一个投递员，。消息通过 RabbitMQ 进行一对一发送，发送过程最简单。</p>
-<h3 id="2、简单队列模型示意图"><a href="#2、简单队列模型示意图" class="headerlink" title="2、简单队列模型示意图"></a>2、简单队列模型示意图</h3><p><img src="/blog/RabbitMQ/image-20241017215310049.png"></p>
+<h3 id="2、简单队列模型示意图"><a href="#2、简单队列模型示意图" class="headerlink" title="2、简单队列模型示意图"></a>2、简单队列模型示意图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538616.png" alt="20210418110841"></p>
 <h3 id="3、代码实战"><a href="#3、代码实战" class="headerlink" title="3、代码实战"></a>3、代码实战</h3><blockquote>
 <p>一个生产者，一个消费者，一个队列（<strong>一个默认的交换机</strong>）</p>
 </blockquote>
@@ -3109,7 +3213,7 @@ public class Consumer &#123;
 收到消息是你好，消息队列！！！
 </code></pre>
 <h2 id="2、Work-工作队列"><a href="#2、Work-工作队列" class="headerlink" title="2、Work 工作队列"></a>2、Work 工作队列</h2><h3 id="1、简单理解-1"><a href="#1、简单理解-1" class="headerlink" title="1、简单理解"></a>1、简单理解</h3><p>在前面我们学了Simple Queue 模型，Simple Queue 模型消息生产者和消费者是一 一对应的，消息由生产者发送到队列并由消费者消费。假设有一种消息，消息生产者一次性发送了10条消息，消费者消费一条消息执行耗时1秒，如果使用简单队列模式总共耗时10秒；如果使用工作队列模式有3个消费者共同消费这些消息理想情况下只需要3秒就可以处理完这些消息。</p>
-<h3 id="2、工作队列模型示意图"><a href="#2、工作队列模型示意图" class="headerlink" title="2、工作队列模型示意图"></a>2、工作队列模型示意图</h3><p><img src="/blog/RabbitMQ/image-20241017215310050.png"></p>
+<h3 id="2、工作队列模型示意图"><a href="#2、工作队列模型示意图" class="headerlink" title="2、工作队列模型示意图"></a>2、工作队列模型示意图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538617.png" alt="20210418110842"></p>
 <h3 id="3、代码实战-轮询模式（Round-Robin）"><a href="#3、代码实战-轮询模式（Round-Robin）" class="headerlink" title="3、代码实战-轮询模式（Round-Robin）"></a>3、代码实战-轮询模式（Round-Robin）</h3><p>1、定义生产者</p>
 <pre><code class="java">package com.example.work.round;
 
@@ -3391,7 +3495,7 @@ Work2-收到消息是work-公平分发:20
 <li><strong>Headers</strong>：Headers类型的exchange使用的比较少，它也是忽略routingKey的一种路由方式。是使用Headers来匹配的。Headers是一个键值对，可以定义成Hashtable。发送者在发送的时候定义一些键值对，接收者也可以再绑定时候传入一些键值对，两者匹配的话，则对应的队列就可以收到消息。匹配有两种方式all和any。这两种方式是在接收端必须要用键值”x-mactch”来定义。all代表定义的多个键值对都要满足，而any则代码只要满足一个就可以了。fanout，direct，topic exchange的routingKey都需要要字符串形式的，而headers exchange则没有这个要求，因为键值对的值可以是任何类型</li>
 </ul>
 </blockquote>
-<h3 id="2、发布订阅模型示例图"><a href="#2、发布订阅模型示例图" class="headerlink" title="2、发布订阅模型示例图"></a>2、发布订阅模型示例图</h3><p><img src="/blog/RabbitMQ/image-20241017215310051.png"></p>
+<h3 id="2、发布订阅模型示例图"><a href="#2、发布订阅模型示例图" class="headerlink" title="2、发布订阅模型示例图"></a>2、发布订阅模型示例图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538618.png" alt="20210418110843"></p>
 <h3 id="3、代码实战-1"><a href="#3、代码实战-1" class="headerlink" title="3、代码实战"></a>3、代码实战</h3><blockquote>
 <p>一个生产者，一个交换机，三个队列，三个消费者<br>特点：发布与订阅模式，是一种广播机制，它是没有路由key的模式。</p>
 </blockquote>
@@ -3498,7 +3602,7 @@ fanout-queue2：收到消息是：你好，消息队列！
 </code></pre>
 <h2 id="4、Direct-路由模式"><a href="#4、Direct-路由模式" class="headerlink" title="4、Direct 路由模式"></a>4、Direct 路由模式</h2><h3 id="1、简单理解-2"><a href="#1、简单理解-2" class="headerlink" title="1、简单理解"></a>1、简单理解</h3><p>Direct Exchange消息模型是交换机将消息投递到队列中的另一种方式，需要将交换机类型设置为direct。那么什么是direct类型交换机？</p>
 <p>其中<strong>Direct</strong>：处理路由键。需要将一个队列绑定到交换机上，要求该消息与一个特定的路由键<strong>完全匹配</strong>。这是一个完整的匹配。如果一个队列绑定到该交换机上要求路由键 <code>test</code>，则只有被标记为<code>test</code>的消息才被转发，不会转发test.aaa，也不会转发dog.123，只会转发test。</p>
-<h3 id="2、路由消息模型示意图"><a href="#2、路由消息模型示意图" class="headerlink" title="2、路由消息模型示意图"></a>2、路由消息模型示意图</h3><p><img src="/blog/RabbitMQ/image-20241017215310052.png"></p>
+<h3 id="2、路由消息模型示意图"><a href="#2、路由消息模型示意图" class="headerlink" title="2、路由消息模型示意图"></a>2、路由消息模型示意图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538619.png" alt="20210418110844"></p>
 <h3 id="3、Direct-消息流转过程"><a href="#3、Direct-消息流转过程" class="headerlink" title="3、Direct 消息流转过程"></a>3、Direct 消息流转过程</h3><ul>
 <li>生产者向Exchange发送消息</li>
 <li>队列使用路由密钥绑定到Exchange</li>
@@ -3610,7 +3714,7 @@ direct-info：收到消息是：你好，消息队列！
 </code></pre>
 <h2 id="5、Topic-主题模式"><a href="#5、Topic-主题模式" class="headerlink" title="5、Topic 主题模式"></a>5、Topic 主题模式</h2><h3 id="1、简单理解-3"><a href="#1、简单理解-3" class="headerlink" title="1、简单理解"></a>1、简单理解</h3><p>Topic Exchange 消息模型需要指定路由器类型设置为Topic，那么什么是 Topic 类型？</p>
 <p><strong>Topic</strong>： 将路由键和某模式进行匹配。此时队列需要绑定要一个模式上。符号<code>#</code>匹配一个或多个词，符号<code>*</code> 匹配不多不少一个词。因此<code>audit.#</code>能够匹配到<code>audit.irs.corporate</code>，但是<code>audit.*</code> 只会匹配到<code>audit.irs</code></p>
-<h3 id="2、主题消息模型示意图"><a href="#2、主题消息模型示意图" class="headerlink" title="2、主题消息模型示意图"></a>2、主题消息模型示意图</h3><p><img src="/blog/RabbitMQ/image-20241017215310053.png"></p>
+<h3 id="2、主题消息模型示意图"><a href="#2、主题消息模型示意图" class="headerlink" title="2、主题消息模型示意图"></a>2、主题消息模型示意图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538620.png" alt="20210418110845"></p>
 <h3 id="3、Topic-中的路由键设置规则"><a href="#3、Topic-中的路由键设置规则" class="headerlink" title="3、Topic 中的路由键设置规则"></a>3、Topic 中的路由键设置规则</h3><ul>
 <li>Topic Exchange中的路由关键字必须包含零个或多个由 <code>.</code> 点分隔的单词，例如<code>health.education</code></li>
 <li>Topic Exchange中的路由键通常称为<strong>路由模式</strong></li>
@@ -3738,7 +3842,7 @@ public class Consumer &#123;
 </code></pre>
 <h2 id="6、Headers-模式"><a href="#6、Headers-模式" class="headerlink" title="6、Headers 模式"></a>6、Headers 模式</h2><h3 id="1、简单理解-4"><a href="#1、简单理解-4" class="headerlink" title="1、简单理解"></a>1、简单理解</h3><p>Headers Exchange 模型需要指定路由器类型设置为Headers，那么什么是 Headers 类型？</p>
 <p><strong>Headers</strong>：Headers类型的exchange使用的比较少，它也是忽略routingKey的一种路由方式。是使用Headers来匹配的。Headers是一个键值对，可以定义成Hashtable。发送者在发送的时候定义一些键值对，接收者也可以再绑定时候传入一些键值对，两者匹配的话，则对应的队列就可以收到消息。匹配有两种方式all和any。这两种方式是在接收端必须要用键值”x-mactch”来定义。all代表定义的多个键值对都要满足，而any则代码只要满足一个就可以了。fanout，direct，topic exchange的routingKey都需要要字符串形式的，而headers exchange则没有这个要求，因为键值对的值可以是任何类型</p>
-<h3 id="2、Headers-消息模型示意图"><a href="#2、Headers-消息模型示意图" class="headerlink" title="2、Headers 消息模型示意图"></a>2、Headers 消息模型示意图</h3><p><img src="/blog/RabbitMQ/image-20241017215310054.png"></p>
+<h3 id="2、Headers-消息模型示意图"><a href="#2、Headers-消息模型示意图" class="headerlink" title="2、Headers 消息模型示意图"></a>2、Headers 消息模型示意图</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538621.png" alt="20210418110840"></p>
 <h3 id="3、Headers-中消息流转过程"><a href="#3、Headers-中消息流转过程" class="headerlink" title="3、Headers 中消息流转过程"></a>3、Headers 中消息流转过程</h3><ul>
 <li>一个或多个队列使用标头属性（H）绑定（链接）到标头交换。</li>
 <li>生产者将带有标头属性（MH）的消息发送到此Exchange。</li>
@@ -4588,7 +4692,7 @@ header.queue.two 收到消息：Header模式—全部匹配
 <p>任何消息中间件发消息投递的可靠性都是开发者选择的重要参考依据。我们希望的是发送的每一条消息都是可以被消费者正确处理的。但是没有哪个消息中间件可以保证消息一定 100% 投递成功，那么如果消息投递失败我们该如何处理呢？</p>
 <p>本文消息靠性介绍比较浅，深入可参考：<br>消息可靠投递(上)：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mfrank/p/11380102.html">https://www.cnblogs.com/mfrank/p/11380102.html</a><br>消息可靠投递(下)：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mfrank/p/11442706.html">https://www.cnblogs.com/mfrank/p/11442706.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ybyn/category/1849978.html">https://www.cnblogs.com/ybyn/category/1849978.html</a></p>
 </blockquote>
-<h2 id="1、消息可靠性理论分析"><a href="#1、消息可靠性理论分析" class="headerlink" title="1、消息可靠性理论分析"></a>1、消息可靠性理论分析</h2><p><img src="/blog/RabbitMQ/image-20241017215310055.png"></p>
+<h2 id="1、消息可靠性理论分析"><a href="#1、消息可靠性理论分析" class="headerlink" title="1、消息可靠性理论分析"></a>1、消息可靠性理论分析</h2><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538622.png" alt="20210418110834"></p>
 <h3 id="1、RabbitMQ-消息投递路径"><a href="#1、RabbitMQ-消息投递路径" class="headerlink" title="1、RabbitMQ 消息投递路径"></a>1、RabbitMQ 消息投递路径</h3><p>生产者（Producer）» 交换机（Exchange）» 队列（Queue） » 消费者（Consumer），这过程中消息可能丢失的三种情况：</p>
 <ol>
 <li><strong>生产者投递-丢失消息</strong>：Produer 发送消息到 Broker（Exchange）失败，导致消息发送失败</li>
@@ -4856,7 +4960,7 @@ public void setConfirmCallback() &#123;
 消息投递到交换机失败：[correlationData=CorrelationData [id=13e952a8-98e5-4eb2-831e-ffb553c48cea]，原因=channel error; protocol method: #method&lt;channel.close&gt;(reply-code=404, reply-text=NOT_FOUND - no exchange &#39;exchange-dog&#39; in vhost &#39;/&#39;, class-id=60, method-id=40)]
 </code></pre>
 <h2 id="4、消息回退模式（消息发送方）"><a href="#4、消息回退模式（消息发送方）" class="headerlink" title="4、消息回退模式（消息发送方）"></a>4、消息回退模式（消息发送方）</h2><p>Confirm只能保证消息到达Exchange，无法保证消息可以被exchange分发到指定queue。而且exchange是不能持久化消息的，queue是可以持久化消息。采用return机制来监听消息是否从exchange送到了指定的queue中</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310056.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538623.png" alt="20210418110849"></p>
 <p>当把 mandotory 参数设置为 true 时，如果交换机无法将消息进行路由时，会将该消息返回给生产者，而如果该参数设置为false，如果发现消息无法进行路由，则直接丢弃。</p>
 <h3 id="1、Java-实现-1"><a href="#1、Java-实现-1" class="headerlink" title="1、Java 实现"></a>1、Java 实现</h3><pre><code class="java">package com.example.confirm_return;
 
@@ -4961,7 +5065,7 @@ public void setQueueCallback() &#123;
 <p>不要慌，在 RabbitMQ 中，有一种备份交换机的机制存在，可以很好的应对这个问题。</p>
 <p>什么是备份交换机呢？备份交换机可以理解为 RabbitMQ 中交换机的“备胎”，当我们为某一个交换机声明一个对应的备份交换机时，就是为它创建一个备胎，当交换机接收到一条不可路由消息时，将会将这条消息转发到备份交换机中，由备份交换机来进行转发和处理，通常备份交换机的类型为 Fanout ，这样就能把所有消息都投递到与其绑定的队列中，然后我们在备份交换机下绑定一个队列，这样所有那些原交换机无法被路由的消息，就会都进入这个队列了。当然，我们还可以建立一个报警队列，用独立的消费者来进行监测和报警。</p>
 <p>听的不太明白？没关系，看个图就知道是怎么回事了。</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310057.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538624.png" alt="20210418110850"></p>
 <p>接下来，我们就来设置一下备份交换机（建议生产者和消费者端同时定义）：</p>
 <pre><code class="java">package com.example.config;
 
@@ -5260,7 +5364,7 @@ public class QosConsumer &#123;
 <p>但是有个问题，业务代码一旦出现BUG 99.9%的情况是不会自动修复，一条消息会被无限投递进队列，消费端无限执行，导致了死循环</p>
 <p><strong>TODO：还可继续深入</strong></p>
 <h1 id="RabbitMQ-延迟队列-死信队列"><a href="#RabbitMQ-延迟队列-死信队列" class="headerlink" title="RabbitMQ 延迟队列&amp;死信队列"></a>RabbitMQ 延迟队列&amp;死信队列</h1><p>延迟队列 + 死信队列：大致流程图：</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310058.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538625.png" alt="20210418110848"></p>
 <h2 id="1、延迟队列-TTL"><a href="#1、延迟队列-TTL" class="headerlink" title="1、延迟队列 TTL"></a>1、延迟队列 TTL</h2><h3 id="1、什么是延迟队列"><a href="#1、什么是延迟队列" class="headerlink" title="1、什么是延迟队列"></a>1、什么是延迟队列</h3><p>讨论什么是延迟队列之前我们得先知道什么是TTL（time to live）：消息存活时间。</p>
 <p>延迟队列：实际上不存在真正意义上的延迟队列（简单说就是在普通队列上加过期时间就是延迟队列）。但是我们可以通过设置消息的过期时间和死信队列来模拟出延时队列。消费者监听死信交换器绑定的队列，而不要监听消息发送的队列。</p>
 <h3 id="2、延迟队列的使用场景"><a href="#2、延迟队列的使用场景" class="headerlink" title="2、延迟队列的使用场景"></a>2、延迟队列的使用场景</h3><ol>
@@ -5333,7 +5437,7 @@ public class Producer &#123;
 &#125;
 </code></pre>
 <p>然后可以从web页面查看该队列状况：1、可以发现队列有一个TTL的标签。2、三秒过后消息不管有没有被消费都会自动消失</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310059.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538626.png" alt="20210418110836"></p>
 <h4 id="2、SpringBoot-实现-1"><a href="#2、SpringBoot-实现-1" class="headerlink" title="2、SpringBoot 实现"></a>2、SpringBoot 实现</h4><p>SpringBoot 设置 <strong>队列</strong> or <strong>消息</strong> 的过期时间。</p>
 <p>1、创建队列、交换机、并绑定关系</p>
 <pre><code class="java">package com.example.config;
@@ -5535,7 +5639,7 @@ public class DeadTTLMessagesConsumer &#123;
 <p>可以发现TTL时间短的比TTL时间长的后“死亡”。想解决该问题请参考下篇文章。</p>
 </blockquote>
 <h3 id="6、利用插件实现动态TTL"><a href="#6、利用插件实现动态TTL" class="headerlink" title="6、利用插件实现动态TTL"></a>6、利用插件实现动态TTL</h3><h4 id="1、Delayed-Message-插件及实现原理"><a href="#1、Delayed-Message-插件及实现原理" class="headerlink" title="1、Delayed Message 插件及实现原理"></a>1、Delayed Message 插件及实现原理</h4><p>上文的问题确实是一个硬伤，如果不能实现在消息粒度上添加TTL，并使其在设置的TTL时间及时死亡，就无法设计成一个通用的延时队列。针对消息无序的不妨看下以下解决方案。</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310060.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538627.png" alt="20210418110856"></p>
 <p>上面使用 DLX + TTL 的模式，消息首先会路由到一个正常的队列，根据设置的 TTL 进入死信队列，与之不同的是<strong>通过 x-delayed-message 声明的交换机，它的消息在发布之后不会立即进入队列，先将消息保存至 Mnesia</strong>（一个分布式数据库管理系统，适合于电信和其它需要持续运行和具备软实时特性的 Erlang 应用。目前资料介绍的不是很多）</p>
 <p>这个插件将会尝试确认消息是否过期，首先要确保消息的延迟范围是 Delay &gt; 0, Delay &#x3D;&lt; ?ERL_MAX_T（在 Erlang 中可以被设置的范围为 (2^32)-1 毫秒），如果消息过期通过 x-delayed-type 类型标记的交换机投递至目标队列，整个消息的投递过程也就完成了。</p>
 <h4 id="2、Delayed-Message-插件安装"><a href="#2、Delayed-Message-插件安装" class="headerlink" title="2、Delayed Message 插件安装"></a>2、Delayed Message 插件安装</h4><p>1、RabbitMQ的延迟插件下载并安装：<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a></p>
@@ -5651,7 +5755,7 @@ public class TTLDelayedPluginConsumer &#123;
 </ul>
 <p>4、<strong>死信消息</strong>会被RabbitMQ进行特殊处理，如果配置了死信队列，那么该消息将会被丢进死信队列中，如果没配置，则丢弃该消息</p>
 <p><strong>消息大致流转过程：</strong></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310061.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538628.png" alt="20210418110839"></p>
 <h3 id="2、如何配置死信队列"><a href="#2、如何配置死信队列" class="headerlink" title="2、如何配置死信队列"></a>2、如何配置死信队列</h3><p>配置死信队列大概可以分为以下步骤：</p>
 <ol>
 <li>配置业务队列，绑定到业务交换机上</li>
@@ -6012,7 +6116,7 @@ spring.rabbitmq.template.retry.initial-interval: 第一次和第二次尝试发�
 spring.rabbitmq.template.retry.multiplier: 应用于上一重试间隔的乘数
 spring.rabbitmq.template.retry.max-interval: 最大重试时间间隔
 </code></pre>
-<h2 id="2、创建队列附加参数详解"><a href="#2、创建队列附加参数详解" class="headerlink" title="2、创建队列附加参数详解"></a>2、创建队列附加参数详解</h2><h3 id="1、网页端查看"><a href="#1、网页端查看" class="headerlink" title="1、网页端查看"></a>1、网页端查看</h3><p><img src="/blog/RabbitMQ/image-20241017215310062.png"></p>
+<h2 id="2、创建队列附加参数详解"><a href="#2、创建队列附加参数详解" class="headerlink" title="2、创建队列附加参数详解"></a>2、创建队列附加参数详解</h2><h3 id="1、网页端查看"><a href="#1、网页端查看" class="headerlink" title="1、网页端查看"></a>1、网页端查看</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538629.png" alt="20210418110847"></p>
 <h3 id="2、代码设置"><a href="#2、代码设置" class="headerlink" title="2、代码设置"></a>2、代码设置</h3><p>1、SpringBoot创建queue设置附加参数（附加参数类型为Map）</p>
 <pre><code class="java">package com.example.config;
 
@@ -6091,7 +6195,7 @@ channel.queueDeclare(&quot;ttl-queue&quot;, false, false, false, arguments);
 
 11、x-queue-master-locator：在集群模式下设置镜像队列的主节点信息。
 </code></pre>
-<h2 id="3、发送消息附加参数详解"><a href="#3、发送消息附加参数详解" class="headerlink" title="3、发送消息附加参数详解"></a>3、发送消息附加参数详解</h2><h3 id="1、网页端查看与设置"><a href="#1、网页端查看与设置" class="headerlink" title="1、网页端查看与设置"></a>1、网页端查看与设置</h3><p><img src="/blog/RabbitMQ/image-20241017215310063.png"></p>
+<h2 id="3、发送消息附加参数详解"><a href="#3、发送消息附加参数详解" class="headerlink" title="3、发送消息附加参数详解"></a>3、发送消息附加参数详解</h2><h3 id="1、网页端查看与设置"><a href="#1、网页端查看与设置" class="headerlink" title="1、网页端查看与设置"></a>1、网页端查看与设置</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538630.png" alt="20210418110846"></p>
 <h3 id="2、Java设置AMQP-BasicProperties"><a href="#2、Java设置AMQP-BasicProperties" class="headerlink" title="2、Java设置AMQP.BasicProperties"></a>2、Java设置AMQP.BasicProperties</h3><p>JAVA版：附加参数类型为：AMQP.BasicProperties</p>
 <p>1、RabbitMQ发布消息的方法为：</p>
 <pre><code class="java">void basicPublish(String exchange, String routingKey, BasicProperties props, byte[] body) throws IOException;
@@ -6445,9 +6549,9 @@ public class OrderMQListener &#123;
 </ul>
 <p><strong>PS：元数据，指的是包括队列名字属性、交换机的类型名字属性、绑定信息、vhost等基础信息，不包括队列中的消息数据。</strong></p>
 <p>这些元数据，其实本质是一张查询表，里面包括了交换器名称和一个队列的绑定列表，当你将消息发布到交换器中，实际上是将你所在的信道将消息上的路由键与交换器的绑定列表进行匹配，然后将消息路由出去。</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310064.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538631.png" alt="20210418110827"></p>
 <p>有了这个机制，那么在所有节点上传递交换器消息将简单很多，而 RabbitMQ 所做的事情就是把交换器元数据拷贝到所有节点上，因此每个节点上的每条信道都可以访问完整的交换器。</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310065.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538632.png" alt="20210418110828"></p>
 <p>如果消息生产者所连接的是节点 2 或者节点 3，此时队列1的完整数据不在该两个节点上，那么在发送消息过程中这两个节点主要起了一个路由转发作用，根据这两个节点上的元数据转发至节点1上，最终发送的消息还是会存储至节点1的队列1上。</p>
 <p>同样，如果消息消费者所连接的节点2或者节点3，那这两个节点也会作为路由节点起到转发作用，将会从节点1的队列1中拉取消息进行消费。</p>
 <p><strong>与常见的集群主从架构模式不同在于：RabbitMQ集群模式下，仅仅只是同步元数据，每个队列内容还是在自己的服务器节点上</strong></p>
@@ -6490,7 +6594,7 @@ public class OrderMQListener &#123;
 <li>queue队列中的完整数据只存在于创建该队列的节点上</li>
 <li>其他节点只保存队列的元数据信息以及指向当前队列的owner node的指针</li>
 </ul>
-<p><img src="/blog/RabbitMQ/image-20241017215310066.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538633.png" alt="20210418110825"></p>
 <p>2、数据消费</p>
 <p>进行数据消费时随机连接到一个节点，当队列不是当前节点创建的时候，需要有一个从创建队列的实例拉取队列数据的开销。此外由于需要固定从单实例获取数据，因此会出现单实例的瓶颈。</p>
 <p>3、优点：可以由多个节点消费单个队列的数据，提高了吞吐量</p>
@@ -6507,7 +6611,7 @@ public class OrderMQListener &#123;
 <li>创建的queue，不论是元数据还是完整数据都会在每一个节点上保存一份</li>
 <li>向queue中写消息时，都会自动同步到每一个节点上</li>
 </ul>
-<p><img src="/blog/RabbitMQ/image-20241017215310067.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538634.png" alt="20210418110826"></p>
 <p>2、优点：</p>
 <ul>
 <li>保障了集群的高可用</li>
@@ -6647,9 +6751,9 @@ Flag: quorum_queue, state: enabled
 Flag: user_limits, state: enabled
 Flag: virtual_host_metadata, state: enabled
 </code></pre>
-<p><img src="/blog/RabbitMQ/image-20241017215310068.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538635.png" alt="20210418110851"></p>
 <p>web页面查看：</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310069.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538636.png" alt="20210418110824"></p>
 <h3 id="6、解除集群"><a href="#6、解除集群" class="headerlink" title="6、解除集群"></a>6、解除集群</h3><p>1、在自己节点重置当前节点，退出集群</p>
 <pre><code class="bash"># 停止服务、重置集群状态、重启服务
 rabbitmqctl -n rabbit-2 stop_app &amp;&amp; rabbitmqctl -n rabbit-2 reset &amp;&amp; rabbitmqctl -n rabbit-2 start_app
@@ -6937,9 +7041,9 @@ rabbitmqctl clear_policy -p / ha-policy
 </code></pre>
 <h3 id="2、可视化管理界面手动创建"><a href="#2、可视化管理界面手动创建" class="headerlink" title="2、可视化管理界面手动创建"></a>2、可视化管理界面手动创建</h3><p>网页端镜像模式添加方式：进入管理页面 -&gt; Admin -&gt; Policies（在页面右侧）-&gt; Add &#x2F; update a policy</p>
 <p>1、全部节点镜像策略创建：</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310070.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538637.png" alt="20210418110852"></p>
 <p>2、指定节点数镜像策略创建：</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310071.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538638.png" alt="20210418110853"></p>
 <p><strong>参数说明：</strong></p>
 <ul>
 <li><p><strong>name</strong>: 策略名称，如果使用已有的名称，保存后将会修改原来的信息</p>
@@ -6993,7 +7097,7 @@ channel.queueDeclare(&quot;ttl-queue&quot;, false, false, false, arguments);
 <li>Zabbix监控RabbitMQ</li>
 </ol>
 <h3 id="1、管理界面监控"><a href="#1、管理界面监控" class="headerlink" title="1、管理界面监控"></a>1、管理界面监控</h3><p>管理界面监控需要我们开启对应的插件（rabbitmq-plugins enable rabbitmq_management）访问：<a target="_blank" rel="noopener" href="http://ip:15672/">http://ip:15672</a></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310072.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538639.png" alt="20210418110829"></p>
 <p>在管理控制台我们就可以直观的看到集群中的每一个节点是否正常,如果为红色则表示节点挂掉了，同时可以很方便的查看到各个节点的内存、磁盘等相关的信息，使用起来也是非常方便的。但是遗憾的该功能做的比较简陋,没有告警等一些列的个性化设置，同时如果想把他接入到公司其他的监控系统统一管理也是很难做到的,所以扩展性不强，一般在小型企业的小集群中使用。</p>
 <h3 id="2、Tracing日志监控"><a href="#2、Tracing日志监控" class="headerlink" title="2、Tracing日志监控"></a>2、Tracing日志监控</h3><blockquote>
 <p>对于企业级的应用开发来讲,我们通常都会比较关注我们的消息，甚至很多的场景把消息的可靠性放在第一位，但是我们的MQ集群难免会出现消息异常丢失或者客户端无法发送消息等异常情况，此时为了帮助开发人员快速的定位问题，我们就可以对消息的投递和消费过程进行监控，而Tracing日志监控插件帮我们很好的实现了该功能。</p>
@@ -7037,16 +7141,16 @@ channel.queueDeclare(&quot;ttl-queue&quot;, false, false, false, arguments);
 </tr>
 </tbody></table>
 <p>安装插件并开启 trace_on 之后，会发现多个 exchange：amq.rabbitmq.trace ，类型为：topic</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310073.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538640.png" alt="20210418110830"></p>
 <h4 id="2、消息的日志追踪"><a href="#2、消息的日志追踪" class="headerlink" title="2、消息的日志追踪"></a>2、消息的日志追踪</h4><p>1、发送消息</p>
 <pre><code class="java">rabbitTemplate.convertAndSend(&quot;spring_queue&quot;, &quot;只发队列spring_queue的消息--01&quot;);
 </code></pre>
 <p>2、查看trace</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310074.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538641.png" alt="20210418110831"></p>
 <p>3、点击Tracing查看Trace log files</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310075.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538642.png" alt="20210418110832"></p>
 <p>4、点击xuexiangban-trace.log 确认消息轨迹正确性</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310076.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538643.png" alt="20210418110833"></p>
 <h3 id="3、定制自己的监控系统"><a href="#3、定制自己的监控系统" class="headerlink" title="3、定制自己的监控系统"></a>3、定制自己的监控系统</h3><p>RabbitMQ提供了很丰富的restful风格的api接口,我们可以通过这些接口得到对应的集群数据,此时我们就可以定制我们的监控系统。</p>
 <table>
 <thead>
@@ -7405,8 +7509,8 @@ guest : MonitorRabbitMQ.User(name=guest, tags=administrator)
 <li>5、配置<a target="_blank" rel="noopener" href="https://github.com/RabbitListener">@RabbitListener</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/RabbitHandler">@RabbitHandler</a>用于接收消息</li>
 </ul>
 <p><strong>3、在默认情况下主要的配置如下：</strong></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310077.png"></p>
-<h3 id="3、Spring-AMQP主要对象"><a href="#3、Spring-AMQP主要对象" class="headerlink" title="3、Spring-AMQP主要对象"></a>3、Spring-AMQP主要对象</h3><p><img src="/blog/RabbitMQ/image-20241017215310078.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538644.png" alt="20210418110854"></p>
+<h3 id="3、Spring-AMQP主要对象"><a href="#3、Spring-AMQP主要对象" class="headerlink" title="3、Spring-AMQP主要对象"></a>3、Spring-AMQP主要对象</h3><p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538645.png" alt="20210418110855"></p>
 <blockquote>
 <p>注：如果不了解AMQP请前往官网了解</p>
 </blockquote>
@@ -7594,7 +7698,7 @@ public class RabbitConfig &#123;
 <li>交换机持久化</li>
 </ol>
 <p>3、不论是持久化的消息还是非持久化的消息都可以写入到磁盘中，只不过非持久的是等内存不足的情况下才会被写入到磁盘中</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310079.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538646.png" alt="20210418110815"></p>
 <h3 id="1、RabbitMQ队列持久化"><a href="#1、RabbitMQ队列持久化" class="headerlink" title="1、RabbitMQ队列持久化"></a>1、RabbitMQ队列持久化</h3><p>队列的持久化是定义队列时的durable参数来实现的，Durable为true时，队列才会持久化。</p>
 <pre><code class="java">// 参数1：名字  
 // 参数2：是否持久化，
@@ -7604,8 +7708,8 @@ public class RabbitConfig &#123;
 channel.queueDeclare(queueName,true,false,false,null);
 </code></pre>
 <p>其中参数2：设置为true，就代表的是持久化的含义。即durable&#x3D;true。持久化的队列在web控制台中有一个<code>D</code> 的标记</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310080.png"></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310081.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538647.png" alt="20210418110816"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538648.png" alt="20210418110818"></p>
 <h3 id="2、RabbitMQ消息持久化"><a href="#2、RabbitMQ消息持久化" class="headerlink" title="2、RabbitMQ消息持久化"></a>2、RabbitMQ消息持久化</h3><p>消息持久化是通过消息的属性deliveryMode来设置是否持久化，在发送消息时通过basicPublish的参数传入。</p>
 <pre><code class="java">// 参数1：交换机的名字
 // 参数2：队列或者路由key
@@ -7620,10 +7724,10 @@ channel.basicPublish(exchangeName, routingKey, MessageProperties.PERSISTENT_TEXT
 // 参数3：是否持久化
 channel.exchangeDeclare(exchangeName,exchangeType,true);
 </code></pre>
-<p><img src="/blog/RabbitMQ/image-20241017215310082.png"></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310083.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538649.png" alt="20210418110817"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538650.png" alt="20210418110819"></p>
 <h2 id="2、内存磁盘的监控"><a href="#2、内存磁盘的监控" class="headerlink" title="2、内存磁盘的监控"></a>2、内存磁盘的监控</h2><h3 id="1、RabbitMQ的内存警告"><a href="#1、RabbitMQ的内存警告" class="headerlink" title="1、RabbitMQ的内存警告"></a>1、RabbitMQ的内存警告</h3><p>当内存使用超过配置的阈值或者磁盘空间剩余空间对于配置的阈值时，RabbitMQ会暂时阻塞客户端的连接，并且停止接收从客户端发来的消息，以此避免服务器的崩溃，客户端与服务端的心态检测机制也会失效。如下图：</p>
-<p><img src="/blog/RabbitMQ/image-20241017215310084.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538651.png" alt="20210418110823"></p>
 <h3 id="2、RabbitMQ的内存控制"><a href="#2、RabbitMQ的内存控制" class="headerlink" title="2、RabbitMQ的内存控制"></a>2、RabbitMQ的内存控制</h3><blockquote>
 <p>官网参考帮助文档：<a target="_blank" rel="noopener" href="https://rabbitmq.com/memory.html">https://rabbitmq.com/memory.html</a></p>
 </blockquote>
@@ -7636,8 +7740,8 @@ rabbitmqctl set_vm_memory_high_watermark absolute 50MB
 <p>2、示例操作演示：</p>
 <pre><code class="bash">rabbitmqctl set_vm_memory_high_watermark absolute 50MB
 </code></pre>
-<p><img src="/blog/RabbitMQ/image-20241017215310085.png"></p>
-<p><img src="/blog/RabbitMQ/image-20241017215310086.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538652.png" alt="20210418110820"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538653.png" alt="20210418110821"></p>
 <p>3、还原可以重启服务或者重新修改成默认：</p>
 <pre><code class="bash">rabbitmqctl set_vm_memory_high_watermark 0.4
 </code></pre>
@@ -7676,7 +7780,7 @@ rabbitmqctl set_disk_free_limit mem_relative &lt;fraction&gt;
 <p>2、操作示例测试：</p>
 <pre><code class="bash">rabbitmqctl set_disk_free_limit 100GB
 </code></pre>
-<p><img src="/blog/RabbitMQ/image-20241017215310087.png"></p>
+<p><img src="/blog/RabbitMQ-3.8.14.assets/image-20241025145538654.png" alt="20210418110822"></p>
 <p>3、还原可以重启服务或者重新修改成默认：</p>
 <pre><code class="bash">rabbitmqctl set_disk_free_limit 50MB
 </code></pre>
@@ -7955,6 +8059,18 @@ disk_free_limit.absolute = 50mb
 
 
 
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/8629303">GitHub</a>
+    
+</div>
 
 
 </html>
